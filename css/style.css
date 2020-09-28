@@ -215,3 +215,12 @@ footer {
   /* background-color: #efefef; */
   text-align: left;
 }
+
+#outputBox {
+  margin-left:2rem;
+}
+#outputResults {
+  border:1px solid black;
+  min-height: 5rem;
+  width: 100%;
+}

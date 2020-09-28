@@ -1,8 +1,9 @@
 function tableHeader() {
     return `<tr>
-                <th>Test → Expected</th>
-                <th>Yours</th>
-                <th colspan="2">Result</th>
+                <th>Inputs</th>
+                <th>Expected result</th>
+                <th>Your result</th>
+                <th colspan="2">Correct?</th>
             </tr>`;
 }
 

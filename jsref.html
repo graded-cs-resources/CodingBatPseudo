@@ -3,32 +3,30 @@
 
 <head>
   <meta charset="utf-8">
-  <title>JS Reference</title>
+  <title>IB Pseudocode Reference</title>
   <style media="screen">
-
-
-  section {
-    position: relative;
-    color: #FFF;
-    padding: 20px;
-    margin: 20px auto;
-  }
-
-  @media only screen and (min-width: 992px) {
     section {
-      font-size: 0.75em;
-      -webkit-columns: 3 350px;
-      -moz-columns: 350px;
-      columns: 3 350px;
-      -webkit-column-gap: 2em;
-      -moz-column-gap: 2em;
-      column-gap: 2em;
       position: relative;
       color: #FFF;
       padding: 20px;
       margin: 20px auto;
     }
-  }
+
+    @media only screen and (min-width: 992px) {
+      section {
+        font-size: 0.75em;
+        -webkit-columns: 3 350px;
+        -moz-columns: 350px;
+        columns: 3 350px;
+        -webkit-column-gap: 2em;
+        -moz-column-gap: 2em;
+        column-gap: 2em;
+        position: relative;
+        color: #FFF;
+        padding: 20px;
+        margin: 20px auto;
+      }
+    }
 
     div {
       -webkit-column-break-inside: avoid;
@@ -52,11 +50,14 @@
       text-align: left;
       border-collapse: collapse;
     }
-    table.minimalistBlack td, table.minimalistBlack th {
+
+    table.minimalistBlack td,
+    table.minimalistBlack th {
       border: 1px solid #FFFFFF;
       padding: 5px 4px;
       color: #000;
     }
+
     table.minimalistBlack thead {
       background: #CFCFCF;
       background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
@@ -64,12 +65,12 @@
       background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
       border-bottom: 3px solid #FFFFFF;
     }
+
     table.minimalistBlack thead th {
       font-weight: bold;
       color: #000000;
       text-align: left;
     }
-
   </style>
 </head>
 
@@ -77,12 +78,13 @@
   <section id="mainContent">
 
     <div>
-      <h2>Functions</h2>
-      <p>For these exercises, always <code>return</code> the answer!</p>
-      <pre><code>function adder(first:number, second:number) {
-  let theAnswer = first + second;
-  return theAnswer;
-}</code></pre>
+      <h2>Methods</h2>
+      <p>For these exercises, you will usually <code>output</code> and answer, but you may <code>return</code> for some
+      </p>
+      <pre><code>method adder(FIRST, SECOND) 
+  THEANSWER = first + second;
+  output THEANSWER;
+end method</code></pre>
     </div>
 
     <div>
@@ -97,7 +99,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>==</code></td>
+            <td><code>=</code></td>
             <td>exactly equals</td>
           </tr>
           <tr>
@@ -109,25 +111,22 @@
             <td>assignment</td>
           </tr>
           <tr>
-            <td><code>++</code></td>
-            <td>increment</td>
-          </tr>
-          <tr>
-            <td><code>+=</code></td>
-            <td>add and assign</td>
-          </tr>
-          <tr>
             <td><code>*</code></td>
             <td>multiplication</td>
           </tr>
           <tr>
             <td><code>/</code></td>
-            <td>division</td>
+            <td>division (float)</td>
           </tr>
           <tr>
-            <td><code>%</code></td>
+            <td><code>DIV</code></td>
+            <td>division (integer)</td>
+          </tr>
+          <tr>
+            <td><code>MOD</code></td>
             <td>remainder (modulo)</td>
           </tr>
+
           <tr>
             <td><code>></code></td>
             <td>greater than</td>
@@ -150,27 +149,23 @@
     </div>
 
     <div>
-      <h2>Logical Operators</h3>
+      <h2>Logical Operators</h2>
 
       <table class="minimalistBlack">
         <thead>
           <tr>
             <th>Symbol</th>
-            <th>Meaning</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><code>!</code></td>
-            <td>not</td>
+            <td><code>NOT</code></td>
           </tr>
           <tr>
-            <td><code>&&</code></td>
-            <td>and</td>
+            <td><code>AND</code></td>
           </tr>
           <tr>
-            <td><code>||</code></td>
-            <td>or</td>
+            <td><code>OR</code></td>
           </tr>
         </tbody>
       </table>
@@ -178,27 +173,40 @@
 
     <div>
       <h2>If / Else If / Else</h2>
-      <pre><code>let someNumber = getNumber();
-
-if (someNumber < 42) {
+      <table>
+        <tbody>
+          <tr>
+            <pre><code>if NUM < 42 then
   // something
-}
-else if (someNumber == 42) {
-  // another thing
-}
-else {
-  // some default action
-}</code></pre>
-
+end if</code></pre>
+          </tr>
+          <tr>
+            <pre><code>if NUM < 42 then
+  // something
+else
+ // something else
+end if</code></pre>
+          </tr>
+          <tr>
+            <pre><code>if NUM < 42 then
+  // something
+else if NUM > 55 
+ // something else
+else
+ // more code
+end if</code></pre>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div>
       <h2>While Loop</h2>
       <pre><code>let number = 0;
-while (number < 5) {
-  console.log(number);
-  number = number + 1;
-}
+loop while NUM < 5 
+  output NUM
+  NUM = NUM + 1;
+end loop
 
 // 0
 // 1
@@ -209,10 +217,10 @@ while (number < 5) {
 
     <div>
       <h2>For Loop</h2>
-      <pre><code>for (let number = 5; number > 0; number -= 1) {
-  console.log(number);
-}
-console.log("Blastoff!");
+      <pre><code>loop NUM from 0 to 4 
+  output (5 - NUM)
+end loop
+output "Blastoff!"
 
 // 5
 // 4
@@ -223,34 +231,54 @@ console.log("Blastoff!");
     </div>
 
     <div>
+
       <h2>Arrays</h2>
-      <pre><code>let nums:number[] = [42, 13, 78];
-nums[0];  // 42
-nums[2];  // 78
-nums.length;  // 3
-
-nums.push(99);
-// now nums = [42, 13, 78, 99]
-
-let last = nums.pop();
-// now last = 99 and nums = [42, 13, 78]
-
-let first = nums.shift();
-// now first = 42 and nums = [13, 78]
-
-nums.unshift(55);
-// now nums = [55, 13, 78]
+      <h4>You will usually be provided the LENGTH if needed</h4>
+      <pre><code>NUMS = [42, 13, 78]
+nums[0]  // 42
+nums[2]  // 78
+NUMS[1] = 11 // NUMS is now [42, 11, 78]
 </code></pre>
     </div>
 
     <div>
-      <h2>Math Functions</h2>
-      <pre><code>let nearestInt = Math.round(1.55); // nearestInt is now 2
-let nextLowestInt = Math.floor(1.55); // nextLowestInt is now 1
-let nextHighestInt = Math.ceil(1.2); //nextHighestInt is now 2
-      </code></pre>
+      <h2>Collections</h2>
+      <h4>A collection is a list of like objects. Assume we have one named NAMES with a list of strings.</h4>
+      <table class="minimalistBlack">
+        <thead>
+          <td>Method</td>
+          <td>Behavior</td>
+        </thead>
+        <tr>
+          <td><code>NAMES.hasNext()</code></td>
+          <td>returns true there are elements we have not seen yet</td>
+        </tr>
+        <tr>
+          <td><code>NAMES.getNext()</code></td>
+          <td>Gets the next element in the collection (and moves forward in the line)</td>
+        </tr>
+        <tr>
+          <td><code>NAMES.resetNext()</code></td>
+          <td>Resests back to the beginning of the collection for another loop</td>
+        </tr>
+        <tr>
+          <td><code>NAMES.addItem()</code></td>
+          <td>adds an item to the END of the collection</td>
+        </tr>
+        <tr>
+          <td>
+            <code>NAMES.isEmpty()</code>
+          </td>
+          <td>returns true if the collection does not contain any elements</td>
+        </tr>
+      </table>
+      <h4>Looping through a collection</h4>
+      <pre><code>NAMES.resetNext()
+loop while NAMES.hasNext()
+  ELEMENT = NAMES.getNext()
+  // do stuff with ELEMENT
+end loop</code></pre>
     </div>
-
   </section>
 </body>
 

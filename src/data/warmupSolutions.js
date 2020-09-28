@@ -1,6 +1,8 @@
 /**---Solutions--- **/
 // Warmup-1
 
+const { theEnd } = require("./stringSolutions");
+
 let solutions = {};
 
 solutions.stringTimes = function stringTimes(str, n) {
@@ -14,17 +16,25 @@ solutions.stringTimes = function stringTimes(str, n) {
   // javascript method String.repeat - maybe try that?
 };
 
-solutions.sleepIn = function sleepIn(weekday, vacation) {
-  // || means "or"
-  if (weekday == false || vacation == true) {
-    return true;
-  } else {
-    return false;
-  }
+solutions.SleepIn = `method sleepIn(WEEKDAY, VACATION)
+  if NOT WEEKDAY OR VACATION then
+    output "TRUE"
+  else
+    output "FALSE"
+  end if
+end method`;
 
-  // shorter solution: 
-  // return !weekday || vacation
-};
+solutions.MonkeyTrouble = `method MonkeyTrouble(ASMILE, BSMILE)
+  if ASMILE AND BSMILE then
+    output "TRUE"
+  else
+    if NOT ASMILE AND NOT BSMILE then
+      output "TRUE"
+    else
+      output "FALSE"
+    end if
+  end if
+end method`;
 
 solutions.diff21 = function diff21(n) {
   if (n <= 21) {
@@ -118,15 +128,7 @@ solutions.everyNth = function everyNth(str, n) {
   return result;
 };
 
-solutions.monkeyTrouble = function monkeyTrouble(aSmile, bSmile) {
-  if (aSmile && bSmile) {
-    return true;
-  }
-  if (!aSmile && !bSmile) {
-    return true;
-  }
-  return false;
-};
+
 
 solutions.parrotTrouble = function parrotTrouble(talking, hour) {
   if (talking === true && (hour < 7 || hour > 20)) {

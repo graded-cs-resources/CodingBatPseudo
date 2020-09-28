@@ -1,11 +1,17 @@
 let _ = require("lodash");
 
 /** Return row for html table **/
-function formatResults(funcName, inputStr, idealOutput, output) {
-    const ok = _.isEqual(output, idealOutput);
+function formatResults(funcName, inputStr, idealResult, result, idealOutput, output) {
+    if (idealOutput !== "") {
+        result = output;
+        idealResult = idealOutput;
+    }
+    const ok = _.isEqual(idealResult, result);
+
     return `<tr>
-            <td>${funcName}${inputStr} → ${idealOutput}</td>
-            <td>${output}</td>
+            <td>${inputStr}</td>
+            <td>${idealResult}</td>
+            <td>${result}</td>
             <td>${ok ? '✔' : '✖'}</td>
             <td class="status-box" style="background-color:${ok ? '#318d07' : '#ce0303'}"></td>
         </tr>`;

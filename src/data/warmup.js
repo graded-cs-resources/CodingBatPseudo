@@ -1,22 +1,22 @@
 module.exports = [
   {
     title: 'Warmup-1',
-    name: 'sleepIn',
-    question: `The parameter weekday is true if it is a weekday, and the parameter
-       vacation is true if we are on vacation. We sleep in if it is not a weekday or
-       we're on vacation. Return true if we sleep in.`,
+    name: 'SleepIn',
+    question: `The parameter WEEKDAY is true if it is a weekday, and the parameter
+       VACATION is false if we are on vacation. We sleep in if it is not a weekday or
+       we're on vacation. Output "TRUE" if we sleep in, "FALSE" if we do not.`,
     inputs: [
       '(true, true)',
       '(true, false)',
-      '(false, true)',
+      '(true, true)',
       '(false, false)',
     ],
   }, {
     title: 'Warmup-1',
-    name: 'monkeyTrouble',
-    question: `We have two monkeys, a and b, and the parameters aSmile and
-            bSmile indicate if each is smiling. We are in trouble if they are both smiling
-            or if neither of them is smiling. Return true if we are in trouble.`,
+    name: 'MonkeyTrouble',
+    question: `We have two monkeys, a and b, and the parameters ASMILE and
+            BSMILE indicate if each is smiling. We are in trouble if they are both smiling
+            or if neither of them is smiling. Output "TRUE" if we are in trouble, "FALSE" otherwise.`,
     inputs: [
       '(true, true)',
       '(false, false)',
@@ -40,7 +40,7 @@ module.exports = [
     ],
   }, {
     title: 'Warmup-1',
-            	name: 'diff21',
+    name: 'diff21',
     question: `Given an int n, return the absolute difference between n and 21,
               except return double the absolute difference if n is over 21.`,
     inputs: [
@@ -62,7 +62,7 @@ module.exports = [
     name: 'parrotTrouble',
     question: `We have a loud talking parrot. The "hour" parameter is the current hour time in the range 0..23.
   We are in trouble if the parrot is talking and the hour is before 7 or after 20.
-  Return true if we are in trouble.`,
+  Output "TRUE" if we are in trouble.`,
     inputs: [
       '(true, 6)',
       '(true, 7)',
@@ -77,7 +77,7 @@ module.exports = [
   }, {
     title: 'Warmup-1',
     name: 'makes10',
-    question: 'Given 2 ints, a and b, return true if one if them is 10 or if their sum is 10.',
+    question: 'Given 2 ints, a and b, Output "TRUE" if one if them is 10 or if their sum is 10.',
     inputs: [
       '(9, 10)',
       '(9, 9)',
@@ -92,7 +92,7 @@ module.exports = [
   }, {
     title: 'Warmup-1',
     name: 'nearHundred',
-    question: `Given an int n, return true if it is within 10 of 100 or 200.
+    question: `Given an int n, Output "TRUE" if it is within 10 of 100 or 200.
               Note: Math.abs(num) computes the absolute value of a number.`,
     inputs: [
       '(93)',
@@ -109,8 +109,8 @@ module.exports = [
   }, {
     title: 'Warmup-1',
     name: 'posNeg',
-    question: `Given 2 int values, return true if one is negative and one is positive.
-        Except if the parameter "negative" is true, then return true only if both are negative.`,
+    question: `Given 2 int values, Output "TRUE" if one is negative and one is positive.
+        Except if the parameter "negative" is true, then Output "TRUE" only if both are negative.`,
     inputs: [
       '(1, -1, false)',
       '(-1, 1, false)',
@@ -236,7 +236,7 @@ module.exports = [
       '(122)',
       '(123)',
     ],
-    question: `Return true if the given non-negative number is a multiple of 3 or a
+    question: `Output "TRUE" if the given non-negative number is a multiple of 3 or a
             multiple of 5. (Hint: Use the % 'mod' operator)`,
   }, {
     title: 'Warmup-1',
@@ -266,7 +266,7 @@ module.exports = [
       "('ho hi')",
       "('hi ho')",
     ],
-    question: `Given a string, return true if the string starts with 'hi'and
+    question: `Given a string, Output "TRUE" if the string starts with 'hi'and
             false otherwise.`,
   }, {
     title: 'Warmup-1',
@@ -279,7 +279,7 @@ module.exports = [
       '(-2, 120)',
       '(120, 120)',
     ],
-    question: `Given two temperatures, return true if one is less than 0 and the
+    question: `Given two temperatures, Output "TRUE" if one is less than 0 and the
               other is greater than 100.`,
   }, {
     title: 'Warmup-1',
@@ -293,7 +293,7 @@ module.exports = [
       '(21, 21)',
       '(9, 9)',
     ],
-    question: `Given 2 int values, return true if either of them is in the range
+    question: `Given 2 int values, Output "TRUE" if either of them is in the range
               10..20 inclusive.`,
   }, {
     title: 'Warmup-1',
@@ -312,7 +312,7 @@ module.exports = [
       '(11, 22, 22)',
     ],
     question: `We'll say that a number is 'teen' if it is in the range 13..19 inclusive. Given 3 int values,
-                return true if 1 or more of them are teen.`,
+                Output "TRUE" if 1 or more of them are teen.`,
   }, {
     title: 'Warmup-1',
     name: 'loneTeen',
@@ -332,7 +332,7 @@ module.exports = [
       '(99, 99)',
     ],
     question: `We'll say that a number is 'teen' if it is in the range 13..19 inclusive.
-                Given 2 int values, return true if one or the other is teen, but not both.`,
+                Given 2 int values, Output "TRUE" if one or the other is teen, but not both.`,
   }, {
     title: 'Warmup-1',
     name: 'delDel',
@@ -362,7 +362,7 @@ module.exports = [
       "('ni')",
       "('n')",
     ],
-    question: `Return true if the given string begins with 'mix', except the 'm' can be
+    question: `Output "TRUE" if the given string begins with 'mix', except the 'm' can be
                   anything, so 'pix', '9ix' .. all count.`,
   }, {
     title: 'Warmup-1',
@@ -440,7 +440,7 @@ module.exports = [
       '(35, 36)',
       '(35, 45)',
     ],
-    question: `Given 2 int values, return true if they are both in the range 30..40
+    question: `Given 2 int values, Output "TRUE" if they are both in the range 30..40
                 inclusive, or they are both in the range 40..50 inclusive.`,
   },
   {
@@ -473,7 +473,7 @@ module.exports = [
       "('e')",
       "('')",
     ],
-    question: 'Return true if the given string contains between 1 and 3 \'e\' chars.',
+    question: 'Output "TRUE" if the given string contains between 1 and 3 \'e\' chars.',
   },
   {
     title: 'Warmup-1',
@@ -487,7 +487,7 @@ module.exports = [
       '(10, 0)',
       '(11, 0)',
     ],
-    question: `Given two non-negative int values, return true if they have the same
+    question: `Given two non-negative int values, Output "TRUE" if they have the same
                 last digit, such as with 27 and 57. Note that the % 'mod' operator computes
                 remainders, so 17 % 10 is 7.`,
   }, {
@@ -583,7 +583,7 @@ module.exports = [
       "('xx')",
       "('xaxx')",
     ],
-    question: `Given a string, return true if the first instance of "x" in the string is
+    question: `Given a string, Output "TRUE" if the first instance of "x" in the string is
            immediately followed by another "x".`,
   }, {
     title: 'Warmup-2',
@@ -657,12 +657,12 @@ module.exports = [
       '([])',
       '([3,9,2,3,3])',
     ],
-    question: `Given an array of ints, return true if one of the first 4 elements in
+    question: `Given an array of ints, Output "TRUE" if one of the first 4 elements in
           the array is a 9. The array length may be less than 4.`,
   }, {
     title: 'Warmup-2',
     name: 'array123',
-    question: `Given an array of ints, return true if the sequence of numbers 1, 2, 3
+    question: `Given an array of ints, Output "TRUE" if the sequence of numbers 1, 2, 3
         appears in the array somewhere.`,
     inputs: [], // TODO
   }, {
@@ -762,7 +762,7 @@ module.exports = [
       '([])',
     ],
     question: `Given an array of ints, we'll say that a triple is a value appearing 3 times
-                in a row in the array. Return true if the array does not contain any triples.`,
+                in a row in the array. Output "TRUE" if the array does not contain any triples.`,
   }, {
     title: 'Warmup-2',
     name: 'has271',
@@ -781,7 +781,7 @@ module.exports = [
       '([2,7,5,10,1])',
       '([2,7,-2,10,2])',
     ],
-    question: `Given an array of ints, return true if it contains a 2, 7, 1
+    question: `Given an array of ints, Output "TRUE" if it contains a 2, 7, 1
                 pattern -- a value, followed by the value plus 5, followed by the value
                 minus 1. Additionally the 271 counts even if the "1" differs by 2 or less
                 from the correct value.`,
