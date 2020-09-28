@@ -15,7 +15,13 @@ module.exports = function runPS(code, i) {
     c += translate(line) + "\n";
   }
   let userCode;
-  eval(`out="";TRUE=true;FALSE=false;userCode=${c}`);
+  try {
+    eval(`out="";TRUE=true;FALSE=false;userCode=${c}`);
+  } catch (e) {
+    console.log("Error, here is the translated function")
+    console.log(c);
+    throw (e);
+  }
   var ret = userCode(...i);
   return [ret, out];
 }
@@ -189,6 +195,8 @@ function Array2D(rows, cols) {
 
 
 function translate(line) {
+  //do a sanity check - if this is javascript, leave it alone
+  if (line.indexOf("{") !== -1) return line;
   line = line.replace(/ mod /g, " % ")
   line = line.replaceAll(/([0-9A-Za-z]+) div ([0-9A-Za-z]+)/g, "div($1, $2)");
   line = line.replaceAll(/(\([^()]+\)) div (\([^()]+\))/g, "div($1, $2)");
@@ -213,7 +221,8 @@ function translate(line) {
   else {
     if (sp >= 0) { first = lin.substring(0, sp); }
   }
-  if (first == "if" || first == "else if") {
+  if ((first == "if" || first == "else if")) {
+
     line = line.replace("if ", "if(");
     if (first == "else if") { line = line.replace("else if", "}else if") }
     line = line.replace(" then", "){");
