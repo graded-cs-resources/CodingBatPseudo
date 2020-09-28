@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>CodingTS</title>
+  <link href="https://fonts.googleapis.com/css?family=Trirong" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/codemirror.css">
+  <link rel="stylesheet" href="css/style.css" media="screen">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+</head>
+
+<body>
+  <div class="main">
+    <p class="heading"><a class="heading" href="."><img src="img/favicon-96x96.png"
+          width="32px" />&nbsp;<b>CodingTS</a></b></p>
+    <p class="subheading">Solve programming problems in Javascript or TypeScript!</p>
+
+    <a class="links" id="previous" href="#">previous</a>&nbsp;~&nbsp;<a class="links" id="next"
+      href="#">next</a>&nbsp;~&nbsp;<a href="jsref.html" class="links ajax-popup-link" id="jsref-link">TS Syntax
+      Help</a><br>
+    <h3>
+      <p id="title"> </p> <b>--</b>
+      <p id="name"> </p>
+    </h3>
+    <div class="probField">
+      <p id="problem"></p>
+    </div>
+
+    <p id="examplesTitle">Examples</p>
+    <ul class="examples">
+    </ul>
+    <div class="floatBox">
+      <div class="solveArea">
+        <div class="solveAreaTop">
+          <button class="btn" id="solve">Solve<br><small>(ctrl-enter)</small></button>
+          <button class="btn" id="defaults">Reset to default</button>
+          <!-- <button class="btn" id="showHint">Show hint</button> -->
+          <button class="btn" id="showSolution">Show Solution</button>
+          <button class="btn" id="save">Save to file</button><button class="btn" id="open">Load from file</button>
+        </div>
+        <textarea id="answer"></textarea>
+        <textarea id="solution"></textarea><br>
+
+        <input type="file" id="fileInput" style="display:none;"><br>
+
+      </div>
+      <div id="displayResults">
+        <p class="congrats"></p>
+        <p class="errorMessage"></p>
+        <p id="mySolution"></p>
+        <table id="testArea" class="test-table">
+          <tbody id="tests">
+
+          </tbody>
+        </table>
+      </div>
+      <!-- <div class = "solveArea">
+          <button class="btn" id="show">Show Solution</button><br>
+          <textarea id="mySolution" readonly="readonly";></textarea>
+        </div> -->
+    </div>
+
+
+
+  </div>
+
+  <footer>
+    <em>Adapted by the-winter, David Griswold, and contributors, based on Nick Parlante's <a class="links"
+        href="http://codingbat.com/" target="_blank">CodingBat</a>.</em>
+  </footer>
+
+  <!-- Popup itself -->
+  <div id="syntax-help" class="mfp-hide">
+    Popup content
+  </div>
+
+</body>
+<script src="dist/bundle.js"></script>
+
+</html>
