@@ -1,10 +1,11 @@
- /**
-  * it converts nodingbat input (as stored) to js
-  *     e.g. inputParser('(1,2)')=>[1,2]
-  **/
+/**
+ * it converts nodingbat input (as stored) to js
+ *     e.g. inputParser('(1,2)')=>[1,2]
+ **/
 module.exports = function inputParser(exercise, inputStr) {
-  const argsWithoutParentheses = inputStr.slice(1, -1);
-  
+  var argsWithoutParentheses = inputStr.slice(1, -1);
+  argsWithoutParentheses = argsWithoutParentheses.replaceAll("TRUE", "true");
+  argsWithoutParentheses = argsWithoutParentheses.replaceAll("FALSE", "false");
   let functionInput;
 
   if (exercise.inputType === "map") {

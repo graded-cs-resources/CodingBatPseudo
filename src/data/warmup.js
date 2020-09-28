@@ -6,10 +6,10 @@ module.exports = [
        VACATION is false if we are on vacation. We sleep in if it is not a weekday or
        we're on vacation. Output "TRUE" if we sleep in, "FALSE" if we do not.`,
     inputs: [
-      '(true, true)',
-      '(true, false)',
-      '(true, true)',
-      '(false, false)',
+      '(TRUE, TRUE)',
+      '(TRUE, FALSE)',
+      '(FALSE, TRUE)',
+      '(FALSE, FALSE)',
     ],
   }, {
     title: 'Warmup-1',

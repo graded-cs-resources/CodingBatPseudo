@@ -5,20 +5,27 @@
  * @return {any}
  */
 var out;
+var TRUE = true;
+var FALSE = false;
 module.exports = function runPS(code, i) {
+
   let lines = getLines(code);
   var c = "";
   for (const line of lines) {
     c += translate(line) + "\n";
   }
-  console.log("Translating...");
-  console.log("Start code: ");
-  console.log(code);
-  console.log("Converted code: ");
-  console.log(c);
+  // console.log("Translating...");
+  // console.log("Start code: ");
+  // console.log(code);
+  // console.log("Converted code: ");
+  // console.log(c);
+  // console.log("Inputs");
+  // console.log(i);
   let userCode;
-  eval(`out="";userCode=${c}`);
+  eval(`out="";TRUE=true;FALSE=false;userCode=${c}`);
   //console.log(userCode);
+
+
   var ret = userCode(...i);
   return [ret, out];
 }
@@ -197,6 +204,8 @@ function translate(line) {
   line = line.replaceAll(/(\([^()]+\)) div (\([^()]+\))/g, "div($1, $2)");
   line = line.replaceAll(/([0-9A-Za-z]+) div (\([^()]+\))/g, "div($1, $2)");
   line = line.replaceAll(/(\([^()]+\)) div ([0-9A-Za-z]+)/g, "div($1, $2)");
+  line = line.replaceAll(/([^"])TRUE/g, "$1true");
+  line = line.replaceAll(/([^"])FALSE/g, "$1false");
   var lin = line.trim();
   var sp = lin.indexOf(" ");
   var first = "";
