@@ -92,6 +92,7 @@ $('#solve').on('click', () => {
   localStorage.setItem(exerciseCode, answer);
 
   try {
+    $(".congrats").text("");
     $(".errorMessage").text("");
     const inputs = exercise.inputs;
 
@@ -111,7 +112,7 @@ $('#solve').on('click', () => {
           [idealResult, idealOut] = runPS(solutions[exerciseName], input);
         } else {
           idealOut = "";
-          idealResult = solutions[exerciseName](input);
+          idealResult = solutions[exerciseName](...input);
         }
         [result, output] = runPS(answer, input);
         const formattedMapIdealResult = prettyPrintMap(idealResult);
@@ -124,7 +125,7 @@ $('#solve').on('click', () => {
           [idealResult, idealOut] = runPS(solutions[exerciseName], inputCopy);
         } else {
           idealOut = "";
-          idealResult = solutions[exerciseName](inputCopy);
+          idealResult = solutions[exerciseName](...inputCopy);
         }
         [result, output] = runPS(answer, inputCopy);
 
@@ -146,6 +147,7 @@ $('#solve').on('click', () => {
     $('.congrats').text("");
     $('th').remove();
     $('.errorMessage').text(theError);
+    console.log(theError.stack);
   }
 });
 

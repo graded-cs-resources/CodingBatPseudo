@@ -53,13 +53,32 @@ solutions.Diff21 = `method Diff21(N)
   end if
 end method`;
 
-solutions.nearHundred = function nearHundred(n) {
-  if (Math.abs(100 - n) <= 10 || Math.abs(200 - n) <= n) {
-    return true;
-  } else {
-    return false;
-  }
-};
+
+solutions.ParrotTrouble = `method ParrotTrouble(TALKING, HOUR)
+  if TALKING AND (HOUR < 7 OR HOUR > 20) then
+    output "TRUE"
+  else 
+    output "FALSE"
+  end if
+end method`;
+
+solutions.Makes10 = `method Makes10(A, B)
+  if A = 10 OR B = 10 OR (A + B = 10) then
+    output "TRUE"
+  else
+    output "FALSE"
+  end if
+end method`;
+
+solutions.NearHundred = `method nearHundred(N) 
+  if (100 - N) >= -10 AND (100 - N) <= 10 then
+    output "TRUE"
+  else if (200 - N) >= -10 AND (200 - N) <= 10 then
+    output "TRUE"
+  else
+    output "FALSE"
+  end if
+end method`;
 
 solutions.missingChar = function missingChar(str, n) {
   front = str.substring(0, n);
@@ -139,13 +158,6 @@ solutions.everyNth = function everyNth(str, n) {
 
 
 
-solutions.parrotTrouble = function parrotTrouble(talking, hour) {
-  if (talking === true && (hour < 7 || hour > 20)) {
-    return true;
-  } else {
-    return false;
-  }
-};
 
 solutions.posNeg = function posNeg(a, b, negative) {
   if (negative === true) {
@@ -217,15 +229,13 @@ solutions.lastDigit = function lastDigit(a, b) {
 
 
 
-solutions.makes10 = function makes10(a, b) {
-  return ((a == 10 || b == 10) || (a + b == 10));
-};
+
 
 solutions.notString = function notString(str) {
   if (str === null || str === undefined || str.substring(0, 3) === 'not') {
     return str;
   }
-  return `not ${str}`;
+  return `not ${str} `;
 };
 
 solutions.front3 = function front3(str) {

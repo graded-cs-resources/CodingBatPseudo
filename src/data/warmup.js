@@ -18,10 +18,10 @@ module.exports = [
             BSMILE indicate if each is smiling. We are in trouble if they are both smiling
             or if neither of them is smiling. Output "TRUE" if we are in trouble, "FALSE" otherwise.`,
     inputs: [
-      '(true, true)',
-      '(false, false)',
-      '(true, false)',
-      '(false, true)',
+      '(TRUE, TRUE)',
+      '(FALSE, FALSE)',
+      '(TRUE, FALSE)',
+      '(FALSE, TRUE)',
     ],
   }, {
     title: 'Warmup-1',
@@ -59,25 +59,25 @@ module.exports = [
     ],
   }, {
     title: 'Warmup-1',
-    name: 'parrotTrouble',
+    name: 'ParrotTrouble',
     question: `We have a loud talking parrot. The "hour" parameter is the current hour time in the range 0..23.
   We are in trouble if the parrot is talking and the hour is before 7 or after 20.
   Output "TRUE" if we are in trouble.`,
     inputs: [
-      '(true, 6)',
-      '(true, 7)',
-      '(false, 6)',
-      '(true, 21)',
-      '(false, 21)',
-      '(true, 23)',
-      '(false, 23)',
-      '(true, 20)',
-      '(false, 12)',
+      '(TRUE, 6)',
+      '(TRUE, 7)',
+      '(FALSE, 6)',
+      '(TRUE, 21)',
+      '(FALSE, 21)',
+      '(TRUE, 23)',
+      '(FALSE, 23)',
+      '(TRUE, 20)',
+      '(FALSE, 12)',
     ],
   }, {
     title: 'Warmup-1',
-    name: 'makes10',
-    question: 'Given 2 ints, a and b, Output "TRUE" if one if them is 10 or if their sum is 10.',
+    name: 'Makes10',
+    question: 'Given 2 numbers, A and B, Output "TRUE" if one if them is 10 or if their sum is 10.',
     inputs: [
       '(9, 10)',
       '(9, 9)',
@@ -91,9 +91,8 @@ module.exports = [
     ],
   }, {
     title: 'Warmup-1',
-    name: 'nearHundred',
-    question: `Given an int n, Output "TRUE" if it is within 10 of 100 or 200.
-              Note: Math.abs(num) computes the absolute value of a number.`,
+    name: 'NearHundred',
+    question: `Given a number N, Output "TRUE" if it is within 10 of 100 or 200.`,
     inputs: [
       '(93)',
       '(90)',

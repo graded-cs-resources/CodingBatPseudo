@@ -14,18 +14,8 @@ module.exports = function runPS(code, i) {
   for (const line of lines) {
     c += translate(line) + "\n";
   }
-  // console.log("Translating...");
-  // console.log("Start code: ");
-  // console.log(code);
-  // console.log("Converted code: ");
-  // console.log(c);
-  // console.log("Inputs");
-  // console.log(i);
   let userCode;
   eval(`out="";TRUE=true;FALSE=false;userCode=${c}`);
-  //console.log(userCode);
-
-
   var ret = userCode(...i);
   return [ret, out];
 }
