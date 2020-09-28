@@ -36,13 +36,22 @@ solutions.MonkeyTrouble = `method MonkeyTrouble(ASMILE, BSMILE)
   end if
 end method`;
 
-solutions.diff21 = function diff21(n) {
-  if (n <= 21) {
-    return 21 - n;
-  } else {
-    return (n - 21) * 2;
-  }
-};
+
+solutions.SumDouble = `method SumDouble(A, B)
+  if A = B then
+    output 2* (A + B)
+  else
+    output A + B
+  end if
+end method`;
+
+solutions.Diff21 = `method Diff21(N)
+  if N <= 21 then
+    output 21 - N
+  else
+    output (N - 21) * 2
+  end if
+end method`;
 
 solutions.nearHundred = function nearHundred(n) {
   if (Math.abs(100 - n) <= 10 || Math.abs(200 - n) <= n) {
@@ -206,13 +215,7 @@ solutions.lastDigit = function lastDigit(a, b) {
   return (a % 10 == b % 10);
 };
 
-solutions.sumDouble = function sumDouble(a, b) {
-  if (a == b) {
-    return 2 * (a + b);
-  } else {
-    return a + b;
-  }
-};
+
 
 solutions.makes10 = function makes10(a, b) {
   return ((a == 10 || b == 10) || (a + b == 10));

@@ -25,9 +25,9 @@ module.exports = [
     ],
   }, {
     title: 'Warmup-1',
-    name: 'sumDouble',
-    question: `Given two int values, return their sum. Unless the two values are the same,
-     then return double their sum.`,
+    name: 'SumDouble',
+    question: `Given two numbers, output their sum. Unless the two values are the same,
+     then output double their sum.`,
     inputs: [
       '(1, 2)',
       '(3, 2)',
@@ -40,9 +40,9 @@ module.exports = [
     ],
   }, {
     title: 'Warmup-1',
-    name: 'diff21',
-    question: `Given an int n, return the absolute difference between n and 21,
-              except return double the absolute difference if n is over 21.`,
+    name: 'Diff21',
+    question: `Given an number, N, output the absolute difference between N and 21,
+              except output double the absolute difference if N is over 21.`,
     inputs: [
       '(19)',
       '(10)',

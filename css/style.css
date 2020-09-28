@@ -224,3 +224,7 @@ footer {
   min-height: 5rem;
   width: 100%;
 }
+
+#testArea td {
+  white-space:pre;
+}
