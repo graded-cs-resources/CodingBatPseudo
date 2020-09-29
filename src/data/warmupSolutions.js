@@ -5,17 +5,6 @@ const { theEnd } = require("./stringSolutions");
 
 let solutions = {};
 
-solutions.stringTimes = function stringTimes(str, n) {
-  let finalStr = "";
-  for (let i = 0; i < n; i++) {
-    finalStr = finalStr + str;
-  }
-  return finalStr;
-
-  // this could be done in a shorter way with the built-in
-  // javascript method String.repeat - maybe try that?
-};
-
 solutions.SleepIn = `method sleepIn(WEEKDAY, VACATION)
   if NOT WEEKDAY OR VACATION then
     output "TRUE"
@@ -36,7 +25,6 @@ solutions.MonkeyTrouble = `method MonkeyTrouble(ASMILE, BSMILE)
   end if
 end method`;
 
-
 solutions.SumDouble = `method SumDouble(A, B)
   if A = B then
     output 2* (A + B)
@@ -52,7 +40,6 @@ solutions.Diff21 = `method Diff21(N)
     output (N - 21) * 2
   end if
 end method`;
-
 
 solutions.ParrotTrouble = `method ParrotTrouble(TALKING, HOUR)
   if TALKING AND (HOUR < 7 OR HOUR > 20) then
@@ -80,405 +67,381 @@ solutions.NearHundred = `method nearHundred(N)
   end if
 end method`;
 
-solutions.missingChar = function missingChar(str, n) {
-  front = str.substring(0, n);
-  back = str.substring(n + 1, str.length);
-  return front + back;
-};
+solutions.NotString = `method NotString(STR)
+  if STR.SubStr(0,3) = "not" then
+    output STR
+  else 
+    output "not"+ STR
+  end if
+end method`;
 
-solutions.backAround = function backAround(str) {
-  last = str.substring(str.length - 1);
-  return last + str + last;
-};
+solutions.Front3 = `method Front3(STR) 
+  FRONT = STR.SubStr(0,3)
+  output FRONT + FRONT + FRONT
+end method`;
 
-solutions.startHi = function startHi(str) {
-  if (str.length < 2) {
-    return false;
-  }
-  front = str.substring(0, 2);
-  if (front == 'hi') {
-    return true;
-  } else {
-    return false;
-  }
-};
+solutions.Or35 = `method Or35(n) 
+  if n mod 3 = 0 OR n mod 5 = 0 then 
+    output "TRUE"
+  else
+    output "FALSE"
+  end if
+end method`;
 
-solutions.hasTeen = function hasTeen(a, b, c) {
-  if ((a >= 13 && a <= 19) ||
-    (b >= 13 && b <= 19) ||
-    (c >= 13 && c <= 19)) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-solutions.mixStart = function mixStart(str) {
-  if (str.length < 3) {
-    return false;
-  }
-  two = str.substring(1, 3);
-  if (two == 'ix') {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-solutions.close10 = function close10(a, b) {
-  aDiff = Math.abs(a - 10);
-  bDiff = Math.abs(b - 10);
-
-  if (aDiff < bDiff) {
-    return a;
-  }
-  if (bDiff < aDiff) {
-    return b;
-  }
-  return 0;
-};
-
-solutions.stringE = function stringE(str) {
-  count = 0;
-  for (let i = 0; i < str.length; i++) {
-    if (str.charAt(i) == 'e') {
-      count++;
-    }
-  }
-  return (count >= 1 && count <= 3);
-};
-
-solutions.everyNth = function everyNth(str, n) {
-  result = '';
-  for (let i = 0; i < str.length; i = i + n) {
-    result = result + str.charAt(i);
-  }
-  return result;
-};
-
-
-
-
-solutions.posNeg = function posNeg(a, b, negative) {
-  if (negative === true) {
-    return a < 0 && b < 0;
-  }
-  if ((a < 0 && b > 0) || a > 0 && b < 0) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-solutions.frontBack = function frontBack(str) {
-  if (str.length <= 1) {
-    return str;
-  }
-  mid = str.substring(1, str.length - 1);
-
-  return (str.charAt(str.length - 1)) + mid + str.charAt(0);
-};
-
-solutions.or35 = function or35(n) {
-  if (n % 3 == 0 || n % 5 == 0) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-solutions.icyHot = function icyHot(temp1, temp2) {
-  if (temp1 < 0 && temp2 > 100 || temp2 < 0 && temp1 > 100) {
-    return true;
-  }
-  return false;
-};
-
-solutions.loneTeen = function loneTeen(a, b) {
-  const isTeen = function (num) {
-    return num >= 13 && num <= 19;
-  };
-  const isTeenA = isTeen(a);
-  const isTeenB = isTeen(b);
-  return isTeenA && !isTeenB || !isTeenA && isTeenB;
-};
-
-solutions.startOz = function startOz(str) {
-  result = '';
-
-  if (str.length >= 1 && str.charAt(0) == 'o') {
-    result += str.charAt(0);
-  }
-  if (str.length >= 2 && str.charAt(1) == 'z') {
-    result += str.charAt(1);
-  }
-  return result;
-};
-
-solutions.in3050 = function in3050(a, b) {
-  if ((a >= 30 && a <= 40 && b >= 30 && b <= 40) || (a >= 40 && a <= 50 && b >= 40 && b <= 50)) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-solutions.lastDigit = function lastDigit(a, b) {
-  return (a % 10 == b % 10);
-};
-
-
-
-
-
-solutions.notString = function notString(str) {
-  if (str === null || str === undefined || str.substring(0, 3) === 'not') {
-    return str;
-  }
-  return `not ${str} `;
-};
-
-solutions.front3 = function front3(str) {
-  front = '';
-  if (str.length >= 3) {
-    front = str.substring(0, 3);
-  } else {
-    front = str;
-  }
-  return front + front + front;
-};
-
-solutions.front22 = function front22(str) {
+solutions.Front22 = `method Front22(STR) 
   take = 2;
-  if (take > str.length) {
+  if take > str.length then
     take = str.length;
   }
   front = str.substring(0, take);
   return front + str + front;
-};
+end method`;
 
-solutions.in1020 = function in1020(a, b) {
-  if ((a >= 10 && a <= 20) || (b >= 10 && b <= 20)) {
-    return true;
-  } else {
-    return false;
+solutions.PosNeg = `method PosNeg(A, B, NEGATIVE) 
+  if NEGATIVE then
+    if A < 0 AND B < 0 then
+      output "TRUE"
+    else
+      output "FALSE
+    end if
+  end if
+  if (A < 0 AND B > 0) OR (A > 0 AND B < 0) then
+    output "TRUE"
+  else
+    output "FALSE"
   }
-};
+end method`;
 
-solutions.delDel = function delDel(str) {
-  if (str.length < 4) {
+solutions.StartHi = `method StartHi(STR) 
+  front = STR.SubStr(0,2);
+  if front = 'hi' then
+    output "TRUE"
+  else
+    output "FALSE"
+  end if
+end method`;
+
+solutions.IcyHot = `method IcyHot(temp1, temp2) 
+  if temp1 < 0 AND temp2 > 100 OR temp2 < 0 AND temp1 > 100 then
+    output "TRUE"
+  end if
+  output "FALSE"
+end method`;
+
+solutions.In1020 = `method In1020(A, B) 
+  if (A >= 10 AND A <= 20) OR (B >= 10 AND B <= 20) then
+    output "TRUE"
+  else
+    output "FALSE"
+  end if
+end method`;
+
+solutions.HasTeen = `method HasTeen(A, B, C) 
+  if (A >= 13 AND A <= 19) OR (B >= 13 AND B <= 19) OR (C >= 13 AND C <= 19) then
+    output "TRUE"
+  else
+    output "FALSE"
+  end if
+end method`;
+
+solutions.LoneTeen = `method LoneTeen(A, B) 
+  if A >=13 AND A <=19 AND (B < 13 OR B > 19) then
+    output "TRUE"
+  else if (A < 13 OR A > 19) AND B >= 13 AND B <= 19 then
+    output "TRUE"
+  else
+    output "FALSE"
+  end if
+end method`;
+
+solutions.MixStart = `method MixStart(STR) 
+  if STR.length < 3 then
+    output "FALSE"
+  end if
+  TWO = STR.SubStr(1, 2);
+  if TWO = 'ix' then
+    output "TRUE"
+  else
+    output "FALSE"
+  end if
+end method`;
+
+solutions.IntMax = `method IntMax(A, B, C) 
+  MAX = 0
+  if A > B then
+    MAX = A
+  else
+    MAX = B
+  end if
+  if C > MAX then
+    MAX = C
+  end if
+  output MAX
+end method`;
+
+solutions.Close10 = `method Close10(A, B) 
+  ADF = A - 10
+  if ADF < 0 then
+    ADF = 10 - A
+  end if
+
+  BDF = B - 10
+  if BDF < 0 then
+    BDF = 10 - B
+  end if
+
+  if ADF < BDF then
+    output A
+  else if BDF < ADF then
+    output B
+  else
+    output 0
+  end if
+end method`;
+
+solutions.StringE = `method StringE(STR) 
+  COUNT = 0
+  loop I from 0 to STR.Length()
+    if STR[I] = 'e' then
+      COUNT = COUNT + 1
+    end if
+  end loop
+  if COUNT >= 1 AND COUNT <= 3 then
+    output "TRUE"
+  else
+    output "FALSE" 
+  end if
+end method`;
+
+solutions.LastDigit = `method LastDigit(A, B) 
+  if A mod 10 = B mod 10 then
+    output "TRUE"
+  else
+    output "FALSE"
+  end if
+end method`;
+
+solutions.EveryNth = `method EveryNth(STR, N) 
+  RESULT = ""
+  COUNT = 0
+  loop while COUNT < STR.Length()
+    RESULT = RESULT + STR[COUNT]
+    COUNT = COUNT + N
+  }
+  output RESULT
+end method`;
+
+solutions.StringTimes = `method StringTimes(STR, N) 
+  let finalStr = ""
+  loop I from 1 to N 
+    finalStr = finalStr + STR
+  end loop
+  output finalStr
+end method`;
+
+solutions.FrontTimes = `method FrontTimes(STR, N) 
+  FRONT = STR.SubStr(0,3)
+  RESULT = ""
+  loop X from 1 to N 
+    RESULT = RESULT + FRONT
+  end loop
+  output RESULT
+end method`;
+
+
+/***** Start un-edited ones */
+
+solutions.DelDel = `method DelDel(str) 
+  if str.length < 4 then
     return str;
-  }
+  end if
   let output = str;
-  if (str.substring(1, 4) == 'del') {
+  if str.substring(1, 4) = 'del' then
     output = str.substring(0, 1) + str.substring(4, str.length);
-  }
+  end if
   return output;
-};
+end method`;
 
-solutions.intMax = function intMax(a, b, c) {
-  max = 0;
-  if (a > b) {
-    max = a;
-  } else {
-    max = b;
-  }
-  if (c > max) {
-    max = c;
-  }
-  return max;
-};
 
-solutions.max1020 = function max1020(a, b) {
-  const between1020 = function (num) {
-    return num >= 10 && num <= 20;
-  };
+
+solutions.Max1020 = `method Max1020(a, b) 
+  method between1020(num)
+    return num >= 10 AND num <= 20;
+  end method
   let result = 0;
-  if (between1020(a)) {
+  if between1020(a) then
     result = a;
-  }
-  if (b > result && between1020(b)) {
+  end if
+  if b > result AND between1020(b) then
     result = b;
-  }
+  end if
   return result;
-};
+end method`;
 
-solutions.endUp = function endUp(str) {
-  if (str.length <= 3) {
+solutions.EndUp = `method EndUp(str) 
+  if str.length <= 3 then
     return str.toUpperCase();
-  }
+  end if
   cut = str.length - 3;
   front = str.substring(0, cut);
   back = str.substring(cut);
 
   return front + back.toUpperCase();
-};
+end method`;
 
 // Warmup-2
-solutions.doubleX = function doubleX(str) {
+solutions.DoubleX = `method DoubleX(str) 
   str.toLowerCase();
   x = str.indexOf('x');
-  if (x == -1) {
-    return false;
-  }
-  if (x >= str.length) {
-    return false;
-  }
-  return str.substring(x + 1, x + 2) == 'x';
-};
+  if x = -1 then
+    output "FALSE"
+  end if
+  if x >= str.length then
+    output "FALSE"
+  end if
+  return str.substring(x + 1, x + 2) = 'x';
+end method`;
 
-solutions.last2 = function last2(str) {
+solutions.Last2 = `method Last2(str) 
   count = 0;
-  if (str.length < 2) {
+  if str.length < 2 then
     return 0;
-  }
+  end if
   end = str.substring(str.length - 2);
   for (x = 0; x < str.length - 2; x++) {
     sub = str.substring(x, x + 2);
-    if (sub == end) {
+    if sub = end then
       count++;
-    }
+    end if
   }
   return count;
-};
+end method`;
 
-solutions.array123 = function array123(nums) {
+solutions.Array123 = `method Array123(nums) 
   return !!(nums.join('').match(/123/g));
-};
+end method`;
 
-solutions.altPairs = function altPairs(str) {
+solutions.AltPairs = `method AltPairs(str) 
   result = '';
   for (x = 0; x < str.length; x += 4) {
     end = x + 2;
-    if (end > str.length) {
+    if end > str.length then
       end = str.length;
-    }
+    end if
     result = result + str.substring(x, end);
   }
   return result;
-};
+end method`;
 
-solutions.noTriples = function noTriples(nums) {
+solutions.NoTriples = `method NoTriples(nums) 
   for (x = 0; x < nums.length - 2; x++) {
     first = nums[x];
-    if (first == nums[x + 1]) {
-      if (first == nums[x + 2]) {
-        return false;
-      }
-    }
-  } return true;
-};
+    if first = nums[x + 1] then
+      if first = nums[x + 2] then
+        output "FALSE"
+      end if
+    end if
+  } output "TRUE"
+end method`;
 
-solutions.frontTimes = function frontTimes(str, n) {
-  frontLen = 3;
-  if (frontLen > str.length) {
-    frontLen = str.length;
-  }
-  front = str.substring(0, frontLen);
-  result = '';
-  for (x = 0; x < n; x++) {
-    result = result + front;
-  }
-  return result;
-};
 
-solutions.stringBits = function stringBits(str) {
+solutions.StringBits = `method StringBits(str) 
   result = '';
   for (x = 0; x < str.length; x += 2) {
     result = result + str.substring(x, x + 1);
   }
   return result;
-};
+end method`;
 
-solutions.arrayCount9 = function arrayCount9(nums) {
+solutions.ArrayCount9 = `method ArrayCount9(nums) 
   count = 0;
   for (x = 0; x < nums.length; x++) {
-    if (nums[x] == 9) {
+    if nums[x] = 9 then
       count++;
-    }
+    end if
   }
   return count;
-};
+end method`;
 
-solutions.stringMatch = function stringMatch(a, b) {
+solutions.StringMatch = `method StringMatch(a, b) 
   len = Math.min(a.length, b.length);
   count = 0;
   for (x = 0; x < len - 1; x++) {
     aSub = a.substring(x, x + 2);
     bSub = b.substring(x, x + 2);
-    if (aSub == bSub) {
+    if aSub = bSub then
       count++;
-    }
+    end if
   }
   return count;
-};
+end method`;
 
-solutions.stringYak = function stringYak(str) {
+solutions.StringYak = `method StringYak(str) 
   result = '';
   for (x = 0; x < str.length; x++) {
-    if (x + 2 < str.length && str.charAt(x) == 'y' && str.charAt(x + 2) == 'k') {
+    if x + 2 < str.length AND str.charAt(x) = 'y' AND str.charAt(x + 2) = 'k' then
       x = x + 2;
-    } else {
+    else
       result = result + str.charAt(x);
-    }
+    end if
   }
   return result;
-};
+end method`;
 
-solutions.has271 = function has271(nums) {
+solutions.Has271 = `method Has271(nums) 
   return !!(nums.join('').match(/271/g));
-};
+end method`;
 
-solutions.countXX = function countXX(str) {
+solutions.CountXX = `method CountXX(str) 
   count = 0;
   for (x = 0; x < str.length; x++) {
-    if (str.charAt(x) == 'x') {
-      if (str.charAt(x + 1) == 'x') {
+    if str.charAt(x) = 'x' then
+      if str.charAt(x + 1) = 'x' then
         count++;
-      }
-    }
+      end if
+    end if
   }
   return count++;
-};
+end method`;
 
-solutions.stringSplosion = function stringSplosion(str) {
+solutions.StringSplosion = `method StringSplosion(str) 
   result = '';
   for (x = 0; x < str.length - 1; x++) {
     result = result + str.substring(0, x + 1);
   }
   return result;
-};
+end method`;
 
-solutions.arrayFront9 = function arrayFront9(nums) {
+solutions.ArrayFront9 = `method ArrayFront9(nums) 
   for (x = 0; x < 4; x++) {
-    if (nums[x] == 9) {
-      return true;
-    }
+    if nums[x] = 9 then
+      output "TRUE"
+    end if
   }
-  return false;
-};
+  output "FALSE"
+end method`;
 
-solutions.stringX = function stringX(str) {
+solutions.StringX = `method StringX(str) 
   result = '';
   front = str.substring(0, 1);
   end = str.substring(str.length - 1);
   for (i = 1; i < str.length - 1; i++) {
-    if (str.charAt(i) !== 'x') {
+    if str.charAt(i) != 'x' then
       result += str.charAt(i);
-    }
+    end if
   }
   return front + result + end;
-};
+end method`;
 
-solutions.array667 = function array667(nums) {
+solutions.Array667 = `method Array667(nums) 
   count = 0;
   for (x = 0; x < nums.length; x++) {
-    if (nums[x] == 6) {
-      if (nums[x + 1] == 6 || nums[x + 1] == 7) {
+    if nums[x] = 6 then
+      if nums[x + 1] = 6 OR nums[x + 1] = 7 then
         count++;
-      }
-    }
+      end if
+    end if
   } return count;
-};
+end method`;
 
 module.exports = solutions;

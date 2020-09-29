@@ -4,7 +4,6 @@
 /* eslint-disable quotes */
 const $ = require("jquery");
 const _ = require("lodash");
-const ts = require("typescript");
 const CodeMirror = require("codemirror-minified");
 const runPS = require("./utility/convertPStoJS");
 const exercises = require("./allExercisesIncludingHidden.js");
@@ -30,7 +29,7 @@ require("../node_modules/codemirror-minified/addon/edit/matchbrackets.js");
 const editor = CodeMirror.fromTextArea(document.getElementById("answer"), {
   lineNumbers: true,
   matchBrackets: true,
-  mode: "text/python",
+  mode: "text/x-vbc",
   viewportMargin: Infinity,
   lineWrapping: true,
   extraKeys: {
@@ -46,7 +45,7 @@ editor.setSize("100%", "auto");
 const solutionArea = CodeMirror.fromTextArea(document.getElementById("solution"), {
   readOnly: true,
   noCursor: true,
-  mode: "text/python",
+  mode: "text/x-vbc",
   viewportMargin: Infinity,
   lineWrapping: true,
   lineNumbers: true,
@@ -68,7 +67,7 @@ keyboardShortcuts(editor, exerciseName);
 // display exercise page
 $('#title').text(exercise.title);
 $('#name').text(exercise.name);
-$('#problem').text(exercise.question);
+$('#problem').html(exercise.question);
 
 setInitialEditorContents(editor, exerciseName, exercise);
 displayExampleRuns(exercise, exerciseName);

@@ -229,7 +229,32 @@ output "Blastoff!"
 // 1
 // Blastoff!</code></pre>
     </div>
+    <div>
 
+      <h2>Strings</h2>
+      <h4>These methods are not IB standard, but the IB can define their own methods</h4>
+      <table class="minimalistBlack">
+        <thead>
+          <td>Method</td>
+          <td>Behavior</td>
+        </thead>
+        <tr>
+          <td><code>STR.Length()</code></td>
+          <td>returns the length of the string</td>
+        </tr>
+        <tr>
+          <td><code>STR.SubStr(S,L)</code></td>
+          <td>Returns the substring that starts at index S and goes for up to L characters.
+            If the string ends, it will return to the end of the string.</td>
+        </tr>
+      </table>
+      <pre><code>STR = "Hello"
+STR.Length() //5
+STR.SubStr(0,3) //"Hel"
+STR.SubStr(2,2) //"ll"
+STR.Substr(4, 7) //"o"</code></pre>
+
+    </div>
     <div>
 
       <h2>Arrays</h2>

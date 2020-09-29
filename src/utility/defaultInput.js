@@ -1,8 +1,7 @@
 /** creates default input to start function **/
 solutions = require("../solutions.js");
-sigs = require("../sigs.js");
+
 module.exports = function defaultInput(exerciseName) {
-  if (sigs[exerciseName]) return sigs[exerciseName];
   if (typeof (solutions[exerciseName]) === "string") {
     // we have a string solution, likely pseudocode
     var lines = solutions[exerciseName].split("\n");

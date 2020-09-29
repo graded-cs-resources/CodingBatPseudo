@@ -1,12 +1,15 @@
+
+// these three variables help the translation work
+var out;
+var TRUE = true;
+var FALSE = false;
+
 /**
  * takes pseudocode, converts to javascript, and runs it on the input
  * @param {function} f
  * @param {any} input
  * @return {any}
  */
-var out;
-var TRUE = true;
-var FALSE = false;
 module.exports = function runPS(code, i) {
 
   let lines = getLines(code);
@@ -26,7 +29,7 @@ module.exports = function runPS(code, i) {
   return [ret, out];
 }
 
-function write(stuff) { document.write(stuff + '<br>') }
+//The next batch of functions are used BY the pseudocode. Don't delete them!
 
 function input(str) {
   var answer = prompt(str)
@@ -192,8 +195,7 @@ function Array2D(rows, cols) {
   return a2d
 }
 
-
-
+/** Translates a single line from PS (or JS) to JS */
 function translate(line) {
   //do a sanity check - if this is javascript, leave it alone
   if (line.indexOf("{") !== -1) return line;
@@ -204,6 +206,8 @@ function translate(line) {
   line = line.replaceAll(/(\([^()]+\)) div ([0-9A-Za-z]+)/g, "div($1, $2)");
   line = line.replaceAll(/([^"])TRUE/g, "$1true");
   line = line.replaceAll(/([^"])FALSE/g, "$1false");
+  line = line.replaceAll("SubStr", "substr");
+  line = line.replaceAll("Length()", "length");
   var lin = line.trim();
   var sp = lin.indexOf(" ");
   var first = "";
@@ -301,23 +305,12 @@ function translate(line) {
   return line
 }
 
-
 function startswith(whole, part) {
   var n = part.length
   if (whole.substring(0, n) == part) {
     return true
   }
   else { return false }
-}
-
-function getValue(id) {
-  var ans = id
-  try {
-    if (id.value) { ans = id.value }
-    else { ans = id }
-  }
-  catch (exc) { ans = id }
-  return ans
 }
 
 function trim(s) {
@@ -333,34 +326,6 @@ function getLines(code) {
   for (c = 0; c < lines.length; c++) { lines[c] = trim(lines[c]) }
 
   return lines
-}
-
-function killWhiteSpace(s) {
-  return s.replace(/\s/g, "")
-}
-
-function onlySpaces(s) {
-  return s.replace(/\S/g, " ")
-}
-
-function htmlFormat(s) {
-  s = s.replace(/`/g, " &nbsp;")
-
-  s = replacePairs(s, "''", "''", "<b>", "</b>")
-
-  s = replacePairs(s, ",,", ",,", "<i>", "</i>")
-
-  var ap = s.indexOf("~")
-  while (ap >= 0) {
-    var bp = s.indexOf("~", ap + 1)
-
-    var ad = s.substring(ap + 1, bp)
-    s = s.replace("~", "<a href='")
-
-    s = s.replace("~", "'>" + ad + "</a>")
-    ap = s.indexOf("~")
-  }
-  return s
 }
 
 function replacePairs(s, a, b, ar, br) {

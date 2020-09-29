@@ -3,8 +3,8 @@ module.exports = [
     title: 'Warmup-1',
     name: 'SleepIn',
     question: `The parameter WEEKDAY is true if it is a weekday, and the parameter
-       VACATION is false if we are on vacation. We sleep in if it is not a weekday or
-       we're on vacation. Output "TRUE" if we sleep in, "FALSE" if we do not.`,
+       VACATION is FALSE if we are on vacation. We sleep in if it is not a weekday or
+       we're on vacation. Output <code>"TRUE"</code> if we sleep in, "FALSE" if we do not.`,
     inputs: [
       '(TRUE, TRUE)',
       '(TRUE, FALSE)',
@@ -16,7 +16,7 @@ module.exports = [
     name: 'MonkeyTrouble',
     question: `We have two monkeys, a and b, and the parameters ASMILE and
             BSMILE indicate if each is smiling. We are in trouble if they are both smiling
-            or if neither of them is smiling. Output "TRUE" if we are in trouble, "FALSE" otherwise.`,
+            or if neither of them is smiling. Output <code>"TRUE"</code> if we are in trouble, "FALSE" otherwise.`,
     inputs: [
       '(TRUE, TRUE)',
       '(FALSE, FALSE)',
@@ -62,7 +62,7 @@ module.exports = [
     name: 'ParrotTrouble',
     question: `We have a loud talking parrot. The "hour" parameter is the current hour time in the range 0..23.
   We are in trouble if the parrot is talking and the hour is before 7 or after 20.
-  Output "TRUE" if we are in trouble.`,
+  Output <code>"TRUE"</code> if we are in trouble.`,
     inputs: [
       '(TRUE, 6)',
       '(TRUE, 7)',
@@ -77,7 +77,7 @@ module.exports = [
   }, {
     title: 'Warmup-1',
     name: 'Makes10',
-    question: 'Given 2 numbers, A and B, Output "TRUE" if one if them is 10 or if their sum is 10.',
+    question: 'Given 2 numbers, A and B, Output <code>"TRUE"</code> if one if them is 10 or if their sum is 10.',
     inputs: [
       '(9, 10)',
       '(9, 9)',
@@ -92,7 +92,7 @@ module.exports = [
   }, {
     title: 'Warmup-1',
     name: 'NearHundred',
-    question: `Given a number N, Output "TRUE" if it is within 10 of 100 or 200.`,
+    question: `Given a number N, Output <code>"TRUE"</code> if it is within 10 of 100 or 200.`,
     inputs: [
       '(93)',
       '(90)',
@@ -107,35 +107,36 @@ module.exports = [
     ],
   }, {
     title: 'Warmup-1',
-    name: 'posNeg',
-    question: `Given 2 int values, Output "TRUE" if one is negative and one is positive.
-        Except if the parameter "negative" is true, then Output "TRUE" only if both are negative.`,
+    name: 'PosNeg',
+    question: `Given 2 number values, Output <code>"TRUE"</code> if one is negative and one is positive.
+        Except if the parameter <code>NEGATIVE</code> is true, then output <code>"TRUE"</code> only if both are negative.`,
     inputs: [
-      '(1, -1, false)',
-      '(-1, 1, false)',
+      '(1, -1, FALSE)',
+      '(-1, 1, FALSE)',
       '(-4, -5, true)',
-      '(-4, -5, false)',
-      '(-4, 5, false)',
+      '(-4, -5, FALSE)',
+      '(-4, 5, FALSE)',
       '(-4, 5, true)',
-      '(1, 1, false)',
-      '(-1, -1, false)',
+      '(1, 1, FALSE)',
+      '(-1, -1, FALSE)',
       '(1, -1, true)',
       '(-1, 1, true)',
       '(1, 1, true)',
       '(-1, -1, true)',
-      '(5, -5, false)',
-      '(-6, 6, false)',
-      '(-5, -6, false)',
-      '(-2, -1, false)',
-      '(1, 2, false)',
+      '(5, -5, FALSE)',
+      '(-6, 6, FALSE)',
+      '(-5, -6, FALSE)',
+      '(-2, -1, FALSE)',
+      '(1, 2, FALSE)',
       '(-5, 6, true)',
       '(-5, -5, true)',
     ],
   }, {
     title: 'Warmup-1',
-    name: 'notString',
-    question: `Given a string, return a new string where "not " has been added to the front. However,
-    if the string already begins with "not", return the string unchanged.`,
+    name: 'NotString',
+    question: `Given a string, output a new string where "not " has been added to the front. However,
+    if the string already begins with "not", output the string unchanged. You can use the method STRING.SubStr(S,L)
+    where S is the first index in the substring (first char is 0!) and L is how many chars you want`,
     inputs: [
       "('candy')",
       "('x')",
@@ -147,40 +148,7 @@ module.exports = [
     ],
   }, {
     title: 'Warmup-1',
-    name: 'missingChar',
-    question: `Given a non-empty string and an int n, return a new string where the char at index n has been removed.
-  The value of n will be a valid index of a char in the original string (i.e. n will be in the range
-    0..str.length()-1 inclusive).`,
-    inputs: [
-      "('kitten', 1)",
-      "('kitten', 0)",
-      "('kitten', 4)",
-      "('Hi', 0)",
-      "('Hi', 1)",
-      "('code', 0)",
-      "('code', 1)",
-      "('code', 2)",
-      "('code', 3)",
-      "('chocolate', 8)",
-    ],
-  }, {
-    title: 'Warmup-1',
-    name: 'frontBack',
-    question: `Given a string, return a new string where the first and last chars have
-          been exchanged.`,
-    inputs: [
-      "('code')",
-      "('a')",
-      "('ab')",
-      "('abc')",
-      "('')",
-      "('Chocolate')",
-      "('aavj')",
-      "('hello')",
-    ],
-  }, {
-    title: 'Warmup-1',
-    name: 'front3',
+    name: 'Front3',
     inputs: [
       "('Java')",
       "('Chocolate')",
@@ -192,24 +160,11 @@ module.exports = [
     ],
     question: `Given a string, we'll say that the front is the first 3 chars of the string.
             If the string length is less than 3, the front is whatever is there. Return a new
-            string which is 3 copies of the front.`,
+            string which is 3 copies of the front. You can use the method STRING.SubStr(S,L)
+            where S is the first index in the substring (first char is 0!) and L is how many chars you want.`,
   }, {
     title: 'Warmup-1',
-    name: 'backAround',
-    inputs: [
-      "('cat')",
-      "('Hello')",
-      "('a')",
-      "('abc')",
-      "('read')",
-      "('boo')",
-    ],
-    question: `Given a string, take the last char and return a new string with the last
-            char added at the front and back, so 'cat' yields 'tcatt' The original string will be
-            length 1 or more.`,
-  }, {
-    title: 'Warmup-1',
-    name: 'or35',
+    name: 'Or35',
     inputs: [
       '(3)',
       '(10)',
@@ -235,11 +190,11 @@ module.exports = [
       '(122)',
       '(123)',
     ],
-    question: `Output "TRUE" if the given non-negative number is a multiple of 3 or a
-            multiple of 5. (Hint: Use the % 'mod' operator)`,
+    question: `Output <code>"TRUE"</code> if the given non- negative number is a multiple of 3 or a
+            multiple of 5.(Hint: Use the < code > mod</code > operator)`,
   }, {
     title: 'Warmup-1',
-    name: 'front22',
+    name: 'Front22',
     inputs: [
       "('kitten')",
       "('Ha')",
@@ -249,12 +204,13 @@ module.exports = [
       "('')",
       "('Logic')",
     ],
-    question: `Given a string, take the first 2 chars and return the string with the 2
-            chars added at both the front and back, so 'kitten' yields 'kikittenki' chars are
-            there.`,
+    question: `Given a string, take the first 2 chars and output the string with the 2
+chars added at both the front and back, so 'kitten' yields 'kikittenki' chars are
+there. You can use the method STRING.SubStr(S,L)
+where S is the first index in the substring (first char is 0!) and L is how many chars you want.`,
   }, {
     title: 'Warmup-1',
-    name: 'startHi',
+    name: 'StartHi',
     inputs: [
       "('hi there')",
       "('hi')",
@@ -265,11 +221,12 @@ module.exports = [
       "('ho hi')",
       "('hi ho')",
     ],
-    question: `Given a string, Output "TRUE" if the string starts with 'hi'and
-            false otherwise.`,
+    question: `Given a string, Output <code>"TRUE"</code> if the string starts with 'hi'and
+FALSE otherwise. You can use the method STRING.SubStr(S,L)
+where S is the first index in the substring (first char is 0!) and L is how many chars you want.`,
   }, {
     title: 'Warmup-1',
-    name: 'icyHot',
+    name: 'IcyHot',
     inputs: [
       '(120, -1)',
       '(-1, 120)',
@@ -278,11 +235,11 @@ module.exports = [
       '(-2, 120)',
       '(120, 120)',
     ],
-    question: `Given two temperatures, Output "TRUE" if one is less than 0 and the
-              other is greater than 100.`,
+    question: `Given two temperatures, Output <code>"TRUE"</code> if one is less than 0 and the
+other is greater than 100.`,
   }, {
     title: 'Warmup-1',
-    name: 'in1020',
+    name: 'In1020',
     inputs: [
       '(12, 99)',
       '(21, 12)',
@@ -292,11 +249,11 @@ module.exports = [
       '(21, 21)',
       '(9, 9)',
     ],
-    question: `Given 2 int values, Output "TRUE" if either of them is in the range
-              10..20 inclusive.`,
+    question: `Given 2 number values, Output <code>"TRUE"</code> if either or both of them is in the range
+10..20 inclusive.`,
   }, {
     title: 'Warmup-1',
-    name: 'hasTeen',
+    name: 'HasTeen',
     inputs: [
       '(13, 20, 10)',
       '(20, 19, 10)',
@@ -311,10 +268,10 @@ module.exports = [
       '(11, 22, 22)',
     ],
     question: `We'll say that a number is 'teen' if it is in the range 13..19 inclusive. Given 3 int values,
-                Output "TRUE" if 1 or more of them are teen.`,
+Output <code>"TRUE"</code> if 1 or more of them are teen.`,
   }, {
     title: 'Warmup-1',
-    name: 'loneTeen',
+    name: 'LoneTeen',
     inputs: [
       '(13, 99)',
       '(21, 19)',
@@ -331,28 +288,10 @@ module.exports = [
       '(99, 99)',
     ],
     question: `We'll say that a number is 'teen' if it is in the range 13..19 inclusive.
-                Given 2 int values, Output "TRUE" if one or the other is teen, but not both.`,
+Given 2 int values, Output <code>"TRUE"</code> if one or the other is teen, but not both.`,
   }, {
     title: 'Warmup-1',
-    name: 'delDel',
-    inputs: [
-      "('adelbc')",
-      "('adelHello')",
-      "('abcdel')",
-      "('add')",
-      "('ad')",
-      "('a')",
-      "('')",
-      "('del')",
-      "('adel')",
-      "('aadelbb')",
-    ],
-    question: `Given a string, if the string "del" appears starting at index 1,
-                  return a string where that "del" has been deleted. Otherwise, return the string
-                  unchanged.`,
-  }, {
-    title: 'Warmup-1',
-    name: 'mixStart',
+    name: 'MixStart',
     inputs: [
       "('mix snacks')",
       "('pix snacks')",
@@ -361,31 +300,13 @@ module.exports = [
       "('ni')",
       "('n')",
     ],
-    question: `Output "TRUE" if the given string begins with 'mix', except the 'm' can be
-                  anything, so 'pix', '9ix' .. all count.`,
-  }, {
-    title: 'Warmup-1',
-    name: 'startOz',
-    inputs: [
-      "('ozymandias')",
-      "('bzoo')",
-      "('oxx')",
-      "('ounce')",
-      "('o')",
-      "('abc')",
-      "('')",
-      "('zoo')",
-      "('aztec')",
-      "('zzzz')",
-      "('oznic')",
-    ],
-    question: `Given a string, return a string made of the first 2 chars (if present),
-                   however include first char only if it is 'o' and include the second only if it
-                   is 'z', so 'ozymandias' yields 'oz'.`,
+    question: `Output <code>"TRUE"</code> if the given string begins with 'mix', except the 'm' can be
+anything, so 'pix', '9ix'..all count. You can use the method STRING.SubStr(S,L) to get a substring
+where S is the first index in the substring (first char is 0!) and L is how many chars you want (at max).`,
   },
   {
     title: 'Warmup-1',
-    name: 'intMax',
+    name: 'IntMax',
     inputs: [
       '(1, 2, 3)',
       '(1, 3, 2)',
@@ -399,11 +320,11 @@ module.exports = [
       '(5, 6, 2)',
       '(5, 2, 6)',
     ],
-    question: 'Given three int values, a b c, return the largest.',
+    question: 'Given three int values, A, B, and C, output the largest.',
   },
   {
     title: 'Warmup-1',
-    name: 'close10',
+    name: 'Close10',
     inputs: [
       '(8, 13)',
       '(13, 8)',
@@ -418,52 +339,12 @@ module.exports = [
       '(0, 20)',
       '(10, 10)',
     ],
-    question: `Given 2 int values, return whichever value is nearest to the value 10,
-                 or return 0 in the event of a tie. Note that Math.abs(n) returns the absolute
-                  value of a number.`,
+    question: `Given 2 int values, output whichever value is nearest to the value 10,
+  or output 0 in the event of a tie.`,
   },
   {
     title: 'Warmup-1',
-    name: 'in3050',
-    inputs: [
-      '(30, 31)',
-      '(30, 41)',
-      '(40, 50)',
-      '(40, 51)',
-      '(39, 50)',
-      '(50, 39)',
-      '(40, 39)',
-      '(49, 48)',
-      '(50, 40)',
-      '(50, 51)',
-      '(35, 36)',
-      '(35, 45)',
-    ],
-    question: `Given 2 int values, Output "TRUE" if they are both in the range 30..40
-                inclusive, or they are both in the range 40..50 inclusive.`,
-  },
-  {
-    title: 'Warmup-1',
-    name: 'max1020',
-    inputs: [
-      '(11, 19)',
-      '(19, 11)',
-      '(11, 9)',
-      '(9, 21)',
-      '(10, 21)',
-      '(21, 10)',
-      '(9, 11)',
-      '(23, 10)',
-      '(20, 10)',
-      '(7, 20)',
-      '(17, 16)',
-    ],
-    question: `Given 2 positive int values, return the larger value that is in the range
-                10..20 inclusive, or return 0 if neither is in that range.`,
-  },
-  {
-    title: 'Warmup-1',
-    name: 'stringE',
+    name: 'StringE',
     inputs: [
       "('Hello')",
       "('Heelle')",
@@ -472,11 +353,13 @@ module.exports = [
       "('e')",
       "('')",
     ],
-    question: 'Output "TRUE" if the given string contains between 1 and 3 \'e\' chars.',
+    question: `Output <code>"TRUE</code>" if the given string contains between 1 and 3 <code>e</code> chars. 
+    Hint: the length of a string can be found using the <code>STR.Length()</code> method, and you can access one char
+    within a string using brackets, so if <code>ST = "ABC"</code> then <code>ST[1]</code> gives you a <code>B</code>`
   },
   {
     title: 'Warmup-1',
-    name: 'lastDigit',
+    name: 'LastDigit',
     inputs: [
       '(7, 17)',
       '(6, 17)',
@@ -486,27 +369,12 @@ module.exports = [
       '(10, 0)',
       '(11, 0)',
     ],
-    question: `Given two non-negative int values, Output "TRUE" if they have the same
-                last digit, such as with 27 and 57. Note that the % 'mod' operator computes
-                remainders, so 17 % 10 is 7.`,
+    question: `Given two non - negative int values, Output <code>"TRUE"</code> if they have the same
+last digit, such as with 27 and 57. Note that the <code>mod</code> operator computes
+remainders, so <code>17 mod 10</code> is 7.`,
   }, {
     title: 'Warmup-1',
-    name: 'endUp',
-    inputs: [
-      "('Hello')",
-      "('hi there')",
-      "('hi')",
-      "('woo hoo')",
-      "('xyz12')",
-      "('x')",
-      "('')",
-    ],
-    question: `Given a string, return a new string where the last 3 chars are now in
-                upper case. If the string has less than 3 chars, uppercase whatever is there.
-                Note that str.toUpperCase() returns the uppercase version of a string.`,
-  }, {
-    title: 'Warmup-1',
-    name: 'everyNth',
+    name: 'EveryNth',
     inputs: [
       "('Miracle', 2)",
       "('abcdefg', 2)",
@@ -516,13 +384,13 @@ module.exports = [
       "('Chocolates', 4)",
       "('Chocolates', 100)",
     ],
-    question: `Given a non-empty string and an int N, return the string made starting
-                  with char 0, and then every Nth char of the string. So if N is 3, use char 0, 3, 6,
-                   ... and so on. N is 1 or more.`,
+    question: `Given a non - empty string and an int N, output the string made starting
+with char 0, and then every Nth char of the string. So if N is 3, use char 0, 3, 6,
+                   ...and so on. N will always be 1 or more.`,
   },
   {
     title: 'Warmup-2',
-    name: 'stringTimes',
+    name: 'StringTimes',
     inputs: [
       "('Hi', 2)",
       "('Hi', 3)",
@@ -535,11 +403,11 @@ module.exports = [
       "('code', 2)",
       "('code', 3)",
     ],
-    question: `Given a string and a non-negative int n, return a larger string that is n
-        copies of the original string.`,
+    question: `Given a string and a non-negative integer N, output a larger string that is N
+copies of the original string.`,
   }, {
     title: 'Warmup-2',
-    name: 'frontTimes',
+    name: 'FrontTimes',
     inputs: [
       "('Chocolate', 2)",
       "('Chocolate', 3)",
@@ -549,11 +417,11 @@ module.exports = [
       "('',4)",
       "('Abc', 0)",
     ],
-    question: `Given a string and a non-negative int n, we'll say that the front of the string is the first 3 chars,
-          or whatever is there if the string is less than length 3. Return n copies of the front.`,
+    question: `Given a string and a non - negative int n, we'll say that the front of the string is the first 3 chars,
+or whatever is there if the string is less than length 3. Return n copies of the front.`,
   }, {
     title: 'Warmup-2',
-    name: 'countXX',
+    name: 'CountXX',
     inputs: [
       "('abcxx')",
       "('xxx')",
@@ -565,11 +433,11 @@ module.exports = [
       "('Kittens')",
       "('Kittensxxx')",
     ],
-    question: `Count the number of 'xx' in the given string. We'll say that overlapping
-          is allowed, so 'xxx' contains 2 'xx'.`,
+    question: `Count the number of 'xx' in the given string.We'll say that overlapping
+is allowed, so 'xxx' contains 2 'xx'.`,
   }, {
     title: 'Warmup-2',
-    name: 'doubleX',
+    name: 'DoubleX',
     inputs: [
       "('axxbb')",
       "('axaxax')",
@@ -582,11 +450,11 @@ module.exports = [
       "('xx')",
       "('xaxx')",
     ],
-    question: `Given a string, Output "TRUE" if the first instance of "x" in the string is
-           immediately followed by another "x".`,
+    question: `Given a string, Output <code>"TRUE"</code> if the first instance of "x" in the string is
+immediately followed by another "x".`,
   }, {
     title: 'Warmup-2',
-    name: 'stringBits',
+    name: 'StringBits',
     inputs: [
       "('Hello')",
       "('Hi')",
@@ -599,16 +467,16 @@ module.exports = [
       "('Hello Kitten')",
       "('hxaxpxpxy')",
     ],
-    question: `Given a string, return a new string made of every other char starting
-          with the first, so "Hello" yields "Hlo".`,
+    question: `Given a string, output a new string made of every other char starting
+with the first, so "Hello" yields "Hlo".`,
   }, {
     title: 'Warmup-2',
-    name: 'stringSplosion',
-    question: 'Given a non-empty string like "Code" return a string like "CCoCodCode".',
+    name: 'StringSplosion',
+    question: 'Given a non-empty string like "Code" output a string like "CCoCodCode".',
     inputs: [], // TODO: write inputs here
   }, {
     title: 'Warmup-2',
-    name: 'last2',
+    name: 'Last2',
     inputs: [
       "('hixxhi')",
       "('xaxxaxaxx')",
@@ -623,12 +491,12 @@ module.exports = [
       "('h')",
       "('')",
     ],
-    question: `Given a string, return the count of the number of times that a substring
-          length 2 appears in the string and also as the last 2 chars of the string, so
-          "hixxxhi" yields 1 (we won't count the end substring).`,
+    question: `Given a string, output the count of the number of times that a substring
+length 2 appears in the string and also as the last 2 chars of the string, so
+"hixxxhi" yields 1(we won't count the end substring).`,
   }, {
     title: 'Warmup-2',
-    name: 'arrayCount9',
+    name: 'ArrayCount9',
     inputs: [
       '([1,2,9])',
       '([1,9,9])',
@@ -638,10 +506,10 @@ module.exports = [
       '([4,2,4,3,1])',
       '([9,2,4,3,1])',
     ],
-    question: 'Given an array of ints, return the number of 9\'s in the array.',
+    question: 'Given an array of ints, output the number of 9\'s in the array.',
   }, {
     title: 'Warmup-2',
-    name: 'arrayFront9',
+    name: 'ArrayFront9',
     inputs: [
       '([1,2,9,3,4])',
       '([1,2,3,4,9])',
@@ -656,17 +524,17 @@ module.exports = [
       '([])',
       '([3,9,2,3,3])',
     ],
-    question: `Given an array of ints, Output "TRUE" if one of the first 4 elements in
+    question: `Given an array of ints, Output <code>"TRUE"</code> if one of the first 4 elements in
           the array is a 9. The array length may be less than 4.`,
   }, {
     title: 'Warmup-2',
-    name: 'array123',
-    question: `Given an array of ints, Output "TRUE" if the sequence of numbers 1, 2, 3
+    name: 'Array123',
+    question: `Given an array of ints, Output <code>"TRUE"</code> if the sequence of numbers 1, 2, 3
         appears in the array somewhere.`,
     inputs: [], // TODO
   }, {
     title: 'Warmup-2',
-    name: 'stringMatch',
+    name: 'StringMatch',
     inputs: [
       "('xxcaazz', 'xxbaaz')",
       "('abc', 'abc')",
@@ -678,11 +546,11 @@ module.exports = [
       "('aaxxaaxx', 'iaxxai')",
       "('iaxxai', 'aaxxaaxx')",
     ],
-    question: `Given 2 strings, a and b, return the number of the positions where they contain the same length 2 substring.
+    question: `Given 2 strings, a and b, output the number of the positions where they contain the same length 2 substring.
           So "xxcaazz" and "xxbaaz" yields 3, since the "xx" "xx", "aa", and "az" substrings appear in the same place in both strings.`,
   }, {
     title: 'Warmup-2',
-    name: 'stringX',
+    name: 'StringX',
     inputs: [
       "('xxHxix')",
       "('abxxxcd')",
@@ -693,11 +561,11 @@ module.exports = [
       "('x')",
       "('')",
     ],
-    question: `Given a string, return a version where all the "x" have been removed.
+    question: `Given a string, output a version where all the "x" have been removed.
             Except an "x" at the very start or end should not be removed.`,
   }, {
     title: 'Warmup-2',
-    name: 'altPairs',
+    name: 'AltPairs',
     inputs: [
       "('kitten')",
       "('Chocolate')",
@@ -708,11 +576,11 @@ module.exports = [
       "('')",
       "('ThisThatTheOther')",
     ],
-    question: `Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9 ...
+    question: `Given a string, output a string made of the chars at indexes 0,1, 4,5, 8,9 ...
             so "kittens" yields "kien".`,
   }, {
     title: 'Warmup-2',
-    name: 'stringYak',
+    name: 'StringYak',
     inputs: [
       "('yakpak')",
       "('pakyak')",
@@ -722,12 +590,12 @@ module.exports = [
       "('xxcaazz', 'hiyakHi')",
       "('xxxyakyyyakzzz')",
     ],
-    question: `Suppose the string "yak" is unlucky. Given a string, return a version
+    question: `Suppose the string "yak" is unlucky. Given a string, output a version
             where all the "yak" are removed, but the "a" can be any char. The "yak" strings
             will not overlap.`,
   }, {
     title: 'Warmup-2',
-    name: 'array667',
+    name: 'Array667',
     inputs: [
       '([6,6,2])',
       '([6,6,2,6])',
@@ -743,12 +611,12 @@ module.exports = [
       '([1,2,3,5,6])',
       '([1,2,3,6,6])',
     ],
-    question: `Given an array of ints, return the number of times that two 6's
+    question: `Given an array of ints, output the number of times that two 6's
               are next to each other in the array. Also count instances where the second
               "6" is actually a 7.`,
   }, {
     title: 'Warmup-2',
-    name: 'noTriples',
+    name: 'NoTriples',
     inputs: [
       '([1,1,2,2,1])',
       '([1,1,2,2,2,1])',
@@ -761,10 +629,10 @@ module.exports = [
       '([])',
     ],
     question: `Given an array of ints, we'll say that a triple is a value appearing 3 times
-                in a row in the array. Output "TRUE" if the array does not contain any triples.`,
+                in a row in the array. Output <code>"TRUE"</code> if the array does not contain any triples.`,
   }, {
     title: 'Warmup-2',
-    name: 'has271',
+    name: 'Has271',
     inputs: [
       '([1,2,7,1])',
       '([1,2,8,1])',
@@ -780,7 +648,7 @@ module.exports = [
       '([2,7,5,10,1])',
       '([2,7,-2,10,2])',
     ],
-    question: `Given an array of ints, Output "TRUE" if it contains a 2, 7, 1
+    question: `Given an array of ints, Output <code>"TRUE"</code> if it contains a 2, 7, 1
                 pattern -- a value, followed by the value plus 5, followed by the value
                 minus 1. Additionally the 271 counts even if the "1" differs by 2 or less
                 from the correct value.`,

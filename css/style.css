@@ -29,13 +29,14 @@ body {
   margin: 0 auto;
 }
 
-.heading {
+header h1, header a{
   font-family: 'Trirong', serif;
   font-size: 40px;
   margin-top: 0px;
   margin-bottom: 0px;
   color: #6E5961;
   text-decoration: none;
+  display:inline-block;
 }
 
 .subheading {
@@ -169,7 +170,11 @@ div#displayResults {
 }
 
 .CodeMirror pre {
-  font-family: "Consolas", "Lucida Console", "Courier New", Courier, monospace;
+  font-family: "Inconsolata","Consolas", "Lucida Console", "Courier New", Courier, monospace;
+}
+
+code {
+  font-family: "Inconsolata","Consolas", "Lucida Console", "Courier New", Courier, monospace;
 }
 
 .test-table td {
