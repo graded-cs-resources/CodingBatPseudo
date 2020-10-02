@@ -1,7 +1,12 @@
 module.exports = [
   {
+    //title is the category it appears in on the homepage
     title: 'Array-1',
-    name: 'firstLast6',
+    // Pseudocode problems should start with a capital letter
+    name: 'FirstLast6',
+    // the inputs that we are going to use to to test the code. An array of strings.
+    // Each string should be parentheses, and inside you can have one or more arrays,
+    // strings, ints, TRUE/FALSE, whatever. check warmup.js for more examples.
     inputs: [
       '([1, 2, 6])',
       '([6, 1, 2, 3])',
@@ -17,8 +22,8 @@ module.exports = [
       '([1, 2, 3, 4, 6])',
       '([1, 2, 3, 4])',
     ],
-    question: `Given an array of ints, return true if 6 appears as either the first or
-    last element in the array. The array will be length 1 or more.`,
+    // The question itself. Try to make it Pseudocode-y
+    question: `Given an array of numbers, return true if 6 appears as either the first or last element in the array. The array will be length 1 or more. You can use the property ARR.length to access the array's length`,
   },
   {
     title: 'Array-1',
@@ -447,7 +452,7 @@ module.exports = [
       "([2])",
       "([2, 5, -12])",
     ],
-    
+
     question: `Return the index of the minimum value in an array. The input array will have at
      least one element in it.`
   },
@@ -464,7 +469,7 @@ module.exports = [
       "([2])",
       "([2, 5, 12])",
     ],
-    
+
     question: `Return the number of even ints in the given array. Note: the % "mod"
     operator computes the remainder, e.g. 5 % 2 is 1.`
   },
@@ -658,7 +663,7 @@ module.exports = [
       "([-2, 2, -2, 2])",
       "([5, 4, 3, 2, 1, 0])",
     ],
-    
+
     question: `Return a modified version of the input array (nums), where the first two items have been removed
     and one item – the sum of those two items - is added to the start of the array.`
   },
@@ -894,7 +899,7 @@ module.exports = [
       "([2, 10, 15, 13])",
       "([2, 5, -12])",
     ],
-    
+
     question: `Write a method that returns the median value of an array. The input array will never be empty.
     \nIf the array is odd in length, the median is the value in the centre of the array.\
     \nIf the array is even, the median should be the average of the two middle values. \n 
@@ -949,20 +954,20 @@ module.exports = [
     title: 'Array-2',
     name: 'sameEnds',
     inputs: [
-    "([5, 6, 45, 99, 13, 5, 6], 1)",
-    "([5, 6, 45, 99, 13, 5, 6], 2)",
-    "([5, 6, 45, 99, 13, 5, 6], 3)",
-    "([1, 2, 5, 2, 1], 1)",
-    "([1, 2, 5, 2, 1], 2)",
-    "([1, 2, 5, 2, 1], 0)",
-    "([1, 2, 5, 2, 1], 5)",
-    "([1, 1, 1], 0)",
-    "([1, 1, 1], 1)",
-    "([1, 1, 1], 2)",
-    "([1, 1, 1], 3)",
-    "([1], 1)",
-    "([], 0)",
-    "([4, 2, 4, 5], 1)",
+      "([5, 6, 45, 99, 13, 5, 6], 1)",
+      "([5, 6, 45, 99, 13, 5, 6], 2)",
+      "([5, 6, 45, 99, 13, 5, 6], 3)",
+      "([1, 2, 5, 2, 1], 1)",
+      "([1, 2, 5, 2, 1], 2)",
+      "([1, 2, 5, 2, 1], 0)",
+      "([1, 2, 5, 2, 1], 5)",
+      "([1, 1, 1], 0)",
+      "([1, 1, 1], 1)",
+      "([1, 1, 1], 2)",
+      "([1, 1, 1], 3)",
+      "([1], 1)",
+      "([], 0)",
+      "([4, 2, 4, 5], 1)",
     ],
     question: `Return true if the group of N numbers at the start and end of the
     array are the same. For example, with {5, 6, 45, 99, 13, 5, 6}, the ends are
@@ -1045,16 +1050,16 @@ module.exports = [
     title: 'Array-2',
     name: 'pre4',
     inputs: [
-    "([1, 2, 4, 1])",
-    "([3, 1, 4])",
-    "([1, 4, 4])",
-    "([1, 4, 4, 2])",
-    "([1, 3, 4, 2, 4])",
-    "([4, 4])",
-    "([3, 3, 4])",
-    "([1, 2, 1, 4])",
-    "([2, 1, 4, 2])",
-    "([2, 1, 2, 1, 4, 2])",
+      "([1, 2, 4, 1])",
+      "([3, 1, 4])",
+      "([1, 4, 4])",
+      "([1, 4, 4, 2])",
+      "([1, 3, 4, 2, 4])",
+      "([4, 4])",
+      "([3, 3, 4])",
+      "([1, 2, 1, 4])",
+      "([2, 1, 4, 2])",
+      "([2, 1, 2, 1, 4, 2])",
     ],
     question: `Given a non-empty array of ints, return a new array containing the
     elements from the original array that come before the first 4 in the original
@@ -1065,16 +1070,16 @@ module.exports = [
     title: 'Array-2',
     name: 'post4',
     inputs: [
-    "([2, 4, 1, 2])",
-    "([4, 1, 4, 2])",
-    "([4, 4, 1, 2, 3])",
-    "([4, 2])",
-    "([4, 4, 3])",
-    "([4, 4])",
-    "([4])",
-    "([2, 4, 1, 4, 3, 2])",
-    "([4, 1, 4, 2, 2, 2])",
-    "([3, 4, 3, 2])",
+      "([2, 4, 1, 2])",
+      "([4, 1, 4, 2])",
+      "([4, 4, 1, 2, 3])",
+      "([4, 2])",
+      "([4, 4, 3])",
+      "([4, 4])",
+      "([4])",
+      "([2, 4, 1, 4, 3, 2])",
+      "([4, 1, 4, 2, 2, 2])",
+      "([3, 4, 3, 2])",
     ],
     question: `Given a non-empty array of ints, return a new array containing the
     elements from the original array that come after the last 4 in the original
@@ -1085,16 +1090,16 @@ module.exports = [
     title: 'Array-2',
     name: 'notAlone',
     inputs: [
-    "([1, 2, 3], 2)",
-    "([1, 2, 3, 2, 5, 2], 2)",
-    "([3, 4], 3)",
-    "([3, 3], 3)",
-    "([1, 3, 1, 2], 1)",
-    "([3], 3)",
-    "([], 3)",
-    "([7, 1, 6], 1)",
-    "([1, 1, 1], 1)",
-    "([1, 1, 1, 2], 1)",
+      "([1, 2, 3], 2)",
+      "([1, 2, 3, 2, 5, 2], 2)",
+      "([3, 4], 3)",
+      "([3, 3], 3)",
+      "([1, 3, 1, 2], 1)",
+      "([3], 3)",
+      "([], 3)",
+      "([7, 1, 6], 1)",
+      "([1, 1, 1], 1)",
+      "([1, 1, 1, 2], 1)",
     ],
     question: `We'll say that an element in an array is "alone" if there are values
     before and after it, and those values are different from it. Return a version
@@ -1127,16 +1132,16 @@ module.exports = [
     title: 'Array-2',
     name: 'withoutTen',
     inputs: [
-    "([1, 10, 10, 2])",
-    "([10, 2, 10])",
-    "([1, 99, 10])",
-    "([10, 13, 10, 14])",
-    "([10, 13, 10, 14, 10])",
-    "([10, 10, 3])",
-    "([1])",
-    "([13, 1])",
-    "([10])",
-    "([])",
+      "([1, 10, 10, 2])",
+      "([10, 2, 10])",
+      "([1, 99, 10])",
+      "([10, 13, 10, 14])",
+      "([10, 13, 10, 14, 10])",
+      "([10, 10, 3])",
+      "([1])",
+      "([13, 1])",
+      "([10])",
+      "([])",
     ],
     question: `Return a version of the given array where all the 10's have been
     removed. The remaining elements should shift left towards the start of the
@@ -1148,18 +1153,18 @@ module.exports = [
     title: 'Array-2',
     name: 'zeroMax',
     inputs: [
-    "([0, 5, 0, 3])",
-    "([0, 4, 0, 3])",
-    "([0, 1, 0])",
-    "([0, 1, 5])",
-    "([0, 2, 0])",
-    "([1])",
-    "([0])",
-    "([])",
-    "([7, 0, 4, 3, 0, 2])",
-    "([7, 0, 4, 3, 0, 1])",
-    "([7, 0, 4, 3, 0, 0])",
-    "([7, 0, 1, 0, 0, 7])",
+      "([0, 5, 0, 3])",
+      "([0, 4, 0, 3])",
+      "([0, 1, 0])",
+      "([0, 1, 5])",
+      "([0, 2, 0])",
+      "([1])",
+      "([0])",
+      "([])",
+      "([7, 0, 4, 3, 0, 2])",
+      "([7, 0, 4, 3, 0, 1])",
+      "([7, 0, 4, 3, 0, 0])",
+      "([7, 0, 1, 0, 0, 7])",
     ],
     question: `Return a version of the given array where each zero value in the
     array is replaced by the largest odd value to the right of the zero in the
@@ -1170,15 +1175,15 @@ module.exports = [
     title: 'Array-2',
     name: 'evenOdd',
     inputs: [
-    "([1, 0, 1, 0, 0, 1, 1])",
-    "([3, 3, 2])",
-    "([2, 2, 2])",
-    "([3, 2, 2])",
-    "([1, 1, 0, 1, 0])",
-    "([1])",
-    "([1, 2])",
-    "([2, 1])",
-    "([])",
+      "([1, 0, 1, 0, 0, 1, 1])",
+      "([3, 3, 2])",
+      "([2, 2, 2])",
+      "([3, 2, 2])",
+      "([1, 1, 0, 1, 0])",
+      "([1])",
+      "([1, 2])",
+      "([2, 1])",
+      "([])",
     ],
     question: `Return an array that contains the exact same numbers as the given
     array, but rearranged so that all the even numbers come before all the odd
@@ -1189,18 +1194,18 @@ module.exports = [
     title: 'Array-2',
     name: 'fizzBuzz',
     inputs: [
-    "(1, 6)",
-    "(1, 8)",
-    "(1, 11)",
-    "(1, 16)",
-    "(1, 4)",
-    "(1, 2)",
-    "(50, 56)",
-    "(15, 17)",
-    "(30, 36)",
-    "(1000, 1006)",
-    "(99, 102)",
-    "(14, 20)",
+      "(1, 6)",
+      "(1, 8)",
+      "(1, 11)",
+      "(1, 16)",
+      "(1, 4)",
+      "(1, 2)",
+      "(50, 56)",
+      "(15, 17)",
+      "(30, 36)",
+      "(1000, 1006)",
+      "(99, 102)",
+      "(14, 20)",
     ],
     question: `This is slightly more difficult version of the famous FizzBuzz problem
     which is sometimes given as a first problem for job interviews.
@@ -1214,151 +1219,169 @@ module.exports = [
      array instead of just printing, and we vary the start/end instead of just always
      doing 1..100.`
   },
-  { question: 'Consider the leftmost and righmost appearances of some value in an array. We\'ll say that the "span" is the number of elements between the two inclusive. A single value has a span of 1. Returns the largest span found in the given array. (Efficiency is not a priority.)',
+  {
+    question: 'Consider the leftmost and righmost appearances of some value in an array. We\'ll say that the "span" is the number of elements between the two inclusive. A single value has a span of 1. Returns the largest span found in the given array. (Efficiency is not a priority.)',
     title: 'Array-3',
     name: 'maxSpan',
     inputs: [
-  "([1, 2, 1, 1, 3])",
-  "([1, 4, 2, 1, 4, 1, 4])",
-  "([1, 4, 2, 1, 4, 4, 4])",
-  "([3, 3, 3])",
-  "([3, 9, 3])",
-  "([3, 9, 9])",
-  "([3, 9])",
-  "([3, 3])",
-  "([])",
-  "([1])"
-] },
-  { question: 'Return an array that contains exactly the same numbers as the given array, but rearranged so that every 3 is immediately followed by a 4. Do not move the 3\'s, but every other number may move. The array contains the same number of 3\'s and 4\'s, every 3 has a number after it that is not a 3, and a 3 appears in the array before any 4.',
+      "([1, 2, 1, 1, 3])",
+      "([1, 4, 2, 1, 4, 1, 4])",
+      "([1, 4, 2, 1, 4, 4, 4])",
+      "([3, 3, 3])",
+      "([3, 9, 3])",
+      "([3, 9, 9])",
+      "([3, 9])",
+      "([3, 3])",
+      "([])",
+      "([1])"
+    ]
+  },
+  {
+    question: 'Return an array that contains exactly the same numbers as the given array, but rearranged so that every 3 is immediately followed by a 4. Do not move the 3\'s, but every other number may move. The array contains the same number of 3\'s and 4\'s, every 3 has a number after it that is not a 3, and a 3 appears in the array before any 4.',
     title: 'Array-3',
     name: 'fix34',
     inputs: [
-  "([1, 3, 1, 4])",
-  "([1, 3, 1, 4, 4, 3, 1])",
-  "([3, 2, 2, 4])",
-  "([3, 2, 3, 2, 4, 4])",
-  "([2, 3, 2, 3, 2, 4, 4])",
-  "([5, 3, 5, 4, 5, 4, 5, 4, 3, 5, 3, 5])",
-  "([3, 1, 4])",
-  "([3, 4, 1])",
-  "([1, 1, 1])",
-  "([1])",
-  "([])",
-  "([7, 3, 7, 7, 4])",
-  "([3, 1, 4, 3, 1, 4])",
-  "([3, 1, 1, 3, 4, 4])"
-] },
-  { question: '(This is a slightly harder version of the fix34 problem.) Return an array that contains exactly the same numbers as the given array, but rearranged so that every 4 is immediately followed by a 5. Do not move the 4\'s, but every other number may move. The array contains the same number of 4\'s and 5\'s, and every 4 has a number after it that is not a 4. In this version, 5\'s may appear anywhere in the original array.',
+      "([1, 3, 1, 4])",
+      "([1, 3, 1, 4, 4, 3, 1])",
+      "([3, 2, 2, 4])",
+      "([3, 2, 3, 2, 4, 4])",
+      "([2, 3, 2, 3, 2, 4, 4])",
+      "([5, 3, 5, 4, 5, 4, 5, 4, 3, 5, 3, 5])",
+      "([3, 1, 4])",
+      "([3, 4, 1])",
+      "([1, 1, 1])",
+      "([1])",
+      "([])",
+      "([7, 3, 7, 7, 4])",
+      "([3, 1, 4, 3, 1, 4])",
+      "([3, 1, 1, 3, 4, 4])"
+    ]
+  },
+  {
+    question: '(This is a slightly harder version of the fix34 problem.) Return an array that contains exactly the same numbers as the given array, but rearranged so that every 4 is immediately followed by a 5. Do not move the 4\'s, but every other number may move. The array contains the same number of 4\'s and 5\'s, and every 4 has a number after it that is not a 4. In this version, 5\'s may appear anywhere in the original array.',
     title: 'Array-3',
     name: 'fix45',
     inputs: [
-  "([5, 4, 9, 4, 9, 5])",
-  "([1, 4, 1, 5])",
-  "([1, 4, 1, 5, 5, 4, 1])",
-  "([4, 9, 4, 9, 5, 5, 4, 9, 5])",
-  "([5, 5, 4, 1, 4, 1])",
-  "([4, 2, 2, 5])",
-  "([4, 2, 4, 2, 5, 5])",
-  "([4, 2, 4, 5, 5])",
-  "([1, 1, 1])",
-  "([4, 5])",
-  "([5, 4, 1])",
-  "([])",
-  "([5, 4, 5, 4, 1])",
-  "([4, 5, 4, 1, 5])",
-  "([3, 4, 5])",
-  "([4, 1, 5])",
-  "([5, 4, 1])",
-  "([2, 4, 2, 5])"
-] },
-  { question: 'Given a non-empty array, return true if there is a place to split the array so that the sum of the numbers on one side is equal to the sum of the numbers on the other side.',
+      "([5, 4, 9, 4, 9, 5])",
+      "([1, 4, 1, 5])",
+      "([1, 4, 1, 5, 5, 4, 1])",
+      "([4, 9, 4, 9, 5, 5, 4, 9, 5])",
+      "([5, 5, 4, 1, 4, 1])",
+      "([4, 2, 2, 5])",
+      "([4, 2, 4, 2, 5, 5])",
+      "([4, 2, 4, 5, 5])",
+      "([1, 1, 1])",
+      "([4, 5])",
+      "([5, 4, 1])",
+      "([])",
+      "([5, 4, 5, 4, 1])",
+      "([4, 5, 4, 1, 5])",
+      "([3, 4, 5])",
+      "([4, 1, 5])",
+      "([5, 4, 1])",
+      "([2, 4, 2, 5])"
+    ]
+  },
+  {
+    question: 'Given a non-empty array, return true if there is a place to split the array so that the sum of the numbers on one side is equal to the sum of the numbers on the other side.',
     title: 'Array-3',
     name: 'canBalance',
     inputs: [
-  "([1, 1, 1, 2, 1])",
-  "([2, 1, 1, 2, 1])",
-  "([10, 10])",
-  "([10, 0, 1, -1, 10])",
-  "([1, 1, 1, 1, 4])",
-  "([2, 1, 1, 1, 4])",
-  "([2, 3, 4, 1, 2])",
-  "([1, 2, 3, 1, 0, 2, 3])",
-  "([1, 2, 3, 1, 0, 1, 3])",
-  "([1])",
-  "([1, 1, 1, 2, 1])"
-] },
-  { question: 'Given two arrays of ints sorted in increasing order, outer and inner, return true if all of the numbers in inner appear in outer. The best solution makes only a single "linear" pass of both arrays, taking advantage of the fact that both arrays are already in sorted order.',
+      "([1, 1, 1, 2, 1])",
+      "([2, 1, 1, 2, 1])",
+      "([10, 10])",
+      "([10, 0, 1, -1, 10])",
+      "([1, 1, 1, 1, 4])",
+      "([2, 1, 1, 1, 4])",
+      "([2, 3, 4, 1, 2])",
+      "([1, 2, 3, 1, 0, 2, 3])",
+      "([1, 2, 3, 1, 0, 1, 3])",
+      "([1])",
+      "([1, 1, 1, 2, 1])"
+    ]
+  },
+  {
+    question: 'Given two arrays of ints sorted in increasing order, outer and inner, return true if all of the numbers in inner appear in outer. The best solution makes only a single "linear" pass of both arrays, taking advantage of the fact that both arrays are already in sorted order.',
     title: 'Array-3',
     name: 'linearIn',
     inputs: [
-  "([1, 2, 4, 6], [2, 4])",
-  "([1, 2, 4, 6], [2, 3, 4])",
-  "([1, 2, 4, 4, 6], [2, 4])",
-  "([2, 2, 4, 4, 6, 6], [2, 4])",
-  "([2, 2, 2, 2, 2], [2, 2])",
-  "([2, 2, 2, 2, 2], [2, 4])",
-  "([2, 2, 2, 2, 4], [2, 4])",
-  "([1, 2, 3], [2])",
-  "([1, 2, 3], [-1])",
-  "([1, 2, 3], [])",
-  "([-1, 0, 3, 3, 3, 10, 12], [-1, 0, 3, 12])",
-  "([-1, 0, 3, 3, 3, 10, 12], [0, 3, 12, 14])",
-  "([-1, 0, 3, 3, 3, 10, 12], [-1, 10, 11])"
-] },
-  { question: 'Given n>=0, create an array length n*n with the following pattern, shown here for n=3 : {0, 0, 1,    0, 2, 1,    3, 2, 1} (spaces added to show the 3 groups).',
+      "([1, 2, 4, 6], [2, 4])",
+      "([1, 2, 4, 6], [2, 3, 4])",
+      "([1, 2, 4, 4, 6], [2, 4])",
+      "([2, 2, 4, 4, 6, 6], [2, 4])",
+      "([2, 2, 2, 2, 2], [2, 2])",
+      "([2, 2, 2, 2, 2], [2, 4])",
+      "([2, 2, 2, 2, 4], [2, 4])",
+      "([1, 2, 3], [2])",
+      "([1, 2, 3], [-1])",
+      "([1, 2, 3], [])",
+      "([-1, 0, 3, 3, 3, 10, 12], [-1, 0, 3, 12])",
+      "([-1, 0, 3, 3, 3, 10, 12], [0, 3, 12, 14])",
+      "([-1, 0, 3, 3, 3, 10, 12], [-1, 10, 11])"
+    ]
+  },
+  {
+    question: 'Given n>=0, create an array length n*n with the following pattern, shown here for n=3 : {0, 0, 1,    0, 2, 1,    3, 2, 1} (spaces added to show the 3 groups).',
     title: 'Array-3',
     name: 'squareUp',
     inputs: [
-  "(3)",
-  "(2)",
-  "(4)",
-  "(1)",
-  "(0)"
-] },
-  { question: 'Given n>=0, create an array with the pattern {1,    1, 2,    1, 2, 3,   ... 1, 2, 3 .. n} (spaces added to show the grouping). Note that the length of the array will be 1 + 2 + 3 ... + n, which is known to sum to exactly n*(n + 1)/2.',
+      "(3)",
+      "(2)",
+      "(4)",
+      "(1)",
+      "(0)"
+    ]
+  },
+  {
+    question: 'Given n>=0, create an array with the pattern {1,    1, 2,    1, 2, 3,   ... 1, 2, 3 .. n} (spaces added to show the grouping). Note that the length of the array will be 1 + 2 + 3 ... + n, which is known to sum to exactly n*(n + 1)/2.',
     title: 'Array-3',
     name: 'seriesUp',
     inputs: [
-  "(3)",
-  "(4)",
-  "(2)",
-  "(1)",
-  "(0)"
-] },
-  { question: 'We\'ll say that a "mirror" section in an array is a group of contiguous elements such that somewhere in the array, the same group appears in reverse order. For example, the largest mirror section in {1, 2, 3, 8, 9, 3, 2, 1} is length 3 (the {1, 2, 3} part). Return the size of the largest mirror section found in the given array.',
+      "(3)",
+      "(4)",
+      "(2)",
+      "(1)",
+      "(0)"
+    ]
+  },
+  {
+    question: 'We\'ll say that a "mirror" section in an array is a group of contiguous elements such that somewhere in the array, the same group appears in reverse order. For example, the largest mirror section in {1, 2, 3, 8, 9, 3, 2, 1} is length 3 (the {1, 2, 3} part). Return the size of the largest mirror section found in the given array.',
     title: 'Array-3',
     name: 'maxMirror',
     inputs: [
-  "([1, 2, 3, 8, 9, 3, 2, 1])",
-  "([1, 2, 1, 4])",
-  "([7, 1, 2, 9, 7, 2, 1])",
-  "([21, 22, 9, 8, 7, 6, 23, 24, 6, 7, 8, 9, 25, 7, 8, 9])",
-  "([1, 2, 1, 20, 21, 1, 2, 1, 2, 23, 24, 2, 1, 2, 1, 25])",
-  "([1, 2, 3, 2, 1])",
-  "([1, 2, 3, 3, 8])",
-  "([1, 2, 7, 8, 1, 7, 2])",
-  "([1, 1, 1])",
-  "([1])",
-  "([])",
-  "([9, 1, 1, 4, 2, 1, 1, 1])",
-  "([5, 9, 9, 4, 5, 4, 9, 9, 2])",
-  "([5, 9, 9, 6, 5, 4, 9, 9, 2])",
-  "([5, 9, 1, 6, 5, 4, 1, 9, 5])"
-] },
-  { question: 'Say that a "clump" in an array is a series of 2 or more adjacent elements of the same value. Return the number of clumps in the given array.',
+      "([1, 2, 3, 8, 9, 3, 2, 1])",
+      "([1, 2, 1, 4])",
+      "([7, 1, 2, 9, 7, 2, 1])",
+      "([21, 22, 9, 8, 7, 6, 23, 24, 6, 7, 8, 9, 25, 7, 8, 9])",
+      "([1, 2, 1, 20, 21, 1, 2, 1, 2, 23, 24, 2, 1, 2, 1, 25])",
+      "([1, 2, 3, 2, 1])",
+      "([1, 2, 3, 3, 8])",
+      "([1, 2, 7, 8, 1, 7, 2])",
+      "([1, 1, 1])",
+      "([1])",
+      "([])",
+      "([9, 1, 1, 4, 2, 1, 1, 1])",
+      "([5, 9, 9, 4, 5, 4, 9, 9, 2])",
+      "([5, 9, 9, 6, 5, 4, 9, 9, 2])",
+      "([5, 9, 1, 6, 5, 4, 1, 9, 5])"
+    ]
+  },
+  {
+    question: 'Say that a "clump" in an array is a series of 2 or more adjacent elements of the same value. Return the number of clumps in the given array.',
     title: 'Array-3',
     name: 'countClumps',
     inputs: [
-  "([1, 2, 2, 3, 4, 4])",
-  "([1, 1, 2, 1, 1])",
-  "([1, 1, 1, 1, 1])",
-  "([1, 2, 3])",
-  "([2, 2, 1, 1, 1, 2, 1, 1, 2, 2])",
-  "([0, 2, 2, 1, 1, 1, 2, 1, 1, 2, 2])",
-  "([0, 0, 2, 2, 1, 1, 1, 2, 1, 1, 2, 2])",
-  "([0, 0, 0, 2, 2, 1, 1, 1, 2, 1, 1, 2, 2])",
-  "([])"
-] },
+      "([1, 2, 2, 3, 4, 4])",
+      "([1, 1, 2, 1, 1])",
+      "([1, 1, 1, 1, 1])",
+      "([1, 2, 3])",
+      "([2, 2, 1, 1, 1, 2, 1, 1, 2, 2])",
+      "([0, 2, 2, 1, 1, 1, 2, 1, 1, 2, 2])",
+      "([0, 0, 2, 2, 1, 1, 1, 2, 1, 1, 2, 2])",
+      "([0, 0, 0, 2, 2, 1, 1, 1, 2, 1, 1, 2, 2])",
+      "([])"
+    ]
+  },
 
 ];
 

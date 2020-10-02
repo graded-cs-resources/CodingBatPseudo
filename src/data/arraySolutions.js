@@ -7,15 +7,17 @@
 
 let solutions = {};
 
-solutions.firstLast6 = function firstLast6(nums) {
-  // The first variable is optional, but it makes the code more readable  
-  let end = nums.length - 1;
-  if (nums.length > 0 && (nums[0] == 6 || nums[end] == 6)) {
-    return true;
-  } else {
-    return false;
-  }
-}
+// solutions in pseudocode are STRINGS. Notice that the string
+// starts with a backtick - that allows it to span multiple lines
+// Make sure the names match perfectly, including case
+solutions.FirstLast6 = `method FirstLast6(NUMS)
+  END = NUMS.length - 1
+  if NUMS[0] = 6 OR NUMS[END] = 6 then
+    output "TRUE"
+  else
+    output "FALSE"
+  end if
+end method`;
 
 solutions.sameFirstLast = function sameFirstLast(nums) {
   let end = nums.length - 1;
@@ -74,7 +76,7 @@ solutions.middleWay = function middleWay(a, b) {
 }
 
 solutions.makeEnds = function makeEnds(nums) {
-  let end = nums.length-1
+  let end = nums.length - 1
   return [nums[0], nums[end]];
 }
 
@@ -127,10 +129,10 @@ solutions.fix23 = function fix23(nums) {
 
 solutions.findTheMedian = function findTheMedian(nums) {
   //where is the sort method? 
-  let end = nums.length-1; 
-  let mid = nums.length/2 
+  let end = nums.length - 1;
+  let mid = nums.length / 2
   if (nums.length % 2 === 1) {
-    return nums[end/ 2];
+    return nums[end / 2];
   }
   else {
     return (nums[mid - 1] + nums[mid]) / 2;
@@ -154,8 +156,8 @@ solutions.biggerTwo = function biggerTwo(a, b) {
   if (b[0] + b[1] > a[0] + a[1]) {
     return b;
   }
-  else if(a[0] + a[1] > b[0] + b[1]){
-    return a; 
+  else if (a[0] + a[1] > b[0] + b[1]) {
+    return a;
   }
   else return a;
 }
@@ -233,35 +235,35 @@ solutions.frontPiece = function frontPiece(nums) {
 }
 
 solutions.unlucky1 = function unlucky1(nums) {
-  if((nums[0] == 1 && nums[1] ==3) || (nums[nums.length-2]==1 && nums[nums.length-1]==3)){
+  if ((nums[0] == 1 && nums[1] == 3) || (nums[nums.length - 2] == 1 && nums[nums.length - 1] == 3)) {
     return true;
-    }
-    else return false;
+  }
+  else return false;
 }
 
 solutions.make2 = function make2(a, b) {
-  if(a.length>=2){
-    return [a[0],a[1]]
+  if (a.length >= 2) {
+    return [a[0], a[1]]
   }
-  else if(a.length == 1){
+  else if (a.length == 1) {
     return [a[0], b[0]]
   }
-  else return [b[0],b[1]]
+  else return [b[0], b[1]]
 }
 
 solutions.front11 = function front11(a, b) {
-  if(a.length == 0){
+  if (a.length == 0) {
     return [b[0]]
   }
-  else if(b.length==0){
+  else if (b.length == 0) {
     return [a[0]]
   }
-  else if(a.length==0 && b.length==0){
+  else if (a.length == 0 && b.length == 0) {
     return []
-  } 
-  else return [a[0],b[0]]
+  }
+  else return [a[0], b[0]]
 }
-  
+
 
 
 // Array-2
@@ -282,11 +284,11 @@ solutions.bigDiff = function bigDiff(nums) {
   //Math.abs returns the absolute value of a number 
   let max = nums[0]
   let min = nums[0]
-  for(let i=0; i<nums.length; i++){
-    if(nums[i]>max){
-      max =nums[i]
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] > max) {
+      max = nums[i]
     }
-    else if (nums[i]<min){
+    else if (nums[i] < min) {
       min = nums[i]
     }
   }
@@ -296,26 +298,26 @@ solutions.bigDiff = function bigDiff(nums) {
 solutions.centeredAverage = function centeredAverage(nums) {
   let max = nums[0]
   let min = nums[0]
-  let maxIndex =0; 
-  let minIndex =0; 
-  for(let i=0; i<nums.length; i++){//find max and min 
-    if(nums[i]>=max){
-      max =nums[i]
+  let maxIndex = 0;
+  let minIndex = 0;
+  for (let i = 0; i < nums.length; i++) {//find max and min 
+    if (nums[i] >= max) {
+      max = nums[i]
       maxIndex = i;
     }
-    else if (nums[i]<min){
+    else if (nums[i] < min) {
       min = nums[i]
-      minIndex = i; 
+      minIndex = i;
     }
   }
   let total = 0;
-  for(let i=0; i<nums.length; i++){//if the index of element is neither a maxIndex or minIndex, add to total
-   if(!(i==maxIndex || i== minIndex)){
-     total = total + nums[i]
+  for (let i = 0; i < nums.length; i++) {//if the index of element is neither a maxIndex or minIndex, add to total
+    if (!(i == maxIndex || i == minIndex)) {
+      total = total + nums[i]
     }
   }
-  return total/(nums.length-2) 
-  
+  return total / (nums.length - 2)
+
 }
 
 solutions.sum13 = function sum13(nums) {
@@ -392,7 +394,7 @@ solutions.more14 = function more14(nums) {
   }
   if (one > four) {
     return true;
-  }else {
+  } else {
     return false;
   }
 }
@@ -406,12 +408,12 @@ solutions.Array = function fizzArray(n) {
 }
 
 solutions.prependSum = function prependSum(nums) {
-  let arr=[];
-  arr[0]=nums[0]+nums[1]
-  for(let i=2; i<nums.length; i++){
-    arr[i-1]=nums[i]; //nums start at i=2 because the first two elements were removed
+  let arr = [];
+  arr[0] = nums[0] + nums[1]
+  for (let i = 2; i < nums.length; i++) {
+    arr[i - 1] = nums[i]; //nums start at i=2 because the first two elements were removed
   }
-  return arr; 
+  return arr;
 }
 
 
@@ -435,8 +437,8 @@ solutions.fizzArray2 = function fizzArray2(n) {
 }
 
 solutions.no14 = function no14(nums) {
-  let has1 = false; 
-  let has4 = false; 
+  let has1 = false;
+  let has4 = false;
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] == 1) {
       has1 = true;
@@ -447,10 +449,10 @@ solutions.no14 = function no14(nums) {
     }
 
   }
-  if(has1 == true && has4==true){
+  if (has1 == true && has4 == true) {
     return false;
   }
-  else return true; 
+  else return true;
 }
 
 solutions.isEverywhere = function isEverywhere(nums, val) {
@@ -474,14 +476,14 @@ solutions.either24 = function either24(nums) {
       has44 = true;
   }
 
-  if(has22!=has44){//both boolean values must be different (both true -> false, both false-> false)
+  if (has22 != has44) {//both boolean values must be different (both true -> false, both false-> false)
     return true;
   }
-  else return false; 
+  else return false;
 }
 
 solutions.matchUp = function matchUp(nums1, nums2) {
- //Math.abs(a-b) calculates the absolute value of the difference between a and b
+  //Math.abs(a-b) calculates the absolute value of the difference between a and b
   let count = 0;
   for (let i = 0; i < nums1.length; i++) {
     let diff = Math.abs(nums1[i] - nums2[i]);
@@ -528,27 +530,27 @@ solutions.modThree = function modThree(nums) {
 solutions.haveThree = function haveThree(nums) {
   let three = 0;
   for (let i = 0; i < nums.length; i++) {
-    if(nums[i] == 3){
+    if (nums[i] == 3) {
       three++;
     }
-    if(nums[i+1]==3 && nums[i]==3){
-      return false; 
+    if (nums[i + 1] == 3 && nums[i] == 3) {
+      return false;
     }
 
   }
-  if(three==3){
+  if (three == 3) {
     return true;
   }
-  else return false; 
+  else return false;
 }
 
 solutions.twoTwo = function twoTwo(nums) {
   for (let i = 0; i < nums.length; i++) {
-    if ((nums[i] == 2)&&(nums[i+1]==2)){
-      i=i+2//if 2 is already found, skip two indexes because the last 2 is already accounted for 
+    if ((nums[i] == 2) && (nums[i + 1] == 2)) {
+      i = i + 2//if 2 is already found, skip two indexes because the last 2 is already accounted for 
     }
-    else if((nums[i] == 2)&&(nums[i+1]!=2))
-    return false; 
+    else if ((nums[i] == 2) && (nums[i + 1] != 2))
+      return false;
   }
   return true;
 }
@@ -561,44 +563,44 @@ solutions.sameEnds = function sameEnds(nums, len) {
 }
 
 solutions.tripleUp = function tripleUp(nums) {
-  for (let i = 0; i<nums.length-2; i++) {
-    if(nums[i] +1 == nums[i+1] && nums[i+1]+1 == nums[i+2]){
-      return true; 
+  for (let i = 0; i < nums.length - 2; i++) {
+    if (nums[i] + 1 == nums[i + 1] && nums[i + 1] + 1 == nums[i + 2]) {
+      return true;
     }
   }
-  return false; 
+  return false;
 }
 
 solutions.fizzArray3 = function fizzArray3(start, end) {
-  let count =0; 
-  for(let i=start; i<end; i++){
+  let count = 0;
+  for (let i = start; i < end; i++) {
     arr[count] = i;
-    count ++; 
+    count++;
   }
   return arr
 }
 
 solutions.shiftLeft = function shiftLeft(nums) {
   let firstVal = nums[0]
-  for(let i=0; i<nums.length-1;i++){
+  for (let i = 0; i < nums.length - 1; i++) {
     let temp = nums[i];
-    nums[i]=nums[i+1]
-    nums[i+1]=nums[i]
+    nums[i] = nums[i + 1]
+    nums[i + 1] = nums[i]
   }
-  nums[nums.length-1]=firstVal
+  nums[nums.length - 1] = firstVal
   return nums
 }
 
 solutions.tenRun = function tenRun(nums) {
-  let i=0; 
-    while(i<nums.length-1) {
-      if(nums[i]%10 == 0 && !(nums[i+1]%10==0)){//if the current number is a multiple of 10 AND the next number is NOT a multiple of 10 
-        nums[i+1]=nums[i];
-        i++;
-      }
-      else i++; 
+  let i = 0;
+  while (i < nums.length - 1) {
+    if (nums[i] % 10 == 0 && !(nums[i + 1] % 10 == 0)) {//if the current number is a multiple of 10 AND the next number is NOT a multiple of 10 
+      nums[i + 1] = nums[i];
+      i++;
     }
-  return nums; 
+    else i++;
+  }
+  return nums;
 }
 
 solutions.pre4 = function pre4(nums) {
@@ -616,17 +618,17 @@ solutions.pre4 = function pre4(nums) {
 }
 
 solutions.post4 = function post4(nums) {
-  let arr=[];
-  let index4; 
-  for(let i=0; i<nums.length; i++){//get the largest index of 4
-    if(nums[i] == 4){
-      index4 =i; 
+  let arr = [];
+  let index4;
+  for (let i = 0; i < nums.length; i++) {//get the largest index of 4
+    if (nums[i] == 4) {
+      index4 = i;
     }
   }
-  for(let c=0; c<nums.length-1-index4; c++){
-    arr[c] = nums[c+1+index4]//put the values after 4 into an array
+  for (let c = 0; c < nums.length - 1 - index4; c++) {
+    arr[c] = nums[c + 1 + index4]//put the values after 4 into an array
   }
-  return arr; 
+  return arr;
 }
 
 solutions.notAlone = function notAlone(nums, val) {
@@ -674,45 +676,45 @@ solutions.zeroFront = function zeroFront(nums) {
 }
 
 solutions.withoutTen = function withoutTen(nums) {
-  for(let i =0; i<nums.length; i++){
-    if(nums[i]==10){
-      nums[i]=0; 
-      for(let c=i; c<nums.length-1; c++){
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] == 10) {
+      nums[i] = 0;
+      for (let c = i; c < nums.length - 1; c++) {
         let temp = nums[c]//basic swap between left and right 
-        nums[c]=nums[c+1];
-        nums[c+1]=temp;
-        if(nums[c]==10){//if ten replaces another ten, do the step one more time 
-          i=i-1; 
+        nums[c] = nums[c + 1];
+        nums[c + 1] = temp;
+        if (nums[c] == 10) {//if ten replaces another ten, do the step one more time 
+          i = i - 1;
         }
       }
     }
   }
-  return nums;  
+  return nums;
 }
 
 solutions.zeroMax = function zeroMax(nums) {
   let odd = 0;
-  for(let i=0; i<nums.length; i++){
-    if(nums[i]==0){
-      for(let c=i+1; c<nums.length; c++){//find largest odd value RIGHT of the 0 
-        if(nums[c]>odd && nums[c]%2==1){
-          odd=nums[c];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] == 0) {
+      for (let c = i + 1; c < nums.length; c++) {//find largest odd value RIGHT of the 0 
+        if (nums[c] > odd && nums[c] % 2 == 1) {
+          odd = nums[c];
         }
       }
-      nums[i]=odd; 
-      odd=0;//reset odd just in case there is a larger number before the current 0. 
+      nums[i] = odd;
+      odd = 0;//reset odd just in case there is a larger number before the current 0. 
     }
   }
-  return nums; 
+  return nums;
 }
 
 solutions.evenOdd = function evenOdd(nums) {
   //array.concat(array1) combines the two arrays. Use it wisely 
   //array.push(num) adds a variable num to the array 
-  let even =[]; 
-  let odd=[]; 
-  for(let i=0; i<nums.length; i++){
-    if(nums[i]%2==0){
+  let even = [];
+  let odd = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] % 2 == 0) {
       even.push(nums[i])
     }
     else {
@@ -732,26 +734,26 @@ function isOdd(num) {
 
 solutions.fizzBuzz = function fizzBuzz(start, end) {
   let strArray = [];
-  let count = 0; 
+  let count = 0;
   for (let i = start; i < end; i++) {
-    if(i%3==0&&!(i%5==0)){
-      strArray[count]="Fizz"
-      count ++;
-    }
-    else if(i%5==0&&!(i%3==0)){
-      strArray[count]="Buzz"
+    if (i % 3 == 0 && !(i % 5 == 0)) {
+      strArray[count] = "Fizz"
       count++;
     }
-    else if(i%3==0 && i%5==0){
-      strArray[count]="FizzBuzz"
+    else if (i % 5 == 0 && !(i % 3 == 0)) {
+      strArray[count] = "Buzz"
       count++;
     }
-    else{
-      strArray[count]=i.toString();
-      count++; 
+    else if (i % 3 == 0 && i % 5 == 0) {
+      strArray[count] = "FizzBuzz"
+      count++;
+    }
+    else {
+      strArray[count] = i.toString();
+      count++;
     }
   }
-  return strArray; 
+  return strArray;
 }
 
 // Array-3
@@ -894,33 +896,33 @@ solutions.seriesUp = function seriesUp(n) {
 }
 
 solutions.maxMirror = function maxMirror(nums) {
-//This solution was made by Sung Ho Park. He took 5 hours to simplify the solution. You're welcome. 
+  //This solution was made by Sung Ho Park. He took 5 hours to simplify the solution. You're welcome. 
   //.includes() method checks whether a specific string exists within an string or not.toString() converts a number to a string 
-  if(nums.length ==0){
-    return 0; 
+  if (nums.length == 0) {
+    return 0;
   }
   //reverses nums and makes it into a string 
-  let reverse= "";
-  reverse = reverse + nums[nums.length-1]; 
-  for(let i=nums.length-2; i>=0; i--){
-    reverse = reverse + "," + nums[i].toString(); 
+  let reverse = "";
+  reverse = reverse + nums[nums.length - 1];
+  for (let i = nums.length - 2; i >= 0; i--) {
+    reverse = reverse + "," + nums[i].toString();
   }
-  let maxNum = nums.length-1; 
-  while(maxNum >=0){
-  for(let i=0; i<nums.length-maxNum; i++){
-    if(reverse.includes(createCandidate(nums, i, maxNum+i))){
-      return maxNum+i+1-i; 
+  let maxNum = nums.length - 1;
+  while (maxNum >= 0) {
+    for (let i = 0; i < nums.length - maxNum; i++) {
+      if (reverse.includes(createCandidate(nums, i, maxNum + i))) {
+        return maxNum + i + 1 - i;
+      }
     }
+    maxNum = maxNum - 1;
   }
-  maxNum=maxNum-1; 
- }
- function createCandidate(num,min,max){//creates candidates between ranges of min and max
-   let answer= ""; 
-   answer = answer + num[min].toString(); 
-   for(let c=min+1; c<max+1; c++){
-      answer = answer + "," + num[c].toString(); 
-   }
-   return answer; 
+  function createCandidate(num, min, max) {//creates candidates between ranges of min and max
+    let answer = "";
+    answer = answer + num[min].toString();
+    for (let c = min + 1; c < max + 1; c++) {
+      answer = answer + "," + num[c].toString();
+    }
+    return answer;
   }
 }
 
