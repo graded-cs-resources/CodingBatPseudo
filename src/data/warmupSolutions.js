@@ -248,7 +248,6 @@ solutions.FrontTimes = `method FrontTimes(STR, N)
   output RESULT
 end method`;
 
-
 /***** Start un-edited ones */
 
 solutions.DelDel = `method DelDel(str) 
@@ -261,8 +260,6 @@ solutions.DelDel = `method DelDel(str)
   end if
   return output;
 end method`;
-
-
 
 solutions.Max1020 = `method Max1020(a, b) 
   method between1020(num)
@@ -289,7 +286,6 @@ solutions.EndUp = `method EndUp(str)
   return front + back.toUpperCase();
 end method`;
 
-// Warmup-2
 solutions.DoubleX = `method DoubleX(str) 
   str.toLowerCase();
   x = str.indexOf('x');
@@ -343,7 +339,6 @@ solutions.NoTriples = `method NoTriples(nums)
     end if
   } output "TRUE"
 end method`;
-
 
 solutions.StringBits = `method StringBits(str) 
   result = '';
