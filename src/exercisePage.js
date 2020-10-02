@@ -20,16 +20,15 @@ const prettyPrintMap = require("./utility/prettyPrintMap.js");
 const exerciseListeners = require("./listeners/exerciseListeners");
 const keyboardShortcuts = require("./listeners/keyboardShortcuts");
 
-require("../node_modules/codemirror-minified/mode/javascript/javascript.js");
-require("../node_modules/codemirror-minified/addon/comment/comment.js");
 require("../node_modules/codemirror-minified/addon/edit/matchbrackets.js");
-
+const CodeMirrorPSHighlighting = require("./utility/cmps.js");
+CodeMirrorPSHighlighting(CodeMirror);
 
 // define codemirror editor to interact with code on page
 const editor = CodeMirror.fromTextArea(document.getElementById("answer"), {
   lineNumbers: true,
   matchBrackets: true,
-  mode: "text/x-vbc",
+  mode: "pseudocode",
   viewportMargin: Infinity,
   lineWrapping: true,
   extraKeys: {
@@ -45,14 +44,14 @@ editor.setSize("100%", "auto");
 const solutionArea = CodeMirror.fromTextArea(document.getElementById("solution"), {
   readOnly: true,
   noCursor: true,
-  mode: "text/x-vbc",
+  mode: "pseudocode",
   viewportMargin: Infinity,
   lineWrapping: true,
   lineNumbers: true,
   cursorBlinkRate: -1,
 });
 solutionArea.getWrapperElement().style.display = "none";
-solutionArea.getWrapperElement().style.background = "#eeeeee";
+solutionArea.getWrapperElement().style.background = "#dadada";
 
 
 // Work out which excercise to show

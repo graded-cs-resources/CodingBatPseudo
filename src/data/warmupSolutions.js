@@ -14,14 +14,11 @@ solutions.SleepIn = `method sleepIn(WEEKDAY, VACATION)
 end method`;
 
 solutions.MonkeyTrouble = `method MonkeyTrouble(ASMILE, BSMILE)
-  if ASMILE AND BSMILE then
+  if (ASMILE AND BSMILE) OR (NOT ASMILE AND NOT BSMILE) then
+  // alternative: if ASMILE = BSMILE then
     output "TRUE"
   else
-    if NOT ASMILE AND NOT BSMILE then
-      output "TRUE"
-    else
-      output "FALSE"
-    end if
+    output "FALSE"
   end if
 end method`;
 
