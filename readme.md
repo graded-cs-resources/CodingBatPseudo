@@ -6,7 +6,7 @@ A static website to do CodingBat problems in IB-Style pseudocode (javascript wil
 
 - [CodingBat](https://codingbat.com) - the original, where you can do many of these problems plus more in java or python
 - [CodingJS](https://github.com/the-winter/CodingJS) - CodingJS, a javascript implementation of codingbat problems 
-- [CodingTS](https://github.com/graded-cs-resources/CodingTS - CodingTS, an expansion of CodingJS with more of a typescript focus and more solutions
+- [CodingTS](https://github.com/graded-cs-resources/CodingTS) - CodingTS, an expansion of CodingJS with more of a typescript focus and more solutions
 
 ## Credits
 
