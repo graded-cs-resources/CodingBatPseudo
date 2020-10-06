@@ -13,10 +13,9 @@ module.exports = function (exercise, exerciseName) {
             if (exercise.inputType === "map") {
                 // display syntax message
                 if (i === 0) {
-                    document.querySelectorAll(".examples")
-                        .forEach((e) => {
-                            e.insertAdjacentHTML('beforeEnd', `<p><em>Note that the Map syntax for the example runs and output has been simplified for user readability, but would not actually create a Map() properly.</em></p>`);
-                        });
+                    document.querySelector(".examples")
+                    insertAdjacentHTML('beforeend',
+                        `<p><em>Note that the Map syntax for the example runs and output has been simplified for user readability, but would not actually create a Map() properly.</em></p>`);
                 }
 
                 let inputCopy = inputParser(exercise, exercise.inputs[i]);
@@ -28,11 +27,9 @@ module.exports = function (exercise, exerciseName) {
                     result = solutions[exerciseName](inputCopy);
                 }
                 let formattedResult = prettyPrintMap(result);
-                document.querySelector('.examples').forEach(
-                    (e) => {
-                        e.insertAdjacentHTML('beforeend', `<li>${exerciseName}${formattedInput} → ${formattedResult}</li>`);
-                    }
-                );
+                document.querySelector('.examples')
+                    .insertAdjacentHTML('beforeend',
+                        `<li>${exerciseName}${formattedInput} → ${formattedResult}</li>`);
             }
             else {
                 if (typeof (solutions[exerciseName]) === "string") {
@@ -41,11 +38,9 @@ module.exports = function (exercise, exerciseName) {
                 } else {
                     result = solutions[exerciseName](...input);
                 }
-                document.querySelector('.examples').forEach(
-                    (e) => {
-                        e.insertAdjacentHTML('beforeend', `<li>${exerciseName}${exercise.inputs[i]} → ${result}</li>`);
-                    }
-                );
+                document.querySelector('.examples')
+                    .insertAdjacentHTML('beforeend',
+                        `<li>${exerciseName}${exercise.inputs[i]} → ${result}</li>`);
             }
         } catch (e) {
             console.log(e);

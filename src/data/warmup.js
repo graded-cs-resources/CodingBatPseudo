@@ -2,7 +2,7 @@ module.exports = [
   {
     title: 'Warmup-1',
     name: 'SleepIn',
-    question: `The parameter WEEKDAY is true if it is a weekday, and the parameter
+    question: `The parameter WEEKDAY is TRUE if it is a weekday, and the parameter
        VACATION is FALSE if we are on vacation. We sleep in if it is not a weekday or
        we're on vacation. Output <code>"TRUE"</code> if we sleep in, "FALSE" if we do not.`,
     inputs: [
@@ -109,27 +109,27 @@ module.exports = [
     title: 'Warmup-1',
     name: 'PosNeg',
     question: `Given 2 number values, Output <code>"TRUE"</code> if one is negative and one is positive.
-        Except if the parameter <code>NEGATIVE</code> is true, then output <code>"TRUE"</code> only if both are negative.`,
+        Except if the parameter <code>NEGATIVE</code> is TRUE, then output <code>"TRUE"</code> only if both are negative.`,
     inputs: [
       '(1, -1, FALSE)',
       '(-1, 1, FALSE)',
-      '(-4, -5, true)',
+      '(-4, -5, TRUE)',
       '(-4, -5, FALSE)',
       '(-4, 5, FALSE)',
-      '(-4, 5, true)',
+      '(-4, 5, TRUE)',
       '(1, 1, FALSE)',
       '(-1, -1, FALSE)',
-      '(1, -1, true)',
-      '(-1, 1, true)',
-      '(1, 1, true)',
-      '(-1, -1, true)',
+      '(1, -1, TRUE)',
+      '(-1, 1, TRUE)',
+      '(1, 1, TRUE)',
+      '(-1, -1, TRUE)',
       '(5, -5, FALSE)',
       '(-6, 6, FALSE)',
       '(-5, -6, FALSE)',
       '(-2, -1, FALSE)',
       '(1, 2, FALSE)',
-      '(-5, 6, true)',
-      '(-5, -5, true)',
+      '(-5, 6, TRUE)',
+      '(-5, -5, TRUE)',
     ],
   }, {
     title: 'Warmup-1',
@@ -205,8 +205,7 @@ module.exports = [
       "('Logic')",
     ],
     question: `Given a string, take the first 2 chars and output the string with the 2
-chars added at both the front and back, so 'kitten' yields 'kikittenki' chars are
-there. You can use the method STRING.SubStr(S,L)
+chars added at both the front and back, so 'kitten' yields 'kikittenki'. You can use the method STRING.SubStr(S,L)
 where S is the first index in the substring (first char is 0!) and L is how many chars you want.`,
   }, {
     title: 'Warmup-1',

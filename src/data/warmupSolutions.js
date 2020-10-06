@@ -86,12 +86,8 @@ solutions.Or35 = `method Or35(n)
 end method`;
 
 solutions.Front22 = `method Front22(STR) 
-  take = 2;
-  if take > str.length then
-    take = str.length;
-  }
-  front = str.substring(0, take);
-  return front + str + front;
+  FRONT = STR.SubStr(0, 2)
+  output FRONT + STR + FRONT
 end method`;
 
 solutions.PosNeg = `method PosNeg(A, B, NEGATIVE) 
@@ -99,14 +95,13 @@ solutions.PosNeg = `method PosNeg(A, B, NEGATIVE)
     if A < 0 AND B < 0 then
       output "TRUE"
     else
-      output "FALSE
+      output "FALSE"
     end if
-  end if
-  if (A < 0 AND B > 0) OR (A > 0 AND B < 0) then
+  else if (A < 0 AND B > 0) OR (A > 0 AND B < 0) then
     output "TRUE"
   else
     output "FALSE"
-  }
+  end if
 end method`;
 
 solutions.StartHi = `method StartHi(STR) 
