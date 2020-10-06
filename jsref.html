@@ -4,86 +4,18 @@
 <head>
   <meta charset="utf-8">
   <title>IB Pseudocode Reference</title>
-  <style media="screen">
-    section {
-      position: relative;
-      color: #FFF;
-      padding: 20px;
-      margin: 20px auto;
-    }
-
-    @media only screen and (min-width: 992px) {
-      section {
-        font-size: 0.75em;
-        -webkit-columns: 3 350px;
-        -moz-columns: 350px;
-        columns: 3 350px;
-        -webkit-column-gap: 2em;
-        -moz-column-gap: 2em;
-        column-gap: 2em;
-        position: relative;
-        color: #FFF;
-        padding: 20px;
-        margin: 20px auto;
-      }
-    }
-
-    div {
-      -webkit-column-break-inside: avoid;
-      page-break-inside: avoid;
-      break-inside: avoid;
-    }
-
-    pre {
-      padding: 1em;
-      font-size: 0.8em;
-      background-color: #EEEEEE;
-      color: #000;
-    }
-
-
-
-    table.minimalistBlack {
-      border: 3px solid #FFFFFF;
-      background-color: #EEEEEE;
-      width: 100%;
-      text-align: left;
-      border-collapse: collapse;
-    }
-
-    table.minimalistBlack td,
-    table.minimalistBlack th {
-      border: 1px solid #FFFFFF;
-      padding: 5px 4px;
-      color: #000;
-    }
-
-    table.minimalistBlack thead {
-      background: #CFCFCF;
-      background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
-      background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
-      background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
-      border-bottom: 3px solid #FFFFFF;
-    }
-
-    table.minimalistBlack thead th {
-      font-weight: bold;
-      color: #000000;
-      text-align: left;
-    }
-  </style>
+  <link rel="stylesheet" href="./css/jsref.css">
 </head>
 
 <body>
-  <section id="mainContent">
-
+  <section id="reference">
     <div>
       <h2>Methods</h2>
       <p>For these exercises, you will usually <code>output</code> and answer, but you may <code>return</code> for some
       </p>
       <pre><code>method adder(FIRST, SECOND) 
-  THEANSWER = first + second;
-  output THEANSWER;
+  THEANSWER = first + second
+  output THEANSWER
 end method</code></pre>
     </div>
 
@@ -119,11 +51,11 @@ end method</code></pre>
             <td>division (float)</td>
           </tr>
           <tr>
-            <td><code>DIV</code></td>
+            <td><code>div</code></td>
             <td>division (integer)</td>
           </tr>
           <tr>
-            <td><code>MOD</code></td>
+            <td><code>mod</code></td>
             <td>remainder (modulo)</td>
           </tr>
 
@@ -173,39 +105,33 @@ end method</code></pre>
 
     <div>
       <h2>If / Else If / Else</h2>
-      <table>
-        <tbody>
-          <tr>
-            <pre><code>if NUM < 42 then
+
+      <pre><code>if NUM < 42 then
   // something
 end if</code></pre>
-          </tr>
-          <tr>
-            <pre><code>if NUM < 42 then
+
+      <pre><code>if NUM < 42 then
   // something
 else
  // something else
 end if</code></pre>
-          </tr>
-          <tr>
-            <pre><code>if NUM < 42 then
+
+      <pre><code>if NUM < 42 then
   // something
 else if NUM > 55 
  // something else
 else
  // more code
 end if</code></pre>
-          </tr>
-        </tbody>
-      </table>
+
     </div>
 
     <div>
       <h2>While Loop</h2>
-      <pre><code>let number = 0;
+      <pre><code>NUM = 0
 loop while NUM < 5 
   output NUM
-  NUM = NUM + 1;
+  NUM = NUM + 1
 end loop
 
 // 0
@@ -260,10 +186,14 @@ STR.Substr(4, 7) //"o"</code></pre>
       <h2>Arrays</h2>
       <h4>You will usually be provided the LENGTH if needed</h4>
       <pre><code>NUMS = [42, 13, 78]
-nums[0]  // 42
-nums[2]  // 78
-NUMS[1] = 11 // NUMS is now [42, 11, 78]
-</code></pre>
+output NUMS[0]  // 42
+output NUMS[2]  // 78
+NUMS[1] = 11 // NUMS is now [42, 11, 78]</code></pre>
+
+      <h4>Looping through an array</h4>
+      <pre><code>loop I from 0 to LENGTH
+  //do stuff with NUMS[I]
+end loop</code></pre>
     </div>
 
     <div>

@@ -421,39 +421,6 @@ copies of the original string.`,
 or whatever is there if the string is less than length 3. Return n copies of the front.`,
   }, {
     title: 'Warmup-2',
-    name: 'CountXX',
-    inputs: [
-      "('abcxx')",
-      "('xxx')",
-      "('xxxx')",
-      "('abc')",
-      "('Hello There')",
-      "('Hexxo Thxxe')",
-      "('')",
-      "('Kittens')",
-      "('Kittensxxx')",
-    ],
-    question: `Count the number of 'xx' in the given string.We'll say that overlapping
-is allowed, so 'xxx' contains 2 'xx'.`,
-  }, {
-    title: 'Warmup-2',
-    name: 'DoubleX',
-    inputs: [
-      "('axxbb')",
-      "('axaxax')",
-      "('xxxxx')",
-      "('xaxxx')",
-      "('aaaax')",
-      "('')",
-      "('abc')",
-      "('x')",
-      "('xx')",
-      "('xaxx')",
-    ],
-    question: `Given a string, Output <code>"TRUE"</code> if the first instance of "x" in the string is
-immediately followed by another "x".`,
-  }, {
-    title: 'Warmup-2',
     name: 'StringBits',
     inputs: [
       "('Hello')",

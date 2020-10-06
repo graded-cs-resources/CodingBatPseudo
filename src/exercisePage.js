@@ -1,8 +1,3 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-eval */
-/* eslint-disable no-undef */
-/* eslint-disable quotes */
-const $ = require("jquery");
 const _ = require("lodash");
 const CodeMirror = require("codemirror-minified");
 const runPS = require("./utility/convertPStoJS");
@@ -16,7 +11,6 @@ const formatResults = require("./utility/formatResults.js");
 const setInitialEditorContents = require("./utility/setInitialEditorContents.js");
 const displayExampleRuns = require("./utility/displayExampleRuns.js");
 const prettyPrintMap = require("./utility/prettyPrintMap.js");
-
 const exerciseListeners = require("./listeners/exerciseListeners");
 const keyboardShortcuts = require("./listeners/keyboardShortcuts");
 
@@ -64,34 +58,32 @@ exerciseListeners(editor, exerciseName);
 keyboardShortcuts(editor, exerciseName);
 
 // display exercise page
-$('#title').text(exercise.title);
-$('#name').text(exercise.name);
-$('#problem').html(exercise.question);
+document.getElementById('title').innerText = exercise.title;
+document.getElementById('name').innerText = exercise.name;
+document.getElementById('problem').innerHTML = exercise.question;
 
 setInitialEditorContents(editor, exerciseName, exercise);
 displayExampleRuns(exercise, exerciseName);
 
-// show solution button if already solved
-// if (localStorage.getItem(exerciseName) === "true") {
-//   $('#show').css('visibility','visible');
-// }
 
-$('#defaults').on('click', () => {
+document.getElementById("defaults").addEventListener('click', () => {
   editor.setValue(`${defaultInput(exerciseName)}`);
 });
-$('#solve').on('click', () => {
-  $('tr').remove();
-  $('#tests').append(tableHeader());
+document.getElementById("solve").addEventListener('click', () => {
+  document.querySelectorAll('tr').forEach((e) => e.remove());
+  document.getElementById("tests").append(tableHeader());
   const answer = editor.getValue();
 
   // whenever the user checks their solution,
   // save the most recent version of their code to localStorage
   const exerciseCode = `${exerciseName} - code`;
+  localStorage.setItem(exerciseName, "attempted");
   localStorage.setItem(exerciseCode, answer);
 
+
   try {
-    $(".congrats").text("");
-    $(".errorMessage").text("");
+    document.querySelectorAll(".congrats").forEach((e) => e.innerText = "");
+    document.querySelectorAll(".errorMessage").forEach((e) => e.innerText = "");
     const inputs = exercise.inputs;
 
     const results = [];
@@ -116,7 +108,7 @@ $('#solve').on('click', () => {
         const formattedMapIdealResult = prettyPrintMap(idealResult);
         const formattedMapUserResult = prettyPrintMap(result);
 
-        $('#tests').append(formatResults(exerciseName, formattedInput, formattedMapIdealResult, formattedMapUserResult, idealOut, output));
+        document.getElementById("tests").append(formatResults(exerciseName, formattedInput, formattedMapIdealResult, formattedMapUserResult, idealOut, output));
       } else {
         if (typeof (solutions[exerciseName]) === "string") {
           //we have a pseudocode solution!
@@ -127,7 +119,7 @@ $('#solve').on('click', () => {
         }
         [result, output] = runPS(answer, inputCopy);
 
-        $('#tests').append(formatResults(exerciseName, inputStr, idealResult, result, idealOut, output));
+        document.getElementById("tests").append(formatResults(exerciseName, inputStr, idealResult, result, idealOut, output));
       }
 
       if (idealOut === "") {
@@ -138,19 +130,19 @@ $('#solve').on('click', () => {
     });
 
     if (results.every(isTrue)) {
-      $('.congrats').text("100% Passing. Well Done!");
-      //localStorage[exerciseName] = "true";
+      document.querySelectorAll(".congrats").forEach((e) => e.innerText = "100% Passing. Well Done!");
+      localStorage.setItem(exerciseName, "solved");
     }
   } catch (theError) {
-    $('.congrats').text("");
-    $('th').remove();
-    $('.errorMessage').text(theError);
+    document.querySelectorAll(".congrats").forEach((e) => e.innerText = "");
+    document.querySelectorAll('th').forEach((e) => e.remove());
+    document.querySelectorAll(".errorMessage").forEach((e) => e.innerText = theError);
     console.log(theError.stack);
   }
 });
 
-$('#showSolution').on('click', () => {
-  if ($('#showSolution').html() === "Show Solution") {
+document.getElementById("showSolution").addEventListener('click', () => {
+  if (document.getElementById("showSolution").innerText === "Show Solution") {
     const s = solutions[exerciseName].toString();
     const r = new RegExp(/function/);
     // eslint-disable-next-line no-unused-vars
@@ -160,9 +152,9 @@ $('#showSolution').on('click', () => {
     solutionArea.setValue(s);
     solutionArea.getWrapperElement().style.display = "block";
     solutionArea.setSize("100%", "auto");
-    $('#showSolution').html("Hide Solution");
+    document.getElementById("showSolution").innerText = "Hide Solution";
   } else {
-    $('#showSolution').html("Show Solution");
+    document.getElementById("showSolution").innerText = "Show Solution";
     editor.getWrapperElement().style.display = "block";
     solutionArea.getWrapperElement().style.display = "none";
   }

@@ -1,0 +1,73 @@
+body {
+  font-size:14pt;
+  font-family:sans-serif;
+}
+
+#reference {
+  position: relative;
+  background-color: #f9f9f9;
+  color: black;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+@media only screen and (min-width: 992px) {
+  #reference {
+    -webkit-columns: 3 350px;
+    -moz-columns: 350px;
+    columns: 3 350px;
+    -webkit-column-gap: 2em;
+    -moz-column-gap: 2em;
+    column-gap: 2em;
+    position: relative;
+    color: black;
+    background-color:#f9f9f9;
+    padding: 20px;
+    margin: 20px auto;
+  }
+}
+
+#reference div {
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+#reference pre {
+  padding: 1em;
+  background-color: #EEEEEE;
+  color: #000;
+  border:1px solid black;
+}
+
+
+
+#reference table.minimalistBlack {  
+  background-color: hsl(0, 0%, 93%);
+  border: 1.01px solid black;
+  width: 100%;
+  text-align: left;
+  border-spacing:0;
+}
+
+#reference table.minimalistBlack td,
+#reference table.minimalistBlack th {
+  padding: 5px 4px;
+  color: #000;
+  border: 1px white solid;
+}
+
+#reference table.minimalistBlack thead {
+  background: #CFCFCF;
+  border-bottom: 3px solid #FFFFFF;
+}
+
+#reference table.minimalistBlack thead th {
+  font-weight: bold;
+  color: #000000;
+  text-align: left;
+}
+
+#reference div:first-of-type h2:first-of-type {
+  margin-top:0;
+}

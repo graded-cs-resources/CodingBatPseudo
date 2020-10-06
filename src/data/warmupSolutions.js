@@ -229,11 +229,11 @@ solutions.EveryNth = `method EveryNth(STR, N)
 end method`;
 
 solutions.StringTimes = `method StringTimes(STR, N) 
-  let finalStr = ""
+  FINAL = ""
   loop I from 1 to N 
-    finalStr = finalStr + STR
+    FINAL = FINAL + STR
   end loop
-  output finalStr
+  output FINAL
 end method`;
 
 solutions.FrontTimes = `method FrontTimes(STR, N) 
@@ -247,53 +247,6 @@ end method`;
 
 /***** Start un-edited ones */
 
-solutions.DelDel = `method DelDel(str) 
-  if str.length < 4 then
-    return str;
-  end if
-  let output = str;
-  if str.substring(1, 4) = 'del' then
-    output = str.substring(0, 1) + str.substring(4, str.length);
-  end if
-  return output;
-end method`;
-
-solutions.Max1020 = `method Max1020(a, b) 
-  method between1020(num)
-    return num >= 10 AND num <= 20;
-  end method
-  let result = 0;
-  if between1020(a) then
-    result = a;
-  end if
-  if b > result AND between1020(b) then
-    result = b;
-  end if
-  return result;
-end method`;
-
-solutions.EndUp = `method EndUp(str) 
-  if str.length <= 3 then
-    return str.toUpperCase();
-  end if
-  cut = str.length - 3;
-  front = str.substring(0, cut);
-  back = str.substring(cut);
-
-  return front + back.toUpperCase();
-end method`;
-
-solutions.DoubleX = `method DoubleX(str) 
-  str.toLowerCase();
-  x = str.indexOf('x');
-  if x = -1 then
-    output "FALSE"
-  end if
-  if x >= str.length then
-    output "FALSE"
-  end if
-  return str.substring(x + 1, x + 2) = 'x';
-end method`;
 
 solutions.Last2 = `method Last2(str) 
   count = 0;
@@ -337,12 +290,14 @@ solutions.NoTriples = `method NoTriples(nums)
   } output "TRUE"
 end method`;
 
-solutions.StringBits = `method StringBits(str) 
-  result = '';
-  for (x = 0; x < str.length; x += 2) {
-    result = result + str.substring(x, x + 1);
-  }
-  return result;
+solutions.StringBits = `method StringBits(STR) 
+  OUT = ""
+  X = 0
+  loop while X < STR.length
+    OUT = OUT + STR.SubStr(X, 1)
+    X = X + 2
+  end loop
+  output OUT
 end method`;
 
 solutions.ArrayCount9 = `method ArrayCount9(nums) 

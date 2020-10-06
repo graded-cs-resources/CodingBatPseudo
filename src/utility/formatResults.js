@@ -13,13 +13,13 @@ function formatResults(funcName, inputStr, idealResult, result, idealOutput, out
     }
     inputStr = inputStr.replaceAll("true", "TRUE");
     inputStr = inputStr.replaceAll("false", "FALSE");
-    return `<tr>
-            <td>${inputStr}</td>
+    var row = document.createElement("tr");
+    row.innerHTML = `<td>${inputStr}</td>
             <td>${idealResult}</td>
             <td>${result}</td>
             <td>${ok ? '✔' : '✖'}</td>
-            <td class="status-box" style="background-color:${ok ? '#318d07' : '#ce0303'}"></td>
-        </tr>`;
+            <td class="status-box" style="background-color:${ok ? '#318d07' : '#ce0303'}"></td>`;
+    return row;
 }
 
 module.exports = formatResults;

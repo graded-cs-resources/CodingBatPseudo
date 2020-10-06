@@ -90,6 +90,10 @@ div.probField {
   color: #769c49;
 }
 
+.wrong {
+  color:#a80000;
+}
+
 .btn {
   font-size: 20px;
   width: 100px;
@@ -233,3 +237,4 @@ footer {
 #testArea td {
   white-space:pre;
 }
+

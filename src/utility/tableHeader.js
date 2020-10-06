@@ -1,10 +1,10 @@
 function tableHeader() {
-    return `<tr>
-                <th>Inputs</th>
+    var row = document.createElement("tr");
+    row.innerHTML = `<th>Inputs</th>
                 <th>Expected result</th>
                 <th>Your result</th>
-                <th colspan="2">Correct?</th>
-            </tr>`;
+                <th colspan="2">Correct?</th>`;
+    return row;
 }
 
 module.exports = tableHeader;

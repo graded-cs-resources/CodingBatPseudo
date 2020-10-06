@@ -1,12 +1,12 @@
-let $ = require("jquery");
+
 let saveAllSolutionsToFile = require("../io/saveAllSolutionsToFile.js");
 let loadAllSolutionsFromFile = require("../io/loadAllSolutionsFromFile.js");
 
 
-$('#saveAll').on('click', () => {
+document.querySelector('#saveAll').addEventListener('click', () => {
     saveAllSolutionsToFile();
 })
-  
-$('#loadAll').on('click', () => {
+
+document.querySelector('#loadAll').addEventListener('click', () => {
     loadAllSolutionsFromFile();
 })
