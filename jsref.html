@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>IB Pseudocode Reference</title>
   <link rel="stylesheet" href="./css/jsref.css">
+  <link href="https://fonts.googleapis.com/css?family=Trirong" rel="stylesheet">
 </head>
 
 <body>
@@ -158,7 +159,7 @@ output "Blastoff!"
     <div>
 
       <h2>Strings</h2>
-      <h4>These methods are not IB standard, but the IB can define their own methods</h4>
+      <p>These methods are not IB standard, but the IB can define their own methods</p>
       <table class="minimalistBlack">
         <thead>
           <td>Method</td>
@@ -184,13 +185,13 @@ STR.Substr(4, 7) //"o"</code></pre>
     <div>
 
       <h2>Arrays</h2>
-      <h4>You will usually be provided the LENGTH if needed</h4>
+      <p>You will usually be provided the LENGTH if needed</p>
       <pre><code>NUMS = [42, 13, 78]
 output NUMS[0]  // 42
 output NUMS[2]  // 78
 NUMS[1] = 11 // NUMS is now [42, 11, 78]</code></pre>
 
-      <h4>Looping through an array</h4>
+      <p>Looping through an array</p>
       <pre><code>loop I from 0 to LENGTH
   //do stuff with NUMS[I]
 end loop</code></pre>
@@ -198,7 +199,7 @@ end loop</code></pre>
 
     <div>
       <h2>Collections</h2>
-      <h4>A collection is a list of like objects. Assume we have one named NAMES with a list of strings.</h4>
+      <p>A collection is a list of like objects. Assume we have one named NAMES with a list of strings.</p>
       <table class="minimalistBlack">
         <thead>
           <td>Method</td>
@@ -227,7 +228,7 @@ end loop</code></pre>
           <td>returns true if the collection does not contain any elements</td>
         </tr>
       </table>
-      <h4>Looping through a collection</h4>
+      <p>Looping through a collection</p>
       <pre><code>NAMES.resetNext()
 loop while NAMES.hasNext()
   ELEMENT = NAMES.getNext()

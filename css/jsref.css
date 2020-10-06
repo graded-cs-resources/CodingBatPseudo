@@ -3,6 +3,14 @@ body {
   font-family:sans-serif;
 }
 
+h1, h2 {
+  font-family:'Trirong',sans-serif;
+}
+
+pre {
+  font-family: 'Consolas','Inconsolata',monospace;
+}
+
 #reference {
   position: relative;
   background-color: #f9f9f9;
