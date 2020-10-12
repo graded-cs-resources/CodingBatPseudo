@@ -1,7 +1,7 @@
 module.exports = [
   {
     //title is the category it appears in on the homepage
-    title: 'Array-1',
+    title: 'Array',
     // Pseudocode problems should start with a capital letter
     name: 'FirstLast6',
     // the inputs that we are going to use to to test the code. An array of strings.
@@ -26,7 +26,7 @@ module.exports = [
     question: `Given an array of numbers, output "True" if 6 appears as either the first or last element in the array. The array will be length 1 or more. Use ARR.length to access the number of elements in the array.`,
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'SameFirstLast',
     inputs: [
       '([1, 2, 3])',
@@ -42,7 +42,7 @@ module.exports = [
     question: `Given an array of numbers, output "True" if the array is length 1 or more, and the first element and the last element are equal. Otherwise output "False"`,
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'CommonEnd',
     inputs: [
       '([1, 2, 3], [7, 3])',
@@ -54,67 +54,25 @@ module.exports = [
     question: `Given 2 arrays, ARR1 and ARR2, output "True" if they have the same first element or they have the same last element, and "False" otherwise.`,
   },
   {
-    title: 'Array-1',
-    name: 'sum3',
+    title: 'Array',
+    name: 'MaxEnd',
     inputs: [
       '([1, 2, 3])',
-      '([5, 11, 2])',
-      '([7, 0, 0])',
-      '([1, 2, 1])',
-      '([1, 1, 1])',
-      '([2, 7, 2])',
-    ],
-    question: 'Given an array of ints length 3, return the sum of all the elements.',
-  },
-  {
-    title: 'Array-1',
-    name: 'rotateLeft3',
-    inputs: [
-      '([1, 2, 3])',
-      '([5, 11, 9])',
-      '([7, 0, 0])',
-      '([1, 2, 1])',
-      '([0, 0, 1])',
-    ],
-    question: `Given an array of ints length 3, return an array with the elements
-    "rotated left" so {1, 2, 3} yields {2, 3, 1}.`,
-  },
-  {
-    title: 'Array-1',
-    name: 'reverse3',
-    inputs: [
-      '([1, 2, 3])',
-      '([5, 11, 9])',
-      '([7, 0, 0])',
-      '([2, 1, 2])',
-      '([1, 2, 1])',
-      '([2, 11, 3])',
-      '([0, 6, 5])',
-      '([7, 2, 3])',
-    ],
-    question: `Given an array of ints length 3, return a new array with the elements
-    in reverse order, so {1, 2, 3} becomes {3, 2, 1}.`,
-  },
-  {
-    title: 'Array-1',
-    name: 'maxEnd3',
-    inputs: [
-      '([1, 2, 3])',
-      '([11, 5, 9])',
-      '([2, 11, 3])',
+      '([11, 5, 9, 2, 1])',
+      '([2, 11, 3, 7, 1])',
       '([11, 3, 3])',
-      '([3, 11, 11])',
-      '([2, 2, 2])',
+      '([3, 11])',
+      '([2, 2, 2, 2])',
       '([2, 11, 2])',
       '([0, 0, 1])',
     ],
-    question: `Given an array of ints length 3, figure out which is larger, the first
-    or last element in the array, and set all the other elements to be that value.
-    Return the changed array.`,
+    question: `Given an array of numbers, figure out which is larger, the first
+    or last element in the array, and set all the other elements to be that value. Then output the new array.
+    You can use ARR.length to find the length of the array.`,
   },
   {
-    title: 'Array-1',
-    name: 'sum2',
+    title: 'Array',
+    name: 'Sum2',
     inputs: [
       '([1, 2, 3])',
       '([1, 1])',
@@ -125,13 +83,13 @@ module.exports = [
       '([4, 5, 6])',
       '([4])',
     ],
-    question: `Given an array of ints, return the sum of the first 2 elements in the array.
+    question: `Given an array of numbers, output the sum of the first 2 elements in the array.
     If the array length is less than 2, just sum up the elements that exist, returning 0 if
-    the array is length 0.`,
+    the array is length 0. You can use ARR.length to access the length of the array.`,
   },
   {
-    title: 'Array-1',
-    name: 'middleWay',
+    title: 'Array',
+    name: 'MiddleWay',
     inputs: [
       '([1, 2, 3], [4, 5, 6])',
       '([7, 7, 7], [3, 8, 0])',
@@ -140,29 +98,29 @@ module.exports = [
       '([1, 2, 3], [3, 1, 4])',
       '([1, 2, 3], [4, 1, 1])',
     ],
-    question: `Given 2 int arrays, a and b, each length 3, return a new array length 2
-    containing their middle elements.`,
+    question: `Given 2 arrays that are both known to have length 3, output a new array of length 2
+    containing their middle elements. You can make a new array with the format <code>NEW = [e1, e2, e3]</code>`,
   },
   {
-    title: 'Array-1',
-    name: 'makeEnds',
+    title: 'Array',
+    name: 'MakeEnds',
     inputs: [
       '([1, 2, 3])',
-      '([1, 2, 3, 4])',
-      '([7, 4, 6, 2])',
-      '([1, 2, 2, 2, 2, 2, 2, 3])',
+      '(["a", "b", "c", "d"])',
+      '([TRUE, FALSE, FALSE, TRUE])',
+      '([1.2, 2.0, 2e8, 2.892, 2, 2, 2, 3])',
       '([7, 4])',
       '([7])',
       '([5, 2, 9])',
       '([2, 3, 4, 1])',
     ],
-    question: `Given an array of ints, return a new array length 2 containing the
+    question: `Given an array, return a new array length 2 containing the
     first and last elements from the original array. The original array will be
-    length 1 or more.`,
+    length 1 or more. You can make a new array with the format <code>NEW = [e1, e2, e3]</code>`,
   },
   {
-    title: 'Array-1',
-    name: 'has23',
+    title: 'Array',
+    name: 'Has23',
     inputs: [
       '([2, 5])',
       '([4, 3])',
@@ -174,10 +132,10 @@ module.exports = [
       '([3, 9])',
       '([9, 5])',
     ],
-    question: 'Given an int array length 2, return true if it contains a 2 or a 3.',
+    question: 'Given an array that contains exactly two numbers, output TRUE if it contains a 2 or a 3,. FALSE otherwise',
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'no23',
     inputs: [
       '([4, 5])',
@@ -195,7 +153,7 @@ module.exports = [
     question: 'Given an int array length 2, return true if it does not contain a 2 or 3.',
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'makeLast',
     inputs: [
       '([4, 5, 6])',
@@ -213,7 +171,7 @@ module.exports = [
     array will be length 1 or more.`,
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'double23',
     inputs: [
       '([2, 2])',
@@ -230,7 +188,7 @@ module.exports = [
     The array will be length 0, 1, or 2.`,
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'fix23',
     inputs: [
       '([1, 2, 3])',
@@ -244,7 +202,7 @@ module.exports = [
     followed by a 3, set the 3 element to 0. Return the changed array.`,
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'start1',
     inputs: [
       '([1, 2, 3], [1, 3])',
@@ -262,7 +220,7 @@ module.exports = [
     have 1 as their first element.`,
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'biggerTwo',
     inputs: [
       '([1, 2], [3, 4])',
@@ -278,7 +236,7 @@ module.exports = [
     return a.`,
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'makeMiddle',
     inputs: [
       '([1, 2, 3, 4])',
@@ -292,7 +250,7 @@ module.exports = [
     will be length 2 or more.`,
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'plusTwo',
     inputs: [
       '([1, 2], [3, 4])',
@@ -303,7 +261,7 @@ module.exports = [
     containing all their elements.`,
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'swapEnds',
     inputs: [
       '([1, 2, 3, 4])',
@@ -317,7 +275,7 @@ module.exports = [
     Return the modified array. The array length will be at least 1.`,
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'midThree',
     inputs: [
       '([1, 2, 3, 4, 5])',
@@ -329,7 +287,7 @@ module.exports = [
     at least 3.`,
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'maxTriple',
     inputs: [
       '([1, 2, 3])',
@@ -348,7 +306,7 @@ module.exports = [
     be a least 1.`,
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'frontPiece',
     inputs: [
       '([1, 2, 3])',
@@ -365,7 +323,7 @@ module.exports = [
     elements are present.`,
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'unlucky1',
     inputs: [
       '([1, 3, 4, 5])',
@@ -393,7 +351,7 @@ module.exports = [
     first 2 or last 2 positions in the array.`,
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'make2',
     inputs: [
       '([4, 5], [1, 2, 3])',
@@ -415,7 +373,7 @@ module.exports = [
     available between the 2 arrays.`,
   },
   {
-    title: 'Array-1',
+    title: 'Array',
     name: 'front11',
     inputs: [
       '([1, 2, 3], [7, 9, 8])',
@@ -430,7 +388,7 @@ module.exports = [
     first element of each array. If either array is length 0, ignore that array.`,
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'findLowestIndex',
     inputs: [
       "([99, 98, 97, 96, 95])",
@@ -447,7 +405,7 @@ module.exports = [
      least one element in it.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'countEvens',
     inputs: [
       "([2, 1, 2, 3, 4])",
@@ -464,7 +422,7 @@ module.exports = [
     operator computes the remainder, e.g. 5 % 2 is 1.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'bigDiff',
     inputs: [
       "([10, 3, 5, 6])",
@@ -485,7 +443,7 @@ module.exports = [
     and Math.max(v1, v2) methods return the smaller or larger of two values.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'centeredAverage',
     inputs: [
       "([1, 2, 3, 4, 100])",
@@ -512,7 +470,7 @@ module.exports = [
     the final average. You may assume that the array is length 3 or more.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'sum13',
     inputs: [
       "([1, 2, 2, 1])",
@@ -535,7 +493,7 @@ module.exports = [
     immediately after a 13 also do not count.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'sum67',
     inputs: [
       "([1, 2, 2])",
@@ -558,7 +516,7 @@ module.exports = [
        by at least one 7). Return 0 for no numbers.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'has22',
     inputs: [
       "([1, 2, 2])",
@@ -580,7 +538,7 @@ module.exports = [
     a 2 next to a 2 somewhere.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'lucky13',
     inputs: [
       "([0, 2, 4])",
@@ -599,7 +557,7 @@ module.exports = [
     question: `Given an array of ints, return true if the array contains no 1's and no 3's.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'sum28',
     inputs: [
       "([2, 3, 2, 2, 4, 2])",
@@ -619,7 +577,7 @@ module.exports = [
     the array is exactly 8.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'more14',
     inputs: [
       "([1, 4, 1])",
@@ -641,7 +599,7 @@ module.exports = [
     than the number of 4's`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'prependSum',
     inputs: [
       "([1, 2, 4, 4])",
@@ -658,7 +616,7 @@ module.exports = [
     and one item – the sum of those two items - is added to the start of the array.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'fizzArray',
     inputs: [
       "(4)",
@@ -675,7 +633,7 @@ module.exports = [
     so it just works. The syntax to make a new array is let myArray = [];`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'only14',
     inputs: [
       "([1, 4, 1, 4])",
@@ -697,7 +655,7 @@ module.exports = [
     question: `Given an array of ints, return true if every element is a 1 or a 4.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'fizzArray2',
     inputs: [
       "(4)",
@@ -715,7 +673,7 @@ module.exports = [
     form of most types.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'no14',
     inputs: [
       "([1, 2, 3])",
@@ -741,7 +699,7 @@ module.exports = [
     question: `Given an array of ints, return true if it contains no 1's or it contains no 4's.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'isEverywhere',
     inputs: [
       "([1, 2, 1, 3], 1)",
@@ -766,7 +724,7 @@ module.exports = [
     Return true if the given value is everywhere in the array.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'either24',
     inputs: [
       "([1, 2, 2])",
@@ -788,7 +746,7 @@ module.exports = [
     next to a 2 or a 4 next to a 4, but not both.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'matchUp',
     inputs: [
       "([1, 2, 3], [2, 3, 10])",
@@ -809,7 +767,7 @@ module.exports = [
     less, but are not equal.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'has77',
     inputs: [
       "([1, 7, 7])",
@@ -832,7 +790,7 @@ module.exports = [
     such as with {7, 1, 7}.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'has12',
     inputs: [
       "([1, 3, 2])",
@@ -857,7 +815,7 @@ module.exports = [
     with a 2 somewhere later in the array.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'modThree',
     inputs: [
       "([2, 1, 3, 5])",
@@ -877,7 +835,7 @@ module.exports = [
     3 even or 3 odd values all next to each other.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'findTheMedian',
     inputs: [
       "([4,9,9,2,1,5])",
@@ -896,7 +854,7 @@ module.exports = [
     Hint: You will need to ensure the input array is sorted - there is a sort() array method you can use for this step.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'haveThree',
     inputs: [
       "([3, 1, 3, 1, 3])",
@@ -916,7 +874,7 @@ module.exports = [
      3 times, and no 3's are next to each other.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'twoTwo',
     inputs: [
       "([4, 2, 2, 3])",
@@ -941,7 +899,7 @@ module.exports = [
     the array is next to another 2.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'sameEnds',
     inputs: [
       "([5, 6, 45, 99, 13, 5, 6], 1)",
@@ -965,7 +923,7 @@ module.exports = [
     is in the range 0..nums.length inclusive.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'tripleUp',
     inputs: [
       "([1, 4, 5, 6, 2])",
@@ -985,7 +943,7 @@ module.exports = [
     adjacent numbers like .... 4, 5, 6, ... or 23, 24, 25.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'fizzArray3',
     inputs: [
       "(5, 10)",
@@ -1001,7 +959,7 @@ module.exports = [
     start number. Note that a length-0 array is valid.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'shiftLeft',
     inputs: [
       "([6, 2, 5, 3])",
@@ -1017,7 +975,7 @@ module.exports = [
     a new array.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'tenRun',
     inputs: [
       "([2, 10, 3, 4, 20, 5])",
@@ -1037,7 +995,7 @@ module.exports = [
     of 10. So {2, 10, 3, 4, 20, 5} yields {2, 10, 10, 10, 20, 20}.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'pre4',
     inputs: [
       "([1, 2, 4, 1])",
@@ -1057,7 +1015,7 @@ module.exports = [
      in java to create an array of length 0.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'post4',
     inputs: [
       "([2, 4, 1, 2])",
@@ -1077,7 +1035,7 @@ module.exports = [
     in java to create an array of length 0.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'notAlone',
     inputs: [
       "([1, 2, 3], 2)",
@@ -1097,7 +1055,7 @@ module.exports = [
     replaced by whichever value to its left or right is larger.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'zeroFront',
     inputs: [
       "([1, 0, 0, 1])",
@@ -1119,7 +1077,7 @@ module.exports = [
     new array.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'withoutTen',
     inputs: [
       "([1, 10, 10, 2])",
@@ -1140,7 +1098,7 @@ module.exports = [
     array or make a new array.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'zeroMax',
     inputs: [
       "([0, 5, 0, 3])",
@@ -1162,7 +1120,7 @@ module.exports = [
     as a zero.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'evenOdd',
     inputs: [
       "([1, 0, 1, 0, 0, 1, 1])",
@@ -1181,7 +1139,7 @@ module.exports = [
     and return the given array, or make a new array.`
   },
   {
-    title: 'Array-2',
+    title: 'Array',
     name: 'fizzBuzz',
     inputs: [
       "(1, 6)",
@@ -1211,7 +1169,7 @@ module.exports = [
   },
   {
     question: 'Consider the leftmost and righmost appearances of some value in an array. We\'ll say that the "span" is the number of elements between the two inclusive. A single value has a span of 1. Returns the largest span found in the given array. (Efficiency is not a priority.)',
-    title: 'Array-3',
+    title: 'Array',
     name: 'maxSpan',
     inputs: [
       "([1, 2, 1, 1, 3])",
@@ -1228,7 +1186,7 @@ module.exports = [
   },
   {
     question: 'Return an array that contains exactly the same numbers as the given array, but rearranged so that every 3 is immediately followed by a 4. Do not move the 3\'s, but every other number may move. The array contains the same number of 3\'s and 4\'s, every 3 has a number after it that is not a 3, and a 3 appears in the array before any 4.',
-    title: 'Array-3',
+    title: 'Array',
     name: 'fix34',
     inputs: [
       "([1, 3, 1, 4])",
@@ -1249,7 +1207,7 @@ module.exports = [
   },
   {
     question: '(This is a slightly harder version of the fix34 problem.) Return an array that contains exactly the same numbers as the given array, but rearranged so that every 4 is immediately followed by a 5. Do not move the 4\'s, but every other number may move. The array contains the same number of 4\'s and 5\'s, and every 4 has a number after it that is not a 4. In this version, 5\'s may appear anywhere in the original array.',
-    title: 'Array-3',
+    title: 'Array',
     name: 'fix45',
     inputs: [
       "([5, 4, 9, 4, 9, 5])",
@@ -1274,7 +1232,7 @@ module.exports = [
   },
   {
     question: 'Given a non-empty array, return true if there is a place to split the array so that the sum of the numbers on one side is equal to the sum of the numbers on the other side.',
-    title: 'Array-3',
+    title: 'Array',
     name: 'canBalance',
     inputs: [
       "([1, 1, 1, 2, 1])",
@@ -1292,7 +1250,7 @@ module.exports = [
   },
   {
     question: 'Given two arrays of ints sorted in increasing order, outer and inner, return true if all of the numbers in inner appear in outer. The best solution makes only a single "linear" pass of both arrays, taking advantage of the fact that both arrays are already in sorted order.',
-    title: 'Array-3',
+    title: 'Array',
     name: 'linearIn',
     inputs: [
       "([1, 2, 4, 6], [2, 4])",
@@ -1312,7 +1270,7 @@ module.exports = [
   },
   {
     question: 'Given n>=0, create an array length n*n with the following pattern, shown here for n=3 : {0, 0, 1,    0, 2, 1,    3, 2, 1} (spaces added to show the 3 groups).',
-    title: 'Array-3',
+    title: 'Array',
     name: 'squareUp',
     inputs: [
       "(3)",
@@ -1324,7 +1282,7 @@ module.exports = [
   },
   {
     question: 'Given n>=0, create an array with the pattern {1,    1, 2,    1, 2, 3,   ... 1, 2, 3 .. n} (spaces added to show the grouping). Note that the length of the array will be 1 + 2 + 3 ... + n, which is known to sum to exactly n*(n + 1)/2.',
-    title: 'Array-3',
+    title: 'Array',
     name: 'seriesUp',
     inputs: [
       "(3)",
@@ -1336,7 +1294,7 @@ module.exports = [
   },
   {
     question: 'We\'ll say that a "mirror" section in an array is a group of contiguous elements such that somewhere in the array, the same group appears in reverse order. For example, the largest mirror section in {1, 2, 3, 8, 9, 3, 2, 1} is length 3 (the {1, 2, 3} part). Return the size of the largest mirror section found in the given array.',
-    title: 'Array-3',
+    title: 'Array',
     name: 'maxMirror',
     inputs: [
       "([1, 2, 3, 8, 9, 3, 2, 1])",
@@ -1358,7 +1316,7 @@ module.exports = [
   },
   {
     question: 'Say that a "clump" in an array is a series of 2 or more adjacent elements of the same value. Return the number of clumps in the given array.',
-    title: 'Array-3',
+    title: 'Array',
     name: 'countClumps',
     inputs: [
       "([1, 2, 2, 3, 4, 4])",

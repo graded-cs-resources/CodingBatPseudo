@@ -37,55 +37,46 @@ solutions.CommonEnd = `method CommonEnd(ARR1, ARR2)
   end if
 end method`
 
+solutions.MaxEnd = `method MaxEnd(NUMS)
+  if NUMS[0] > NUMS[NUMS.length-1] then
+    MAX = NUMS[0]
+  else
+    MAX = NUMS[NUMS.length-1]
+  end if
+  loop I from 0 to NUMS.length-1
+    NUMS[I] = MAX
+  end loop
+  output NUMS
+end method`
 
-solutions.sum3 = function sum3(nums) {
-  return nums[0] + nums[1] + nums[2];
-}
+solutions.Sum2 = `method Sum2(NUMS)
+  if NUMS.length = 0 then
+    output 0
+  else if NUMS.length = 1 then
+    output NUMS[0]
+  else
+    output NUMS[0]+NUMS[1]
+  end if
+end method`;
 
-solutions.rotateLeft3 = function rotateLeft3(nums) {
-  return [nums[1], nums[2], nums[0]];
-}
+solutions.MiddleWay = `method MiddleWay(ARR1, ARR2)
+  NEW = [ARR1[1], ARR2[1]];
+  output NEW
+end method`;
 
-solutions.reverse3 = function reverse3(nums) {
-  return [nums[2], nums[1], nums[0]];
-}
+solutions.MakeEnds = `method MakeEnds(ARR)
+  NEW = [ARR[0], ARR[ARR.length - 1]]
+  output NEW
+end method`;
 
-solutions.maxEnd3 = function maxEnd3(nums) {
-  let max = nums[0];
-  if (nums[2] > nums[0]) {
-    max = nums[2];
-  }
-  return [max, max, max];
-}
+solutions.Has23 = `method Has23(NUMS)
+  if NUMS[0] = 2 OR NUMS[0] = 3 OR NUMS[1] = 2 OR NUMS[1] = 3 then
+    output TRUE
+  else
+    output FALSE
+  end if
+end method`;
 
-solutions.sum2 = function sum2(nums) {
-  if (nums.length == 0) {
-    return 0;
-  }
-
-  if (nums.length < 2) {
-    return nums[0];
-  } else {
-    return nums[0] + nums[1]
-  }
-}
-
-solutions.middleWay = function middleWay(a, b) {
-  return [a[1], b[1]];
-}
-
-solutions.makeEnds = function makeEnds(nums) {
-  let end = nums.length - 1
-  return [nums[0], nums[end]];
-}
-
-solutions.has23 = function has23(nums) {
-  if (nums[0] == 2 || nums[0] == 3 || nums[1] == 2 || nums[2] == 3) {
-    return true;
-  } else {
-    return false;
-  }
-}
 
 solutions.no23 = function no23(nums) {
   if (nums[0] == 2 || nums[0] == 3 || nums[1] == 2 || nums[2] == 3) {

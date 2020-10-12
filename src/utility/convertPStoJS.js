@@ -1,4 +1,4 @@
-
+const Collection = require("./collections")
 // these three variables help the translation work
 var out;
 var TRUE = true;
@@ -43,11 +43,20 @@ function input(str) {
 
 function output() {
   var a = 0
-  var stuff = " "
+  var output = ""
   for (a = 0; a < arguments.length; a++) {
-    stuff = stuff + arguments[a] + " "
+    output = "" + arguments[a];
+    output = output.replaceAll("true", "TRUE").replaceAll("false", "FALSE");
+    if (typeof arguments[a] === "string") {
+      output = `"${output}"`;
+    } else if (Array.isArray(arguments[a])) {
+      if (arguments[a].length > 0 && typeof arguments[a][0] === "string") {
+        output = output.replaceAll(/([a-zA-Z0-9 ]+)/g, "\"$1\"");
+      }
+      output = "[" + output.replaceAll(",", ", ") + "]";
+    }
   }
-  out += stuff + "\n";
+  out += output + "\n";
 }
 
 function div(A, B) {

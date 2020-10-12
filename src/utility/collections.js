@@ -1,3 +1,5 @@
+const { isArray } = require("lodash");
+
 module.exports = class Collection {
 
   elements = [];
@@ -5,14 +7,11 @@ module.exports = class Collection {
 
   /**
    * Creates an IB style collection from the elements in an array
-   * @param {Array} arr 
+   * @param {Array} [arr=[]] - Array with starting values, defaults to empty
    */
   constructor(arr) {
-    try {
-      var first = arr[0];
+    if (Array.isArray(arr)) {
       this.elements = arr;
-    } catch (e) {
-      error("did not pass an array to collection constructor")
     }
   }
 
@@ -35,5 +34,14 @@ module.exports = class Collection {
 
   isEmpty() {
     return this.elements.length === 0;
+  }
+
+  toString() {
+    var str = this.elements.toString();
+    if (typeof this.elements[0] === "string") {
+      str = str.replaceAll(/[a-zA-Z0-9 ]+/g, "\"$1\"");
+    }
+    str = str.replaceAll(",", ", ")
+    return "{" + str + "}";
   }
 }
