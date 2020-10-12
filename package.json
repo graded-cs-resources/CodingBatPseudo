@@ -12,7 +12,7 @@
   "repository": "https://github.com/graded-cs-resources/CodingBatPseudo",
   "license": "ISC",
   "devDependencies": {
-    "browserify": "^16.2.3",
+    "browserify": "^17.0.0",
     "watchify": "^3.11.1"
   },
   "dependencies": {

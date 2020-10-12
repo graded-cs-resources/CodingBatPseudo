@@ -23,11 +23,11 @@ module.exports = [
       '([1, 2, 3, 4])',
     ],
     // The question itself. Try to make it Pseudocode-y
-    question: `Given an array of numbers, return true if 6 appears as either the first or last element in the array. The array will be length 1 or more. You can use the property ARR.length to access the array's length`,
+    question: `Given an array of numbers, output "True" if 6 appears as either the first or last element in the array. The array will be length 1 or more. Use ARR.length to access the number of elements in the array.`,
   },
   {
     title: 'Array-1',
-    name: 'sameFirstLast',
+    name: 'SameFirstLast',
     inputs: [
       '([1, 2, 3])',
       '([1, 2, 3, 1])',
@@ -39,20 +39,11 @@ module.exports = [
       '([13, 2, 3, 4, 5, 13])',
       '([7, 7])',
     ],
-    question: `Given an array of ints, return true if the array is length 1 or more, and the first
-    element and the last element are equal.`,
+    question: `Given an array of numbers, output "True" if the array is length 1 or more, and the first element and the last element are equal. Otherwise output "False"`,
   },
   {
     title: 'Array-1',
-    name: 'makePi',
-    inputs: [
-      '()',
-    ],
-    question: 'Return an int array length 3 containing the first 3 digits of pi, {3, 1, 4}.',
-  },
-  {
-    title: 'Array-1',
-    name: 'commonEnd',
+    name: 'CommonEnd',
     inputs: [
       '([1, 2, 3], [7, 3])',
       '([1, 2, 3], [7, 3, 2])',
@@ -60,8 +51,7 @@ module.exports = [
       '([1, 2, 3], [1])',
       '([1, 2, 3], [2])',
     ],
-    question: `Given 2 arrays of ints, a and b, return true if they have the same first element
-    or they have the same last element. Both arrays will be length 1 or more.`,
+    question: `Given 2 arrays, ARR1 and ARR2, output "True" if they have the same first element or they have the same last element, and "False" otherwise.`,
   },
   {
     title: 'Array-1',

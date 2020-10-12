@@ -19,25 +19,24 @@ solutions.FirstLast6 = `method FirstLast6(NUMS)
   end if
 end method`;
 
-solutions.sameFirstLast = function sameFirstLast(nums) {
-  let end = nums.length - 1;
-  if (nums.length >= 1 && nums[0] == nums[end]) {
-    return true;
-  } else { return false; }
-}
+solutions.SameFirstLast = `method SameFirstLast(NUMS)
+  END = NUMS.length - 1
+  if END <> 0 AND NUMS[END] = NUMS[0] then
+    output "True"
+  else
+    output "False"
+  end if
+end method`;
 
-solutions.makePi = function makePi() {
-  let nums = [3, 1, 4];
-  return nums;
-}
 
-solutions.commonEnd = function commonEnd(a, b) {
-  if (a[0] == b[0] || a[a.length - 1] == b[b.length - 1]) {
-    return true;
-  } else {
-    return false;
-  }
-}
+solutions.CommonEnd = `method CommonEnd(ARR1, ARR2)
+  if ARR1[0] = ARR2[0] OR ARR1[ARR1.length - 1] = ARR2[ARR2.length - 1] then
+    output "TRUE"
+  else
+    output "FALSE"
+  end if
+end method`
+
 
 solutions.sum3 = function sum3(nums) {
   return nums[0] + nums[1] + nums[2];
