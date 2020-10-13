@@ -22,7 +22,7 @@ module.exports = function (exercise) {
                 let inputCopy = inputParser(exercise, exercise.inputs[i]);
                 let formattedInput = prettyPrintMap(inputCopy, "parentheses");
                 if (typeof (solution) === "string") {
-                    [result, out] = runPS(solution, inputCopy);
+                    [result, out] = runPS(solution, inputCopy, exercise.preamble);
                     if (!result) result = out;
                 } else {
                     result = solution(inputCopy);
@@ -34,7 +34,7 @@ module.exports = function (exercise) {
             }
             else {
                 if (typeof (solution) === "string") {
-                    [result, out] = runPS(solution, input);
+                    [result, out] = runPS(solution, input, exercise.preamble);
                     if (!result) result = out;
                 } else {
                     result = solution(...input);

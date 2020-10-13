@@ -23,9 +23,9 @@ module.exports = [
       '([1, 2, 3, 4])',
     ],
     // The question itself. Try to make it Pseudocode-y
-    question: `Given an array of numbers, output TRUE if 6 appears as either the first or last element in the array. The array will be length 1 or more. Use ARR.length to access the number of elements in the array.`,
+    question: `Given an array of numbers, output TRUE if 6 appears as either the first or last element in the array. The array will be length 1 or more. Use ARR.Length() to access the number of elements in the array.`,
     solution: `method FirstLast6(NUMS)
-    END = NUMS.length - 1
+    END = NUMS.Length() - 1
     if NUMS[0] = 6 OR NUMS[END] = 6 then
       output TRUE
     else
@@ -49,7 +49,7 @@ module.exports = [
     ],
     question: `Given an array of numbers, output TRUE if the array is length 1 or more, and the first element and the last element are equal. Otherwise output FALSE`,
     solution: `method SameFirstLast(NUMS)
-    END = NUMS.length - 1
+    END = NUMS.Length() - 1
     if END <> 0 AND NUMS[END] = NUMS[0] then
       output TRUE
     else
@@ -69,7 +69,7 @@ module.exports = [
     ],
     question: `Given 2 arrays, ARR1 and ARR2, output TRUE if they have the same first element or they have the same last element, and FALSE otherwise.`,
     solution: `method CommonEnd(ARR1, ARR2)
-    if ARR1[0] = ARR2[0] OR ARR1[ARR1.length - 1] = ARR2[ARR2.length - 1] then
+    if ARR1[0] = ARR2[0] OR ARR1[ARR1.Length() - 1] = ARR2[ARR2.Length() - 1] then
       output TRUE
     else
       output FALSE
@@ -91,14 +91,14 @@ module.exports = [
     ],
     question: `Given an array of numbers, figure out which is larger, the first
     or last element in the array, and set all the other elements to be that value. Then output the new array.
-    You can use ARR.length to find the length of the array.`,
+    You can use ARR.Length() to find the length of the array.`,
     solution: `method MaxEnd(NUMS)
-    if NUMS[0] > NUMS[NUMS.length-1] then
+    if NUMS[0] > NUMS[NUMS.Length()-1] then
       MAX = NUMS[0]
     else
-      MAX = NUMS[NUMS.length-1]
+      MAX = NUMS[NUMS.Length()-1]
     end if
-    loop I from 0 to NUMS.length-1
+    loop I from 0 to NUMS.Length()-1
       NUMS[I] = MAX
     end loop
     output NUMS
@@ -120,11 +120,11 @@ module.exports = [
     ],
     question: `Given an array of numbers, output the sum of the first 2 elements in the array.
     If the array length is less than 2, just sum up the elements that exist, returning 0 if
-    the array is length 0. You can use ARR.length to access the length of the array.`,
+    the array is length 0. You can use ARR.Length() to access the length of the array.`,
     solution: `method Sum2(NUMS)
-    if NUMS.length = 0 then
+    if NUMS.Length() = 0 then
       output 0
-    else if NUMS.length = 1 then
+    else if NUMS.Length() = 1 then
       output NUMS[0]
     else
       output NUMS[0]+NUMS[1]
@@ -166,7 +166,7 @@ module.exports = [
     first and last elements from the original array. The original array will be
     length 1 or more. You can make a new array with the format <code>NEW = [e1, e2, e3]</code>`,
     solution: `method MakeEnds(ARR)
-    NEW = [ARR[0], ARR[ARR.length - 1]]
+    NEW = [ARR[0], ARR[ARR.Length() - 1]]
     output NEW
   end method`
   },
@@ -233,12 +233,12 @@ end method`
       '([])',
       '([3, 4])',
     ],
-    question: `Given an array of numbers, output TRUE if the array contains at least two 2s or at least two 3s. Use ARR.length to get its length.`,
+    question: `Given an array of numbers, output TRUE if the array contains at least two 2s or at least two 3s. Use ARR.Length() to get its length.`,
     solution: `method Double23(ARR)
   NUM2 = 0
   NUM3 = 0
 
-  loop I from 0 to ARR.length-1
+  loop I from 0 to ARR.Length()-1
     if ARR[I] = 2 then
       NUM2 = NUM2 + 1
     else if ARR[I] = 3 then
@@ -987,7 +987,7 @@ end method`,
     question: `Return true if the group of N numbers at the start and end of the
     array are the same. For example, with {5, 6, 45, 99, 13, 5, 6}, the ends are
     the same for n=0 and n=2, and false for n=1 and n=3. You may assume that n
-    is in the range 0..nums.length inclusive.`
+    is in the range 0..nums.Length() inclusive.`
   },
   {
     title: 'Array',

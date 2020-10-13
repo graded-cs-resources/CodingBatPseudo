@@ -69,6 +69,7 @@ displayExampleRuns(exercise, exerciseName);
 document.getElementById("defaults").addEventListener('click', () => {
   editor.setValue(`${defaultInput(exercise)}`);
 });
+
 document.getElementById("solve").addEventListener('click', () => {
   document.querySelectorAll('tr').forEach((e) => e.remove());
   document.getElementById("tests").append(tableHeader());
@@ -99,7 +100,7 @@ document.getElementById("solve").addEventListener('click', () => {
         const formattedInput = prettyPrintMap(input, "parentheses");
         if (typeof (solution) === "string") {
           //we have a pseudocode solution!
-          [idealResult, idealOut] = runPS(solution, input);
+          [idealResult, idealOut] = runPS(solution, input, exercise.preamble);
         } else {
           idealOut = "";
           idealResult = solution(...input);
@@ -112,12 +113,12 @@ document.getElementById("solve").addEventListener('click', () => {
       } else {
         if (typeof (solution) === "string") {
           //we have a pseudocode solution!
-          [idealResult, idealOut] = runPS(solution, inputCopy);
+          [idealResult, idealOut] = runPS(solution, inputCopy, exercise.preamble);
         } else {
           idealOut = "";
           idealResult = solution(...inputCopy);
         }
-        [result, output] = runPS(answer, inputCopy);
+        [result, output] = runPS(answer, inputCopy, exercise.preamble);
 
         document.getElementById("tests").append(formatResults(exerciseName, inputStr, idealResult, result, idealOut, output));
       }

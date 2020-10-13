@@ -100,6 +100,32 @@ end method`,
   },
   {
     title: 'Collections',
+    name: 'CountAM',
+    inputType: "collection",
+    inputs: [
+      '({"Smith, Jane","Brown, James"})',
+      '({"Duckworth, Eliza", "Altman, Phil"})',
+      '({"Mizrahi, Marina", "Nelson, Judd"})',
+      '({"A, B", "C, D", "M, N", "P, J", "Q, Z"})'
+    ],
+    question: `<p>Given a collection of names in the form "Last, First", output the number of names whose last name starts with a letter between A and M in the English alphabet.</p>
+
+    <p>You can assume you have access to a method called <code>Compare(STR1, STR2)</code> that returns <code>0</code> if the two strings are identical, <code>-1</code> if <code>STR1</code> is earlier than <code>STR2</code> in the alphabet, and <code>1</code> if <code>STR1</code> is later than <code>STR2</code> in the alphabet.</p>`,
+    solution: `method CountAM(NAMES)
+  AM = 0
+  NAMES.resetNext()
+  loop while NAMES.hasNext()
+    N = NAMES.getNext()
+    if Compare(N, "N") = -1 then
+      AM = AM + 1
+    end if
+  end loop
+  output AM
+end method`,
+    preamble: `function Compare(str1, str2) { return str1.localeCompare(str2) }`,
+  },
+  {
+    title: 'Collections',
     name: 'RotateLeftCollection',
     inputType: "collection",
     inputs: [
