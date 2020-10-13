@@ -1,10 +1,3 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-param-reassign */
-/* eslint-disable semi */
-/* eslint-disable prefer-const */
-/** --- Solutions --- **/
-// Array-1
-
 let solutions = {};
 
 solutions.makeLast = function makeLast(nums) {

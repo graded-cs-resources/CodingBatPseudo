@@ -7,6 +7,8 @@ let title = deParam(window.location.search).title;
 let allTitles = _.uniq(exercises.map(e => e.title));
 let titles = title ? [title] : allTitles;
 
+let solutions = require("./solutions.js");
+
 // display all problems
 for (title of titles) {
   let outerDiv = document.getElementById('exerciseIndex');
@@ -31,5 +33,6 @@ for (title of titles) {
       sp.insertAdjacentHTML('beforeend', '<span class="wrong"><b>✖</b></span>')
     }
   });
+
 }
 
