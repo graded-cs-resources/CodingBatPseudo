@@ -204,6 +204,22 @@ function Array2D(rows, cols) {
   return a2d
 }
 
+Array.prototype.Length = function () {
+  return this.length;
+}
+
+Array.prototype.Slice = function (S, L) {
+  return this.slice(S, S + L);
+}
+
+String.prototype.Length = function () {
+  return this.length;
+}
+
+String.prototype.SubStr = function (S, L) {
+  return this.substr(S, L);
+}
+
 /** Translates a single line from PS (or JS) to JS */
 function translate(line) {
   //do a sanity check - if this is javascript, leave it alone
@@ -215,8 +231,6 @@ function translate(line) {
   line = line.replaceAll(/(\([^()]+\)) div ([0-9A-Za-z]+)/g, "div($1, $2)");
   line = line.replaceAll(/([^"])TRUE/g, "$1true");
   line = line.replaceAll(/([^"])FALSE/g, "$1false");
-  line = line.replaceAll("SubStr", "substr");
-  line = line.replaceAll("Length()", "length");
   var lin = line.trim();
   var sp = lin.indexOf(" ");
   var first = "";

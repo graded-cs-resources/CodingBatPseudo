@@ -17,7 +17,6 @@ const keyboardShortcuts = require("./listeners/keyboardShortcuts");
 require("../node_modules/codemirror-minified/addon/edit/matchbrackets.js");
 const CodeMirrorPSHighlighting = require("./utility/cmps.js");
 CodeMirrorPSHighlighting(CodeMirror);
-
 // define codemirror editor to interact with code on page
 const editor = CodeMirror.fromTextArea(document.getElementById("answer"), {
   lineNumbers: true,
@@ -53,6 +52,7 @@ const urlParams = deParam(window.location.search);
 const exerciseName = urlParams.name || exercises[0].name;
 /** here we match the exerciseName (from querystring) to the problem in exercise obj**/
 const exercise = exercises.filter(ex => ex.name === exerciseName)[0];
+let solution = exercise.solution || solutions[exerciseName];
 
 exerciseListeners(editor, exerciseName);
 keyboardShortcuts(editor, exerciseName);
@@ -67,7 +67,7 @@ displayExampleRuns(exercise, exerciseName);
 
 
 document.getElementById("defaults").addEventListener('click', () => {
-  editor.setValue(`${defaultInput(exerciseName)}`);
+  editor.setValue(`${defaultInput(exercise)}`);
 });
 document.getElementById("solve").addEventListener('click', () => {
   document.querySelectorAll('tr').forEach((e) => e.remove());
@@ -97,12 +97,12 @@ document.getElementById("solve").addEventListener('click', () => {
 
       if (exercise.inputType === "map") {
         const formattedInput = prettyPrintMap(input, "parentheses");
-        if (typeof (solutions[exerciseName]) === "string") {
+        if (typeof (solution) === "string") {
           //we have a pseudocode solution!
-          [idealResult, idealOut] = runPS(solutions[exerciseName], input);
+          [idealResult, idealOut] = runPS(solution, input);
         } else {
           idealOut = "";
-          idealResult = solutions[exerciseName](...input);
+          idealResult = solution(...input);
         }
         [result, output] = runPS(answer, input);
         const formattedMapIdealResult = prettyPrintMap(idealResult);
@@ -110,12 +110,12 @@ document.getElementById("solve").addEventListener('click', () => {
 
         document.getElementById("tests").append(formatResults(exerciseName, formattedInput, formattedMapIdealResult, formattedMapUserResult, idealOut, output));
       } else {
-        if (typeof (solutions[exerciseName]) === "string") {
+        if (typeof (solution) === "string") {
           //we have a pseudocode solution!
-          [idealResult, idealOut] = runPS(solutions[exerciseName], inputCopy);
+          [idealResult, idealOut] = runPS(solution, inputCopy);
         } else {
           idealOut = "";
-          idealResult = solutions[exerciseName](...inputCopy);
+          idealResult = solution(...inputCopy);
         }
         [result, output] = runPS(answer, inputCopy);
 
@@ -143,7 +143,7 @@ document.getElementById("solve").addEventListener('click', () => {
 
 document.getElementById("showSolution").addEventListener('click', () => {
   if (document.getElementById("showSolution").innerText === "Show Solution") {
-    const s = solutions[exerciseName].toString();
+    const s = solution.toString();
     const r = new RegExp(/function/);
     // eslint-disable-next-line no-unused-vars
     const n = s.replace(r, `function ${exercise.name}`);

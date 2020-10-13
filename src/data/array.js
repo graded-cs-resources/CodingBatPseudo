@@ -23,7 +23,15 @@ module.exports = [
       '([1, 2, 3, 4])',
     ],
     // The question itself. Try to make it Pseudocode-y
-    question: `Given an array of numbers, output "True" if 6 appears as either the first or last element in the array. The array will be length 1 or more. Use ARR.length to access the number of elements in the array.`,
+    question: `Given an array of numbers, output TRUE if 6 appears as either the first or last element in the array. The array will be length 1 or more. Use ARR.length to access the number of elements in the array.`,
+    solution: `method FirstLast6(NUMS)
+    END = NUMS.length - 1
+    if NUMS[0] = 6 OR NUMS[END] = 6 then
+      output TRUE
+    else
+      output FALSE
+    end if
+  end method`,
   },
   {
     title: 'Array',
@@ -39,7 +47,15 @@ module.exports = [
       '([13, 2, 3, 4, 5, 13])',
       '([7, 7])',
     ],
-    question: `Given an array of numbers, output "True" if the array is length 1 or more, and the first element and the last element are equal. Otherwise output "False"`,
+    question: `Given an array of numbers, output TRUE if the array is length 1 or more, and the first element and the last element are equal. Otherwise output FALSE`,
+    solution: `method SameFirstLast(NUMS)
+    END = NUMS.length - 1
+    if END <> 0 AND NUMS[END] = NUMS[0] then
+      output TRUE
+    else
+      output FALSE
+    end if
+  end method`,
   },
   {
     title: 'Array',
@@ -51,7 +67,14 @@ module.exports = [
       '([1, 2, 3], [1])',
       '([1, 2, 3], [2])',
     ],
-    question: `Given 2 arrays, ARR1 and ARR2, output "True" if they have the same first element or they have the same last element, and "False" otherwise.`,
+    question: `Given 2 arrays, ARR1 and ARR2, output TRUE if they have the same first element or they have the same last element, and FALSE otherwise.`,
+    solution: `method CommonEnd(ARR1, ARR2)
+    if ARR1[0] = ARR2[0] OR ARR1[ARR1.length - 1] = ARR2[ARR2.length - 1] then
+      output TRUE
+    else
+      output FALSE
+    end if
+  end method`
   },
   {
     title: 'Array',
@@ -69,6 +92,18 @@ module.exports = [
     question: `Given an array of numbers, figure out which is larger, the first
     or last element in the array, and set all the other elements to be that value. Then output the new array.
     You can use ARR.length to find the length of the array.`,
+    solution: `method MaxEnd(NUMS)
+    if NUMS[0] > NUMS[NUMS.length-1] then
+      MAX = NUMS[0]
+    else
+      MAX = NUMS[NUMS.length-1]
+    end if
+    loop I from 0 to NUMS.length-1
+      NUMS[I] = MAX
+    end loop
+    output NUMS
+  end method`
+
   },
   {
     title: 'Array',
@@ -86,6 +121,15 @@ module.exports = [
     question: `Given an array of numbers, output the sum of the first 2 elements in the array.
     If the array length is less than 2, just sum up the elements that exist, returning 0 if
     the array is length 0. You can use ARR.length to access the length of the array.`,
+    solution: `method Sum2(NUMS)
+    if NUMS.length = 0 then
+      output 0
+    else if NUMS.length = 1 then
+      output NUMS[0]
+    else
+      output NUMS[0]+NUMS[1]
+    end if
+  end method`
   },
   {
     title: 'Array',
@@ -100,6 +144,10 @@ module.exports = [
     ],
     question: `Given 2 arrays that are both known to have length 3, output a new array of length 2
     containing their middle elements. You can make a new array with the format <code>NEW = [e1, e2, e3]</code>`,
+    solution: `method MiddleWay(ARR1, ARR2)
+    NEW = [ARR1[1], ARR2[1]];
+    output NEW
+  end method`
   },
   {
     title: 'Array',
@@ -117,6 +165,10 @@ module.exports = [
     question: `Given an array, return a new array length 2 containing the
     first and last elements from the original array. The original array will be
     length 1 or more. You can make a new array with the format <code>NEW = [e1, e2, e3]</code>`,
+    solution: `method MakeEnds(ARR)
+    NEW = [ARR[0], ARR[ARR.length - 1]]
+    output NEW
+  end method`
   },
   {
     title: 'Array',
@@ -133,10 +185,17 @@ module.exports = [
       '([9, 5])',
     ],
     question: 'Given an array that contains exactly two numbers, output TRUE if it contains a 2 or a 3,. FALSE otherwise',
+    solution: `method Has23(NUMS)
+    if NUMS[0] = 2 OR NUMS[0] = 3 OR NUMS[1] = 2 OR NUMS[1] = 3 then
+      output TRUE
+    else
+      output FALSE
+    end if
+  end method`
   },
   {
     title: 'Array',
-    name: 'no23',
+    name: 'No23',
     inputs: [
       '([4, 5])',
       '([4, 2])',
@@ -150,42 +209,50 @@ module.exports = [
       '([7, 8])',
       '([8, 7])',
     ],
-    question: 'Given an int array length 2, return true if it does not contain a 2 or 3.',
+    question: 'Given an array of numbers of length 2, output TRUE if it does not contain a 2 or 3, FALSE otherwise',
+    solution: `method No23(NUMS)
+  if NUMS[0] = 2 OR NUMS[1] = 2 OR NUMS[0] = 3 OR NUMS[1] = 3 then
+    output FALSE
+  else
+    output TRUE
+  end if
+end method`
   },
+
   {
     title: 'Array',
-    name: 'makeLast',
-    inputs: [
-      '([4, 5, 6])',
-      '([1, 2])',
-      '([3])',
-      '([0])',
-      '([7, 7, 7])',
-      '([3, 1, 4])',
-      '([1, 2, 3, 4])',
-      '([1, 2, 3, 0])',
-      '([2, 4])',
-    ],
-    question: `Given an int array, return a new array with double the length where its last
-    element is the same as the original array, and all the other elements are 0. The original
-    array will be length 1 or more.`,
-  },
-  {
-    title: 'Array',
-    name: 'double23',
+    name: 'Double23',
     inputs: [
       '([2, 2])',
       '([3, 3])',
       '([2, 3])',
-      '([3, 2])',
-      '([4, 5])',
+      '([3, 2, 3])',
+      '([4, 5, 2, 3])',
       '([2])',
       '([3])',
       '([])',
       '([3, 4])',
     ],
-    question: `Given an int array, return true if the array contains 2 twice, or 3 twice.
-    The array will be length 0, 1, or 2.`,
+    question: `Given an array of numbers, output TRUE if the array contains at least two 2s or at least two 3s. Use ARR.length to get its length.`,
+    solution: `method Double23(ARR)
+  NUM2 = 0
+  NUM3 = 0
+
+  loop I from 0 to ARR.length-1
+    if ARR[I] = 2 then
+      NUM2 = NUM2 + 1
+    else if ARR[I] = 3 then
+      NUM3 = NUM3 + 1
+    end if
+  end loop
+
+  if NUM3 >= 2 OR NUM2 >= 2 then
+    output TRUE
+  else
+    output FALSE
+  end if
+
+end method`,
   },
   {
     title: 'Array',

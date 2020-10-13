@@ -4,8 +4,9 @@ let solutions = require("../solutions.js");
 let runPS = require("./convertPStoJS.js");
 let prettyPrintMap = require("./prettyPrintMap.js");
 
-module.exports = function (exercise, exerciseName) {
+module.exports = function (exercise) {
     // example/sample runs
+    let solution = exercise.solution || solutions[exercise.name];
     for (let i = 0; i <= 2; i++) {
         try {
             let input = inputParser(exercise, exercise.inputs[i]);
@@ -20,11 +21,11 @@ module.exports = function (exercise, exerciseName) {
 
                 let inputCopy = inputParser(exercise, exercise.inputs[i]);
                 let formattedInput = prettyPrintMap(inputCopy, "parentheses");
-                if (typeof (solutions[exerciseName]) === "string") {
-                    [result, out] = runPS(solutions[exerciseName], inputCopy);
+                if (typeof (solution) === "string") {
+                    [result, out] = runPS(solution, inputCopy);
                     if (!result) result = out;
                 } else {
-                    result = solutions[exerciseName](inputCopy);
+                    result = solution(inputCopy);
                 }
                 let formattedResult = prettyPrintMap(result);
                 document.querySelector('.examples')
@@ -32,15 +33,15 @@ module.exports = function (exercise, exerciseName) {
                         `<li>${exerciseName}${formattedInput} → ${formattedResult}</li>`);
             }
             else {
-                if (typeof (solutions[exerciseName]) === "string") {
-                    [result, out] = runPS(solutions[exerciseName], input);
+                if (typeof (solution) === "string") {
+                    [result, out] = runPS(solution, input);
                     if (!result) result = out;
                 } else {
-                    result = solutions[exerciseName](...input);
+                    result = solution(...input);
                 }
                 document.querySelector('.examples')
                     .insertAdjacentHTML('beforeend',
-                        `<li>${exerciseName}${exercise.inputs[i]} → ${result}</li>`);
+                        `<li>${exercise.name}${exercise.inputs[i]} → ${result}</li>`);
             }
         } catch (e) {
             console.log(e);
