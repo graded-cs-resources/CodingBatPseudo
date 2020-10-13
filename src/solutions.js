@@ -1,4 +1,3 @@
-let warmupSolutions = require("./data/warmupSolutions.js");
 let stringSolutions = require("./data/stringSolutions.js");
 let recursionSolutions = require("./data/recursionSolutions.js");
 let logicSolutions = require("./data/logicSolutions.js");
@@ -14,7 +13,6 @@ let quizSolutions = require("./data/quizSolutions.js");
  *  Only the object in the first argument is mutated and returned.
  *  Later properties overwrite earlier properties with the same name. */
 let solutions = Object.assign({},
-  warmupSolutions,
   stringSolutions,
   recursionSolutions,
   logicSolutions,

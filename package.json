@@ -16,8 +16,6 @@
     "watchify": "^3.11.1"
   },
   "dependencies": {
-    "codemirror-minified": "^5.58.1",
-    "file-saver": "^2.0.2",
-    "lodash": "^4.17.20"
+    "codemirror-minified": "^5.58.1"
   }
 }

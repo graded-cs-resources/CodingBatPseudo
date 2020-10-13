@@ -1,10 +1,17 @@
 let deParam = require("./utility/deParam.js");
-let _ = require("lodash");
 let exercises = require("./exercisesToShowOnIndex.js");
 require("./listeners/indexSaveLoadAll.js");
 
+
+function uniq(a) {
+  var temp = {};
+  for (var i = 0; i < a.length; i++)
+    temp[a[i]] = true;
+  return Object.keys(temp);
+}
+
 let title = deParam(window.location.search).title;
-let allTitles = _.uniq(exercises.map(e => e.title));
+let allTitles = uniq(exercises.map(e => e.title));
 let titles = title ? [title] : allTitles;
 
 let solutions = require("./solutions.js");

@@ -1,5 +1,3 @@
-const { isArray } = require("lodash");
-
 module.exports = class Collection {
 
   elements = [];

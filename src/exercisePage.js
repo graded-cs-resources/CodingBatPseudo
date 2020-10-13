@@ -1,4 +1,3 @@
-const _ = require("lodash");
 const CodeMirror = require("codemirror-minified");
 const runPS = require("./utility/convertPStoJS");
 const exercises = require("./allExercisesIncludingHidden.js");
@@ -124,9 +123,9 @@ document.getElementById("solve").addEventListener('click', () => {
       }
 
       if (idealOut === "") {
-        results.push(_.isEqual(result, idealResult));
+        results.push(result === idealResult);
       } else {
-        results.push(_.isEqual(output, idealOut));
+        results.push(output === idealOut);
       }
     });
 

@@ -1,4 +1,3 @@
-let _ = require("lodash");
 
 /** Return row for html table **/
 function formatResults(funcName, inputStr, idealResult, result, idealOutput, output) {
@@ -6,7 +5,7 @@ function formatResults(funcName, inputStr, idealResult, result, idealOutput, out
         result = output;
         idealResult = idealOutput;
     }
-    const ok = _.isEqual(idealResult, result);
+    const ok = (idealResult === result);
     // Format the string to have no parents if a single input, and use capitalized true/false
     if (inputStr.indexOf(",") === -1 || inputStr.substring(1, 2) == "[") {
         inputStr = inputStr.slice(1, -1);
