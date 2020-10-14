@@ -1483,6 +1483,160 @@ module.exports = function availableTypedArrays() {
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"array-filter":5}],14:[function(require,module,exports){
+'use strict'
+
+exports.byteLength = byteLength
+exports.toByteArray = toByteArray
+exports.fromByteArray = fromByteArray
+
+var lookup = []
+var revLookup = []
+var Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array
+
+var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+for (var i = 0, len = code.length; i < len; ++i) {
+  lookup[i] = code[i]
+  revLookup[code.charCodeAt(i)] = i
+}
+
+// Support decoding URL-safe base64 strings, as Node.js does.
+// See: https://en.wikipedia.org/wiki/Base64#URL_applications
+revLookup['-'.charCodeAt(0)] = 62
+revLookup['_'.charCodeAt(0)] = 63
+
+function getLens (b64) {
+  var len = b64.length
+
+  if (len % 4 > 0) {
+    throw new Error('Invalid string. Length must be a multiple of 4')
+  }
+
+  // Trim off extra bytes after placeholder bytes are found
+  // See: https://github.com/beatgammit/base64-js/issues/42
+  var validLen = b64.indexOf('=')
+  if (validLen === -1) validLen = len
+
+  var placeHoldersLen = validLen === len
+    ? 0
+    : 4 - (validLen % 4)
+
+  return [validLen, placeHoldersLen]
+}
+
+// base64 is 4/3 + up to two characters of the original data
+function byteLength (b64) {
+  var lens = getLens(b64)
+  var validLen = lens[0]
+  var placeHoldersLen = lens[1]
+  return ((validLen + placeHoldersLen) * 3 / 4) - placeHoldersLen
+}
+
+function _byteLength (b64, validLen, placeHoldersLen) {
+  return ((validLen + placeHoldersLen) * 3 / 4) - placeHoldersLen
+}
+
+function toByteArray (b64) {
+  var tmp
+  var lens = getLens(b64)
+  var validLen = lens[0]
+  var placeHoldersLen = lens[1]
+
+  var arr = new Arr(_byteLength(b64, validLen, placeHoldersLen))
+
+  var curByte = 0
+
+  // if there are placeholders, only get up to the last complete 4 chars
+  var len = placeHoldersLen > 0
+    ? validLen - 4
+    : validLen
+
+  var i
+  for (i = 0; i < len; i += 4) {
+    tmp =
+      (revLookup[b64.charCodeAt(i)] << 18) |
+      (revLookup[b64.charCodeAt(i + 1)] << 12) |
+      (revLookup[b64.charCodeAt(i + 2)] << 6) |
+      revLookup[b64.charCodeAt(i + 3)]
+    arr[curByte++] = (tmp >> 16) & 0xFF
+    arr[curByte++] = (tmp >> 8) & 0xFF
+    arr[curByte++] = tmp & 0xFF
+  }
+
+  if (placeHoldersLen === 2) {
+    tmp =
+      (revLookup[b64.charCodeAt(i)] << 2) |
+      (revLookup[b64.charCodeAt(i + 1)] >> 4)
+    arr[curByte++] = tmp & 0xFF
+  }
+
+  if (placeHoldersLen === 1) {
+    tmp =
+      (revLookup[b64.charCodeAt(i)] << 10) |
+      (revLookup[b64.charCodeAt(i + 1)] << 4) |
+      (revLookup[b64.charCodeAt(i + 2)] >> 2)
+    arr[curByte++] = (tmp >> 8) & 0xFF
+    arr[curByte++] = tmp & 0xFF
+  }
+
+  return arr
+}
+
+function tripletToBase64 (num) {
+  return lookup[num >> 18 & 0x3F] +
+    lookup[num >> 12 & 0x3F] +
+    lookup[num >> 6 & 0x3F] +
+    lookup[num & 0x3F]
+}
+
+function encodeChunk (uint8, start, end) {
+  var tmp
+  var output = []
+  for (var i = start; i < end; i += 3) {
+    tmp =
+      ((uint8[i] << 16) & 0xFF0000) +
+      ((uint8[i + 1] << 8) & 0xFF00) +
+      (uint8[i + 2] & 0xFF)
+    output.push(tripletToBase64(tmp))
+  }
+  return output.join('')
+}
+
+function fromByteArray (uint8) {
+  var tmp
+  var len = uint8.length
+  var extraBytes = len % 3 // if we have 1 byte left, pad 2 bytes
+  var parts = []
+  var maxChunkLength = 16383 // must be multiple of 3
+
+  // go through the array every three bytes, we'll deal with trailing stuff later
+  for (var i = 0, len2 = len - extraBytes; i < len2; i += maxChunkLength) {
+    parts.push(encodeChunk(
+      uint8, i, (i + maxChunkLength) > len2 ? len2 : (i + maxChunkLength)
+    ))
+  }
+
+  // pad the end with zeros, but make sure to not forget the extra bytes
+  if (extraBytes === 1) {
+    tmp = uint8[len - 1]
+    parts.push(
+      lookup[tmp >> 2] +
+      lookup[(tmp << 4) & 0x3F] +
+      '=='
+    )
+  } else if (extraBytes === 2) {
+    tmp = (uint8[len - 2] << 8) + uint8[len - 1]
+    parts.push(
+      lookup[tmp >> 10] +
+      lookup[(tmp >> 4) & 0x3F] +
+      lookup[(tmp << 2) & 0x3F] +
+      '='
+    )
+  }
+
+  return parts.join('')
+}
+
+},{}],15:[function(require,module,exports){
 'use strict';
 
 var util = require('util');
@@ -1919,7 +2073,7 @@ module.exports = namespace();
 
 module.exports.namespace = namespace;
 
-},{"cache-base":30,"class-utils":35,"component-emitter":40,"define-property":15,"isobject":113,"mixin-deep":122,"pascalcase":138,"util":235}],15:[function(require,module,exports){
+},{"cache-base":30,"class-utils":35,"component-emitter":40,"define-property":16,"isobject":113,"mixin-deep":122,"pascalcase":138,"util":235}],16:[function(require,module,exports){
 /*!
  * define-property <https://github.com/jonschlinkert/define-property>
  *
@@ -1952,7 +2106,7 @@ module.exports = function defineProperty(obj, prop, val) {
   });
 };
 
-},{"is-descriptor":18}],16:[function(require,module,exports){
+},{"is-descriptor":19}],17:[function(require,module,exports){
 /*!
  * is-accessor-descriptor <https://github.com/jonschlinkert/is-accessor-descriptor>
  *
@@ -2023,7 +2177,7 @@ function has(obj, key) {
 
 module.exports = isAccessorDescriptor;
 
-},{"kind-of":114}],17:[function(require,module,exports){
+},{"kind-of":114}],18:[function(require,module,exports){
 /*!
  * is-data-descriptor <https://github.com/jonschlinkert/is-data-descriptor>
  *
@@ -2074,7 +2228,7 @@ module.exports = function isDataDescriptor(obj, prop) {
   return true;
 };
 
-},{"kind-of":114}],18:[function(require,module,exports){
+},{"kind-of":114}],19:[function(require,module,exports){
 /*!
  * is-descriptor <https://github.com/jonschlinkert/is-descriptor>
  *
@@ -2098,161 +2252,7 @@ module.exports = function isDescriptor(obj, key) {
   return isData(obj, key);
 };
 
-},{"is-accessor-descriptor":16,"is-data-descriptor":17,"kind-of":114}],19:[function(require,module,exports){
-'use strict'
-
-exports.byteLength = byteLength
-exports.toByteArray = toByteArray
-exports.fromByteArray = fromByteArray
-
-var lookup = []
-var revLookup = []
-var Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array
-
-var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-for (var i = 0, len = code.length; i < len; ++i) {
-  lookup[i] = code[i]
-  revLookup[code.charCodeAt(i)] = i
-}
-
-// Support decoding URL-safe base64 strings, as Node.js does.
-// See: https://en.wikipedia.org/wiki/Base64#URL_applications
-revLookup['-'.charCodeAt(0)] = 62
-revLookup['_'.charCodeAt(0)] = 63
-
-function getLens (b64) {
-  var len = b64.length
-
-  if (len % 4 > 0) {
-    throw new Error('Invalid string. Length must be a multiple of 4')
-  }
-
-  // Trim off extra bytes after placeholder bytes are found
-  // See: https://github.com/beatgammit/base64-js/issues/42
-  var validLen = b64.indexOf('=')
-  if (validLen === -1) validLen = len
-
-  var placeHoldersLen = validLen === len
-    ? 0
-    : 4 - (validLen % 4)
-
-  return [validLen, placeHoldersLen]
-}
-
-// base64 is 4/3 + up to two characters of the original data
-function byteLength (b64) {
-  var lens = getLens(b64)
-  var validLen = lens[0]
-  var placeHoldersLen = lens[1]
-  return ((validLen + placeHoldersLen) * 3 / 4) - placeHoldersLen
-}
-
-function _byteLength (b64, validLen, placeHoldersLen) {
-  return ((validLen + placeHoldersLen) * 3 / 4) - placeHoldersLen
-}
-
-function toByteArray (b64) {
-  var tmp
-  var lens = getLens(b64)
-  var validLen = lens[0]
-  var placeHoldersLen = lens[1]
-
-  var arr = new Arr(_byteLength(b64, validLen, placeHoldersLen))
-
-  var curByte = 0
-
-  // if there are placeholders, only get up to the last complete 4 chars
-  var len = placeHoldersLen > 0
-    ? validLen - 4
-    : validLen
-
-  var i
-  for (i = 0; i < len; i += 4) {
-    tmp =
-      (revLookup[b64.charCodeAt(i)] << 18) |
-      (revLookup[b64.charCodeAt(i + 1)] << 12) |
-      (revLookup[b64.charCodeAt(i + 2)] << 6) |
-      revLookup[b64.charCodeAt(i + 3)]
-    arr[curByte++] = (tmp >> 16) & 0xFF
-    arr[curByte++] = (tmp >> 8) & 0xFF
-    arr[curByte++] = tmp & 0xFF
-  }
-
-  if (placeHoldersLen === 2) {
-    tmp =
-      (revLookup[b64.charCodeAt(i)] << 2) |
-      (revLookup[b64.charCodeAt(i + 1)] >> 4)
-    arr[curByte++] = tmp & 0xFF
-  }
-
-  if (placeHoldersLen === 1) {
-    tmp =
-      (revLookup[b64.charCodeAt(i)] << 10) |
-      (revLookup[b64.charCodeAt(i + 1)] << 4) |
-      (revLookup[b64.charCodeAt(i + 2)] >> 2)
-    arr[curByte++] = (tmp >> 8) & 0xFF
-    arr[curByte++] = tmp & 0xFF
-  }
-
-  return arr
-}
-
-function tripletToBase64 (num) {
-  return lookup[num >> 18 & 0x3F] +
-    lookup[num >> 12 & 0x3F] +
-    lookup[num >> 6 & 0x3F] +
-    lookup[num & 0x3F]
-}
-
-function encodeChunk (uint8, start, end) {
-  var tmp
-  var output = []
-  for (var i = start; i < end; i += 3) {
-    tmp =
-      ((uint8[i] << 16) & 0xFF0000) +
-      ((uint8[i + 1] << 8) & 0xFF00) +
-      (uint8[i + 2] & 0xFF)
-    output.push(tripletToBase64(tmp))
-  }
-  return output.join('')
-}
-
-function fromByteArray (uint8) {
-  var tmp
-  var len = uint8.length
-  var extraBytes = len % 3 // if we have 1 byte left, pad 2 bytes
-  var parts = []
-  var maxChunkLength = 16383 // must be multiple of 3
-
-  // go through the array every three bytes, we'll deal with trailing stuff later
-  for (var i = 0, len2 = len - extraBytes; i < len2; i += maxChunkLength) {
-    parts.push(encodeChunk(
-      uint8, i, (i + maxChunkLength) > len2 ? len2 : (i + maxChunkLength)
-    ))
-  }
-
-  // pad the end with zeros, but make sure to not forget the extra bytes
-  if (extraBytes === 1) {
-    tmp = uint8[len - 1]
-    parts.push(
-      lookup[tmp >> 2] +
-      lookup[(tmp << 4) & 0x3F] +
-      '=='
-    )
-  } else if (extraBytes === 2) {
-    tmp = (uint8[len - 2] << 8) + uint8[len - 1]
-    parts.push(
-      lookup[tmp >> 10] +
-      lookup[(tmp >> 4) & 0x3F] +
-      lookup[(tmp << 2) & 0x3F] +
-      '='
-    )
-  }
-
-  return parts.join('')
-}
-
-},{}],20:[function(require,module,exports){
+},{"is-accessor-descriptor":17,"is-data-descriptor":18,"kind-of":114}],20:[function(require,module,exports){
 module.exports=[
 	"3dm",
 	"3ds",
@@ -5743,7 +5743,7 @@ function numberIsNaN (obj) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"base64-js":19,"buffer":29,"ieee754":92}],30:[function(require,module,exports){
+},{"base64-js":14,"buffer":29,"ieee754":92}],30:[function(require,module,exports){
 'use strict';
 
 var isObject = require('isobject');
@@ -6764,10 +6764,8 @@ var fs = require('fs');
 var sysPath = require('path');
 var readdirp = require('readdirp');
 var fsevents;
-// try {
-//   fsevents = require('fsevents');
-// } catch (error) {
-//   if (process.env.CHOKIDAR_PRINT_FSEVENTS_REQUIRE_ERROR) console.error(error);
+// try { fsevents = require('fsevents'); } catch (error) {
+//   if (process.env.CHOKIDAR_PRINT_FSEVENTS_REQUIRE_ERROR) console.error(error)
 // }
 
 // fsevents instance helper functions
@@ -9519,12 +9517,12 @@ module.exports = function defineProperty(obj, key, val) {
 };
 
 },{"is-descriptor":49,"isobject":113}],47:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16,"kind-of":114}],48:[function(require,module,exports){
 arguments[4][17][0].apply(exports,arguments)
-},{"dup":17,"kind-of":114}],49:[function(require,module,exports){
+},{"dup":17,"kind-of":114}],48:[function(require,module,exports){
 arguments[4][18][0].apply(exports,arguments)
-},{"dup":18,"is-accessor-descriptor":47,"is-data-descriptor":48,"kind-of":114}],50:[function(require,module,exports){
+},{"dup":18,"kind-of":114}],49:[function(require,module,exports){
+arguments[4][19][0].apply(exports,arguments)
+},{"dup":19,"is-accessor-descriptor":47,"is-data-descriptor":48,"kind-of":114}],50:[function(require,module,exports){
 'use strict';
 
 /* globals
@@ -11756,16 +11754,16 @@ utils.createRegex = function(str) {
 };
 
 },{"fragment-cache":77,"regex-not":158}],68:[function(require,module,exports){
-arguments[4][15][0].apply(exports,arguments)
-},{"dup":15,"is-descriptor":72}],69:[function(require,module,exports){
+arguments[4][16][0].apply(exports,arguments)
+},{"dup":16,"is-descriptor":72}],69:[function(require,module,exports){
 arguments[4][26][0].apply(exports,arguments)
 },{"dup":26,"is-extendable":103}],70:[function(require,module,exports){
-arguments[4][16][0].apply(exports,arguments)
-},{"dup":16,"kind-of":114}],71:[function(require,module,exports){
 arguments[4][17][0].apply(exports,arguments)
-},{"dup":17,"kind-of":114}],72:[function(require,module,exports){
+},{"dup":17,"kind-of":114}],71:[function(require,module,exports){
 arguments[4][18][0].apply(exports,arguments)
-},{"dup":18,"is-accessor-descriptor":70,"is-data-descriptor":71,"kind-of":114}],73:[function(require,module,exports){
+},{"dup":18,"kind-of":114}],72:[function(require,module,exports){
+arguments[4][19][0].apply(exports,arguments)
+},{"dup":19,"is-accessor-descriptor":70,"is-data-descriptor":71,"kind-of":114}],73:[function(require,module,exports){
 /*!
  * fill-range <https://github.com/jonschlinkert/fill-range>
  *
@@ -13858,8 +13856,8 @@ module.exports = isDataDescriptor;
 },{"kind-of":100}],100:[function(require,module,exports){
 arguments[4][95][0].apply(exports,arguments)
 },{"dup":95,"is-buffer":98}],101:[function(require,module,exports){
-arguments[4][18][0].apply(exports,arguments)
-},{"dup":18,"is-accessor-descriptor":94,"is-data-descriptor":99,"kind-of":102}],102:[function(require,module,exports){
+arguments[4][19][0].apply(exports,arguments)
+},{"dup":19,"is-accessor-descriptor":94,"is-data-descriptor":99,"kind-of":102}],102:[function(require,module,exports){
 var toString = Object.prototype.toString;
 
 /**
@@ -23967,14 +23965,14 @@ function assert(val, message) {
 exports = module.exports = Node;
 
 },{"define-property":173,"isobject":113,"snapdragon-util":177}],173:[function(require,module,exports){
-arguments[4][15][0].apply(exports,arguments)
-},{"dup":15,"is-descriptor":176}],174:[function(require,module,exports){
 arguments[4][16][0].apply(exports,arguments)
-},{"dup":16,"kind-of":114}],175:[function(require,module,exports){
+},{"dup":16,"is-descriptor":176}],174:[function(require,module,exports){
 arguments[4][17][0].apply(exports,arguments)
-},{"dup":17,"kind-of":114}],176:[function(require,module,exports){
+},{"dup":17,"kind-of":114}],175:[function(require,module,exports){
 arguments[4][18][0].apply(exports,arguments)
-},{"dup":18,"is-accessor-descriptor":174,"is-data-descriptor":175,"kind-of":114}],177:[function(require,module,exports){
+},{"dup":18,"kind-of":114}],176:[function(require,module,exports){
+arguments[4][19][0].apply(exports,arguments)
+},{"dup":19,"is-accessor-descriptor":174,"is-data-descriptor":175,"kind-of":114}],177:[function(require,module,exports){
 'use strict';
 
 var typeOf = require('kind-of');
@@ -25173,7 +25171,7 @@ module.exports = Snapdragon;
 module.exports.Compiler = Compiler;
 module.exports.Parser = Parser;
 
-},{"./lib/compiler":180,"./lib/parser":181,"./lib/utils":184,"base":14,"define-property":185}],180:[function(require,module,exports){
+},{"./lib/compiler":180,"./lib/parser":181,"./lib/utils":184,"base":15,"define-property":185}],180:[function(require,module,exports){
 (function (__filename){(function (){
 'use strict';
 

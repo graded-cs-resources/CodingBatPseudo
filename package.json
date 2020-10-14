@@ -5,8 +5,8 @@
   "main": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "browserify ./src/main.js > ./dist/bundle.js",
-    "watch": "watchify --debug ./src/main.js -o ./dist/bundle.js -v"
+    "build": "browserify src/main.js > bundle.js",
+    "watch": "watchify --debug src/main.js -o bundle.js -v"
   },
   "author": "DavidGriswoldTeacher",
   "repository": "https://github.com/graded-cs-resources/CodingBatPseudo",
