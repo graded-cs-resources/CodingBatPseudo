@@ -50,7 +50,7 @@ module.exports = [
     question: `Given an array of numbers, output TRUE if the array is length 1 or more, and the first element and the last element are equal. Otherwise output FALSE`,
     solution: `method SameFirstLast(NUMS)
     END = NUMS.Length() - 1
-    if END <> 0 AND NUMS[END] = NUMS[0] then
+    if END >= 0 AND NUMS[END] = NUMS[0] then
       output TRUE
     else
       output FALSE
