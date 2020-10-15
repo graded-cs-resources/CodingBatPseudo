@@ -223,7 +223,7 @@ end method`,
     title: "Warmup",
     name: "Front3",
     question: `Given a string, we'll say that the front is the first 3 chars of the string.
-              If the string length is less than 3, the front is whatever is there. Return a new
+              If the string length is less than 3, the front is whatever is there. Output a new
               string which is 3 copies of the front. You can use the method STRING.SubStr(S,L)
               where S is the first index in the substring (first char is 0!) and L is how many chars you want.`,
     solution: `method Front3(STR) 
@@ -302,8 +302,8 @@ end method`,
   FALSE otherwise. You can use the method STRING.SubStr(S,L)
   where S is the first index in the substring (first char is 0!) and L is how many chars you want.`,
     solution: `method StartHi(STR) 
-  front = STR.SubStr(0,2);
-  if front = 'hi' then
+  FRONT = STR.SubStr(0,2);
+  if FRONT = 'hi' then
     output TRUE
   else
     output FALSE
@@ -324,8 +324,8 @@ end method`,
     name: "IcyHot",
     question: `Given two temperatures, Output TRUE if one is less than 0 and the
   other is greater than 100.`,
-    solution: `method IcyHot(temp1, temp2) 
-  if temp1 < 0 AND temp2 > 100 OR temp2 < 0 AND temp1 > 100 then
+    solution: `method IcyHot(TEMP1, TEMP2) 
+  if TEMP1 < 0 AND TEMP2 > 100 OR TEMP2 < 0 AND TEMP1 > 100 then
     output TRUE
   end if
   output FALSE
@@ -606,7 +606,7 @@ end method`,
     title: "Warmup",
     name: "FrontTimes",
     question: `Given a string and a non - negative int n, we'll say that the front of the string is the first 3 chars,
-  or whatever is there if the string is less than length 3. Return n copies of the front.`,
+  or whatever is there if the string is less than length 3. Output n copies of the front.`,
     solution: `method FrontTimes(STR, N) 
   FRONT = STR.SubStr(0,3)
   RESULT = ""
@@ -654,61 +654,32 @@ end method`,
     title: "Warmup",
     name: "StringSplosion",
     question: `Given a non-empty string like "Code" output a string like "CCoCodCode".`,
-    solution: `method StringSplosion(str) 
-  result = '';
-  for (x = 0; x < str.length - 1; x++) {
-    result = result + str.substring(0, x + 1);
-  }
-  return result;
+    solution: `method StringSplosion(STR) 
+  RESULT = ""
+  loop X from 1 to STR.Length()
+    RESULT = RESULT + STR.SubStr(0, X)
+  end loop
+  output RESULT
 end method`,
     inputs: [
-    ],
-  }, {
-    title: "Warmup",
-    name: "Last2",
-    question: `Given a string, output the count of the number of times that a substring
-  length 2 appears in the string and also as the last 2 chars of the string, so
-  "hixxxhi" yields 1(we won't count the end substring).`,
-    solution: `method Last2(str) 
-  count = 0;
-  if str.length < 2 then
-    return 0;
-  end if
-  end = str.substring(str.length - 2);
-  for (x = 0; x < str.length - 2; x++) {
-    sub = str.substring(x, x + 2);
-    if sub = end then
-      count++;
-    end if
-  }
-  return count;
-end method`,
-    inputs: [
-      "('hixxhi')",
-      "('xaxxaxaxx')",
-      "('axxaaxx')",
-      "('xxaxxaxxaxx')",
-      "('xaxaxaa')",
-      "('xxxx')",
-      "('13121312')",
-      "('11212')",
-      "('13121311')",
-      "('hi')",
-      "('h')",
-      "('')"
+      '("Code")',
+      '("Bob")',
+      '("Apple")',
+      '("Str")',
+      '("123")'
     ],
   }, {
     title: "Warmup",
     name: "ArrayCount9",
     question: `Given an array of ints, output the number of 9's in the array.`,
-    solution: `method ArrayCount9(nums) 
-  count = 0;
-  for (x = 0; x < nums.length; x++) {
-    if nums[x] = 9 then
-      count++;
+    solution: `method ArrayCount9(NUMS) 
+  COUNT = 0
+  loop X from 0 to NUMS.Length()-1
+    if NUMS[X] = 9 then
+      COUNT = COUNT + 1
     end if
-  }
-  return count;
+  end loop
+  output COUNT
 end method`,
     inputs: [
       "([1,2,9])",
@@ -724,13 +695,18 @@ end method`,
     name: "ArrayFront9",
     question: `Given an array of ints, Output TRUE if one of the first 4 elements in
             the array is a 9. The array length may be less than 4.`,
-    solution: `method ArrayFront9(nums) 
-  for (x = 0; x < 4; x++) {
-    if nums[x] = 9 then
-      output TRUE
+    solution: `method ArrayFront9(NUMS) 
+  END = 3
+  FOUND = FALSE
+  if NUMS.Length() < 4 then
+    END = NUMS.Length() - 1
+  end if
+  loop X from 0 to END
+    if NUMS[X] = 9 then
+      FOUND = TRUE
     end if
-  }
-  output FALSE
+  end loop
+  output FOUND
 end method`,
     inputs: [
       "([1,2,9,3,4])",
@@ -751,132 +727,60 @@ end method`,
     name: "Array123",
     question: `Given an array of ints, Output TRUE if the sequence of numbers 1, 2, 3
           appears in the array somewhere.`,
-    solution: `method Array123(nums) 
-  return !!(nums.join('').match(/123/g));
+    solution: `method Array123(NUMS) 
+    FOUND = FALSE
+    loop I from 0 to NUMS.Length()-3
+      if NUMS[I] = 1 AND NUMS[I+1] = 2 AND NUMS[I+2] = 3 then
+        FOUND = TRUE
+      end if
+    end loop
+    output FOUND
 end method`,
     inputs: [
-    ],
-  }, {
-    title: "Warmup",
-    name: "StringMatch",
-    question: `Given 2 strings, a and b, output the number of the positions where they contain the same length 2 substring.
-            So "xxcaazz" and "xxbaaz" yields 3, since the "xx" "xx", "aa", and "az" substrings appear in the same place in both strings.`,
-    solution: `method StringMatch(a, b) 
-  len = Math.min(a.length, b.length);
-  count = 0;
-  for (x = 0; x < len - 1; x++) {
-    aSub = a.substring(x, x + 2);
-    bSub = b.substring(x, x + 2);
-    if aSub = bSub then
-      count++;
-    end if
-  }
-  return count;
-end method`,
-    inputs: [
-      "('xxcaazz', 'xxbaaz')",
-      "('abc', 'abc')",
-      "('abc', 'axc')",
-      "('hello', 'he')",
-      "('he', 'hello')",
-      "('', 'hello')",
-      "('aabbccdd', 'abbbxxd')",
-      "('aaxxaaxx', 'iaxxai')",
-      "('iaxxai', 'aaxxaaxx')"
+      '([1,2,3,4])',
+      '([4, 5, 1, 2, 3, 4])',
+      '([1, 2, 1, 3, 3])',
+      '([3, 2, 1])',
+      '([0, 0, 1, 2, 0, 1, 2, 3])'
     ],
   }, {
     title: "Warmup",
     name: "StringX",
     question: `Given a string, output a version where all the "x" have been removed.
               Except an "x" at the very start or end should not be removed.`,
-    solution: `method StringX(str) 
-  result = '';
-  front = str.substring(0, 1);
-  end = str.substring(str.length - 1);
-  for (i = 1; i < str.length - 1; i++) {
-    if str.charAt(i) != 'x' then
-      result += str.charAt(i);
+    solution: `method StringX(STR) 
+  RESULT= STR.SubStr(0,1)
+  
+  loop I from 1 to STR.Length() - 2
+    if STR.SubStr(I,1) != "x" then
+      RESULT = RESULT + STR.SubStr(I,1)
     end if
-  }
-  return front + result + end;
+  end loop
+  RESULT = RESULT + STR.SubStr(STR.Length() - 1,1)
+  output RESULT
 end method`,
     inputs: [
       "('xxHxix')",
       "('abxxxcd')",
       "('xabxxxcdx')",
-      "('xKittenx')",
+      "('xKxixtxtxexn')",
       "('Hello')",
       "('xx')",
-      "('x')",
-      "('')"
-    ],
-  }, {
-    title: "Warmup",
-    name: "AltPairs",
-    question: `Given a string, output a string made of the chars at indexes 0,1, 4,5, 8,9 ...
-              so "kittens" yields "kien".`,
-    solution: `method AltPairs(str) 
-  result = '';
-  for (x = 0; x < str.length; x += 4) {
-    end = x + 2;
-    if end > str.length then
-      end = str.length;
-    end if
-    result = result + str.substring(x, end);
-  }
-  return result;
-end method`,
-    inputs: [
-      "('kitten')",
-      "('Chocolate')",
-      "('CodingHorror')",
-      "('yak')",
-      "('ya')",
-      "('y')",
-      "('')",
-      "('ThisThatTheOther')"
-    ],
-  }, {
-    title: "Warmup",
-    name: "StringYak",
-    question: `Suppose the string "yak" is unlucky. Given a string, output a version
-              where all the "yak" are removed, but the "a" can be any char. The "yak" strings
-              will not overlap.`,
-    solution: `method StringYak(str) 
-  result = '';
-  for (x = 0; x < str.length; x++) {
-    if x + 2 < str.length AND str.charAt(x) = 'y' AND str.charAt(x + 2) = 'k' then
-      x = x + 2;
-    else
-      result = result + str.charAt(x);
-    end if
-  }
-  return result;
-end method`,
-    inputs: [
-      "('yakpak')",
-      "('pakyak')",
-      "('yak123ya')",
-      "('yak')",
-      "('yakxxxyak')",
-      "('xxcaazz', 'hiyakHi')",
-      "('xxxyakyyyakzzz')"
     ],
   }, {
     title: "Warmup",
     name: "Array667",
-    question: `Given an array of ints, output the number of times that two 6's
-                are next to each other in the array. Also count instances where the second
-                "6" is actually a 7.`,
-    solution: `method Array667(nums) 
-  count = 0;
-  for (x = 0; x < nums.length; x++) {
-    if nums[x] = 6 then
-      if nums[x + 1] = 6 OR nums[x + 1] = 7 then
-        count++;
+    question: `Given an array of integers, output the number of times that the array has a 6 followed by either a 6 or a 7`,
+    solution: `method Array667(NUMS) 
+  COUNT = 0
+  loop X from 0 to NUMS.length -1
+    if NUMS[X] = 6 then
+      if NUMS[X + 1] = 6 OR NUMS[X + 1] = 7 then
+        COUNT = COUNT + 1
       end if
     end if
-  } return count;
+  end loop
+  output COUNT
 end method`,
     inputs: [
       "([6,6,2])",
@@ -896,17 +800,16 @@ end method`,
   }, {
     title: "Warmup",
     name: "NoTriples",
-    question: `Given an array of ints, we'll say that a triple is a value appearing 3 times
+    question: `Given an array of integers, we'll say that a triple is a value appearing 3 times
                   in a row in the array. Output TRUE if the array does not contain any triples.`,
-    solution: `method NoTriples(nums) 
-  for (x = 0; x < nums.length - 2; x++) {
-    first = nums[x];
-    if first = nums[x + 1] then
-      if first = nums[x + 2] then
-        output FALSE
-      end if
+    solution: `method NoTriples(NUMS) 
+    TRIPLEFOUND = FALSE
+    loop X from 0 to NUMS.length - 3
+    if NUMS[X] = NUMS[X+1] AND NUMS[X] = NUMS[X+2] then
+        TRIPLEFOUND = TRUE
     end if
-  } output TRUE
+  end loop 
+  output NOT TRIPLEFOUND
 end method`,
     inputs: [
       "([1,1,2,2,1])",
@@ -924,10 +827,15 @@ end method`,
     name: "Has271",
     question: `Given an array of ints, Output TRUE if it contains a 2, 7, 1
                   pattern -- a value, followed by the value plus 5, followed by the value
-                  minus 1. Additionally the 271 counts even if the "1" differs by 2 or less
-                  from the correct value.`,
-    solution: `method Has271(nums) 
-  return !!(nums.join('').match(/271/g));
+                  minus 1.`,
+    solution: `method Has271(NUMS) 
+    FOUND = FALSE
+    loop X from 0 to NUMS.length - 3
+    if NUMS[X] + 5 = NUMS[X + 1] AND NUMS[X] - 1 = NUMS[X+2] then
+        FOUND = TRUE
+    end if
+  end loop 
+  output FOUND
 end method`,
     inputs: [
       "([1,2,7,1])",

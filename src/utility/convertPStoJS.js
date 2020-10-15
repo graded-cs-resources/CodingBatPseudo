@@ -155,6 +155,7 @@ function translate(line) {
   var first = "";
   if (startswith(lin, "if")) { first = "if" }
   else if (startswith(lin, "return")) { first = "return" }
+  else if (startswith(lin, "output")) { first = "output" }
   else if (startswith(lin, "else if")) { first = "else if" }
   else if (startswith(lin, "else")) { first = "else" }
   else if (startswith(lin, "loop while")) { first = "loop while" }
@@ -168,7 +169,7 @@ function translate(line) {
   else {
     if (sp >= 0) { first = lin.substring(0, sp); }
   }
-  if ((first == "if" || first == "else if" || first == "return")) {
+  if ((first == "if" || first == "else if" || first == "return" || first == "output")) {
 
     line = line.replace("if ", "if(");
     if (first == "else if") { line = line.replace("else if", "}else if") }
