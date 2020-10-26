@@ -218,7 +218,6 @@ module.exports = [
   end if
 end method`
   },
-
   {
     title: 'Array',
     name: 'Double23',
@@ -256,21 +255,29 @@ end method`,
   },
   {
     title: 'Array',
-    name: 'fix23',
+    name: 'Fix23',
     inputs: [
-      '([1, 2, 3])',
-      '([2, 3, 5])',
+      '([1, 2, 3, 4])',
+      '([2, 3, 5, 7, 2, 3])',
       '([1, 2, 1])',
       '([3, 2, 1])',
       '([2, 2, 3])',
       '([2, 3, 3])',
     ],
-    question: `Given an int array length 3, if there is a 2 in the array immediately
-    followed by a 3, set the 3 element to 0. Return the changed array.`,
+    question: `Given an array of integers, any time there is a 2 followed by a 3, change the 3 to a 0. 
+    Output the changed array.`,
+    solution: `method Fix23(ARR) 
+    loop I from 0 to ARR.Length()-2
+      if ARR[I] = 2 AND ARR[I+1] = 3 then
+        ARR[I+1] = 0
+      end if
+    end loop
+    output ARR
+end method`
   },
   {
     title: 'Array',
-    name: 'start1',
+    name: 'Start1',
     inputs: [
       '([1, 2, 3], [1, 3])',
       '([7, 2, 3], [1])',
@@ -283,38 +290,80 @@ end method`,
       '([], [])',
       '([1, 3], [1])',
     ],
-    question: `Start with 2 int arrays, a and b, of any length. Return how many of the arrays
+    question: `Start with 2 int arrays, A and B, of any length. Output how many of the arrays
     have 1 as their first element.`,
+    solution: `method Start1(A,B)
+    COUNT = 0
+    if A.Length() > 0 AND A[0] = 1 then
+      COUNT = COUNT + 1
+    end if
+    if B.Length() > 0 AND B[0] = 1 then
+      COUNT = COUNT + 1
+    end if
+    output COUNT
+  end method`
+
   },
   {
     title: 'Array',
-    name: 'biggerTwo',
+    name: 'BiggerSum',
     inputs: [
-      '([1, 2], [3, 4])',
-      '([3, 4], [1, 2])',
-      '([1, 1], [1, 2])',
-      '([2, 1], [1, 1])',
-      '([2, 2], [1, 3])',
+      '([1, 2, 3], [3, 4, 4])',
+      '([3, 4, 11], [1, 2, 8])',
+      '([1, 1, -1], [1, 0, 0])',
+      '([2, 1, 1], [1, 1, 2, 3])',
+      '([2, 2, 1, 1], [1, 3, 3, -1])',
       '([1, 3], [2, 2])',
       '([6, 7], [3, 1])',
     ],
-    question: `Start with 2 int arrays, a and b, each length 2. Consider the sum of the
-    values in each array. Return the array which has the largest sum. In event of a tie,
-    return a.`,
+    question: `Start with integer arrays, A and B. 
+      Find the sum of each array and output the winner 
+      in the form "<code>A: 23</code>" (where 23 is the sum). 
+      If there is a tie, output in the form "<code>TIE: 23</code>"`,
+    solution: `method BiggerSum(A,B)
+    SUMA = 0
+    SUMB = 0
+    loop I from 0 to A.Length()-1
+      SUMA = SUMA + A[I]
+    end loop
+    loop I from 0 to B.Length() - 1
+      SUMB = SUMB + B[I]
+    end loop
+    if SUMA > SUMB then
+      output "A: " + SUMA
+    else if SUMB > SUMA then
+      output "B: " + SUMB
+    else
+      output "TIE: " + SUMA
+    end if
+  end method`
   },
   {
     title: 'Array',
-    name: 'makeMiddle',
+    name: 'MakeMiddle',
     inputs: [
-      '([1, 2, 3, 4])',
+      '([1, 2, 3, 4, 5])',
       '([7, 1, 2, 3, 4, 9])',
-      '([1, 2])',
+      '([1, 2, 7])',
       '([5, 2, 4, 7])',
-      '([9, 0, 4, 3, 9, 1])',
+      '([9, 0, 4, 3, 9, 1, 2])',
     ],
-    question: `Given an array of ints of even length, return a new array length 2
-    containing the middle two elements from the original array. The original array
-    will be length 2 or more.`,
+    question: `Given an array of integers, output a new array of length 2. 
+    The new array should contain the two middle elements if the original array had
+    an even number of elements, or it should contain the exact middle element twice
+    if the original array had an odd number of elements.`,
+    solution: `method MakeMiddle(ARR)
+    if ARR.Length() mod 2 = 0 then
+      MID = ARR.Length() / 2 
+      //if length = 4, this will be 2, and we want 1 and 2
+      output [ ARR[MID-1], ARR[MID] ]
+    else
+      MID = ARR.Length() div 2
+      // if length = 5, this will be 2, just what we want!
+      output [ ARR[MID], ARR[MID] ]
+    end if
+  end method`,
+
   },
   {
     title: 'Array',
@@ -339,7 +388,7 @@ end method`,
       '([1])',
     ],
     question: `Given an array of ints, swap the first and last elements in the array.
-    Return the modified array. The array length will be at least 1.`,
+    Return the modified array.The array length will be at least 1.`,
   },
   {
     title: 'Array',
@@ -350,7 +399,7 @@ end method`,
       '([1, 2, 3])',
     ],
     question: `Given an array of ints of odd length, return a new array length 3
-    containing the elements from the middle of the array. The array length will be
+    containing the elements from the middle of the array.The array length will be
     at least 3.`,
   },
   {
@@ -369,7 +418,7 @@ end method`,
       '([2, 2, 5, 1, 1])',
     ],
     question: `Given an array of ints of odd length, look at the first, last,
-    and middle values in the array and return the largest. The array length will
+    and middle values in the array and return the largest.The array length will
     be a least 1.`,
   },
   {
@@ -386,7 +435,7 @@ end method`,
       '([6])',
     ],
     question: `Given an int array of any length, return a new array of its first
-    2 elements. If the array is smaller than length 2, use whatever
+    2 elements.If the array is smaller than length 2, use whatever
     elements are present.`,
   },
   {
@@ -435,7 +484,7 @@ end method`,
       '([5, 4], [2, 3, 7])',
     ],
     question: `Given 2 int arrays, a and b, return a new array length 2 containing,
-    as much as will fit, the elements from a followed by the elements from b. The
+    as much as will fit, the elements from a followed by the elements from b.The
     arrays may be any length, including 0, but there will be 2 or more elements
     available between the 2 arrays.`,
   },
@@ -452,7 +501,7 @@ end method`,
       '([1, 4, 1, 9], [])',
     ],
     question: `Given 2 int arrays, a and b, of any length, return a new array with the
-    first element of each array. If either array is length 0, ignore that array.`,
+    first element of each array.If either array is length 0, ignore that array.`,
   },
   {
     title: 'Array',
@@ -468,7 +517,7 @@ end method`,
       "([2, 5, -12])",
     ],
 
-    question: `Return the index of the minimum value in an array. The input array will have at
+    question: `Return the index of the minimum value in an array.The input array will have at
      least one element in it.`
   },
   {
@@ -485,7 +534,7 @@ end method`,
       "([2, 5, 12])",
     ],
 
-    question: `Return the number of even ints in the given array. Note: the % "mod"
+    question: `Return the number of even ints in the given array.Note: the % "mod"
     operator computes the remainder, e.g. 5 % 2 is 1.`
   },
   {
@@ -506,8 +555,8 @@ end method`,
       "([7, 7, 6, 8, 5, 5, 6])",
     ],
     question: `Given an array length 1 or more of ints, return the difference between
-    the largest and smallest values in the array. Note: the built-in Math.min(v1, v2)
-    and Math.max(v1, v2) methods return the smaller or larger of two values.`
+the largest and smallest values in the array.Note: the built -in Math.min(v1, v2)
+and Math.max(v1, v2) methods return the smaller or larger of two values.`
   },
   {
     title: 'Array',
@@ -531,10 +580,10 @@ end method`,
       "([6, 4, 8, 12, 3])",
     ],
     question: `Return the "centered" average of an array of ints, which we'll say
-    is the mean average of the values, except ignoring the largest and smallest
-    values in the array. If there are multiple copies of the smallest value, ignore
-    just one copy, and likewise for the largest value. Use int division to produce
-    the final average. You may assume that the array is length 3 or more.`
+is the mean average of the values, except ignoring the largest and smallest
+values in the array.If there are multiple copies of the smallest value, ignore
+just one copy, and likewise for the largest value.Use int division to produce
+the final average.You may assume that the array is length 3 or more.`
   },
   {
     title: 'Array',
@@ -557,7 +606,7 @@ end method`,
     ],
     question: `Return the sum of the numbers in the array, returning 0 for an empty array.
     Except the number 13 is very unlucky, so it does not count and numbers that come
-    immediately after a 13 also do not count.`
+immediately after a 13 also do not count.`
   },
   {
     title: 'Array',
@@ -579,8 +628,8 @@ end method`,
       "([2, 2, 6, 7, 7])",
     ],
     question: `Return the sum of the numbers in the array, except ignore sections of
-     numbers starting with a 6 and extending to the next 7 (every 6 will be followed
-       by at least one 7). Return 0 for no numbers.`
+numbers starting with a 6 and extending to the next 7(every 6 will be followed
+       by at least one 7).Return 0 for no numbers.`
   },
   {
     title: 'Array',
@@ -602,7 +651,7 @@ end method`,
       "([5, 2, 5, 2])",
     ],
     question: `Given an array of ints, return true if the array contains
-    a 2 next to a 2 somewhere.`
+a 2 next to a 2 somewhere.`
   },
   {
     title: 'Array',
@@ -641,7 +690,7 @@ end method`,
       "([5, 2, 2, 2, 4, 2])",
     ],
     question: `Given an array of ints, return true if the sum of all the 2's in
-    the array is exactly 8.`
+the array is exactly 8.`
   },
   {
     title: 'Array',
@@ -663,7 +712,7 @@ end method`,
       "([1, 4, 1, 4, 1, 6])",
     ],
     question: `Given an array of ints, return true if the number of 1's is greater
-    than the number of 4's`
+than the number of 4's`
   },
   {
     title: 'Array',

@@ -51,7 +51,7 @@ function output() {
       output = `"${output}"`;
     } else if (Array.isArray(arguments[a])) {
       if (arguments[a].length > 0 && typeof arguments[a][0] === "string") {
-        output = output.replaceAll(/([a-zA-Z0-9 ]+)/g, "\"$1\"");
+        output = output.replaceAll(/([^, \]\[]+)/g, '"$1"')
       }
       output = "[" + output.replaceAll(",", ", ") + "]";
     }
@@ -144,10 +144,9 @@ function translate(line) {
   //do a sanity check - if this is javascript, leave it alone
   if (line.indexOf("{") !== -1) return line;
   line = line.replace(/ mod /g, " % ")
-  line = line.replaceAll(/([0-9A-Za-z]+) div ([0-9A-Za-z]+)/g, "div($1, $2)");
-  line = line.replaceAll(/(\([^()]+\)) div (\([^()]+\))/g, "div($1, $2)");
-  line = line.replaceAll(/([0-9A-Za-z]+) div (\([^()]+\))/g, "div($1, $2)");
-  line = line.replaceAll(/(\([^()]+\)) div ([0-9A-Za-z]+)/g, "div($1, $2)");
+  //oof this is ugly. However, it should successfully match all div statements (??)
+  line = line.replaceAll(/([0-9A-Za-z]+| \(.+\)|[0-9A-Za-z]+\.[0-9A-Za-z]+\(\)) div ([0-9A-Za-z]+|\(.+\)|[0-9A-Za-z]+\.[0-9A-Za-z]+\(\))/g, "div($1, $2)");
+
   line = line.replaceAll(/([^"])TRUE/g, "$1true");
   line = line.replaceAll(/([^"])FALSE/g, "$1false");
   var lin = line.trim();
@@ -170,16 +169,16 @@ function translate(line) {
     if (sp >= 0) { first = lin.substring(0, sp); }
   }
   if ((first == "if" || first == "else if" || first == "return" || first == "output")) {
-
-    line = line.replace("if ", "if(");
-    if (first == "else if") { line = line.replace("else if", "}else if") }
+    line = line.replace(/ NOT /g, " ! ");
+    line = line.replace("if ", "if ( ");
+    if (first == "else if") { line = line.replace("else if", "} else if") }
     line = line.replace(" then", "){");
     line = line.replace(/ AND /g, " && ");
     line = line.replace(/ OR /g, " || ");
 
-    line = line.replace(/NOT/g, "!");
+
     line = line.replace(/<>/g, "!=");
-    line = line.replace(/ = /g, " == ")
+    line = line.replace(/([ \]\w])=([ \]\w])/g, "$1==$2")
   }
   if (first == "else") { line = line.replace("else", "}else{") }
   if (first == "loop while") {

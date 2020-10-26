@@ -7,9 +7,10 @@ let arrayExercises = require("./data/array.js");
 let apExercises = require("./data/ap.js");
 let collectionsExercises = require("./data/collections.js");
 //let mapExercises = require("./data/map.js");
+let array2DExercises = require("./data/array2d.js")
 
 let mainPageExercises = [...warmupExercises, ...arrayExercises,
-...collectionsExercises, ...logicExercises,
+...collectionsExercises, ...array2DExercises, ...logicExercises,
 ...recursionExercises, ...apExercises];
 
 module.exports = mainPageExercises;
