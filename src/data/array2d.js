@@ -3,6 +3,32 @@ module.exports = [
     //title is the category it appears in on the homepage
     title: '2D Array',
     // Pseudocode problems should start with a capital letter
+    name: 'PrintAll',
+
+    inputs: [
+      `([[1, 2, 3],[4, 5, 6],[7, 8, 9]])`,
+      '([[2, 3], [6, 4]])',
+      '([["a", "b", "c"],["A", "B", "C"], ["α","β", "ç"]])',
+      '([[13, 6], [1, 2], [4, 6]])',
+      '([[3, 2, 1, 4],[1, 1, 1, 1], [3, 1, -3, 1], [4, 4, 2, 4]])',
+    ],
+    // The question itself. Try to make it Pseudocode-y
+    question: `Given a two - dimensional array ARR, output each element of the array on its own line. 
+    At the end of each row, output the phrase END ROW. `,
+
+    solution: `method PrintAll(ARR)
+  loop R from 0 to ARR.Length() - 1
+    loop C from 0 to ARR[R].Length() - 1
+      output ARR[R][C]
+    end loop
+    output "END ROW"
+  end loop
+end method`,
+  },
+  {
+    //title is the category it appears in on the homepage
+    title: '2D Array',
+    // Pseudocode problems should start with a capital letter
     name: 'FindDiagonal',
     // the inputs that we are going to use to to test the code. An array of strings.
     // Each string should be parentheses, and inside you can have one or more arrays,

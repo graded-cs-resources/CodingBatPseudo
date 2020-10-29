@@ -25,6 +25,30 @@ module.exports = [
     
     output COUNT
   end method`,
+  }, {
+    title: 'Collections',
+    name: 'NegativeOnetoOne',
+    inputType: "collection",
+    inputs: [
+      '({0.3, 1, -0.7, 2.3, 0.2, 5.3})',
+      '({1.1, 0.99, 1.0})',
+      `({0.2, 0.3, 0.4, -0.2, -0.3, -0.4})`,
+      `({2, -2, 3, -3, 4, -4})`,
+      `({.2, -0.2, 0.3, -0.3, 0.4, -0.4})`,
+    ],
+    // The question itself. Try to make it Pseudocode-y
+    question: `Given a collection of real numbers, count how many elements are in the interval [-1, 1] inclusive. Output the count. (IB November 2018, question 8d)`,
+    solution: `method NegativeOnetoOne(NUMS)
+    COUNT = 0
+    NUMS.resetNext()
+    loop while NUMS.hasNext()
+      N = NUMS.getNext()
+      if N >= -1 AND N <= 1 then
+        COUNT = COUNT + 1
+      end if
+    end loop
+    output COUNT
+  end method`,
   },
   {
     title: 'Collections',
