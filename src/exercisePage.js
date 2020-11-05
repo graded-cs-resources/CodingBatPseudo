@@ -12,6 +12,8 @@ const displayExampleRuns = require("./utility/displayExampleRuns.js");
 const prettyPrintMap = require("./utility/prettyPrintMap.js");
 const exerciseListeners = require("./listeners/exerciseListeners");
 const keyboardShortcuts = require("./listeners/keyboardShortcuts");
+require("./listeners/darkModeCheckbox.js");
+
 
 require("../node_modules/codemirror-minified/addon/edit/matchbrackets.js");
 const CodeMirrorPSHighlighting = require("./utility/cmps.js");
@@ -43,7 +45,8 @@ const solutionArea = CodeMirror.fromTextArea(document.getElementById("solution")
   cursorBlinkRate: -1,
 });
 solutionArea.getWrapperElement().style.display = "none";
-solutionArea.getWrapperElement().style.background = "#dadada";
+solutionArea.getWrapperElement().classList.add("disabled");
+solutionArea.getWrapperElement().style.cursor = "not-allowed";
 
 
 // Work out which excercise to show

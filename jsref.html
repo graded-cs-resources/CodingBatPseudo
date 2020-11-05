@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="light">
 
 <head>
   <meta charset="utf-8">
@@ -9,6 +9,10 @@
 </head>
 
 <body>
+  <div id="topButtonContainer">
+    <input id="darkmodecheckbox" type="checkbox" value="false">
+    <label for="darkmodecheckbox">Dark Mode?</label>
+  </div>
   <section id="reference">
     <div>
       <h2>Methods</h2>
@@ -19,6 +23,7 @@
   output THEANSWER
 end method</code></pre>
     </div>
+
 
     <div>
       <h2>Relational Operators</h2>
@@ -262,5 +267,27 @@ end loop</code></pre>
     </div>
   </section>
 </body>
+
+<script type="text/javascript">
+  var checkbox = document.querySelector("#darkmodecheckbox");
+  if (localStorage.getItem("darkMode") && localStorage.getItem("darkMode") == "true") {
+    checkbox.checked = true;
+    document.querySelector("html").classList.remove("light");
+    document.querySelector("html").classList.add("dark");
+  }
+
+  checkbox.addEventListener("input", (e) => {
+    console.log("run");
+    if (checkbox.checked === true) {
+      localStorage.setItem("darkMode", "true");
+      document.querySelector("html").classList.remove("light");
+      document.querySelector("html").classList.add("dark");
+    } else {
+      localStorage.setItem("darkMode", "false");
+      document.querySelector("html").classList.add("light");
+      document.querySelector("html").classList.remove("dark");
+    }
+  });
+</script>
 
 </html>

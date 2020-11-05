@@ -35536,6 +35536,128 @@ let exercises = [...displayedExercises, ...quizExercises];
 
 module.exports = exercises;
 },{"./data/quiz.js":249,"./exercisesToShowOnIndex.js":256}],240:[function(require,module,exports){
+module.exports = [
+  {
+    //title is the category it appears in on the homepage
+    title: 'Advanced Data Structures',
+    // Pseudocode problems should start with a capital letter
+    name: 'PrintAll (2d array)',
+
+    inputs: [
+      `([[1, 2, 3],[4, 5, 6],[7, 8, 9]])`,
+      '([[2, 3], [6, 4]])',
+      '([["a", "b", "c"],["A", "B", "C"], ["α","β", "ç"]])',
+      '([[13, 6], [1, 2], [4, 6]])',
+      '([[3, 2, 1, 4],[1, 1, 1, 1], [3, 1, -3, 1], [4, 4, 2, 4]])',
+    ],
+    // The question itself. Try to make it Pseudocode-y
+    question: `Given a two - dimensional array ARR, output each element of the array on its own line. 
+    At the end of each row, output the phrase END ROW. `,
+
+    solution: `method PrintAll(ARR)
+  loop R from 0 to ARR.Length() - 1
+    loop C from 0 to ARR[R].Length() - 1
+      output ARR[R][C]
+    end loop
+    output "END ROW"
+  end loop
+end method`,
+  },
+  {
+    //title is the category it appears in on the homepage
+    title: '2D Array',
+    // Pseudocode problems should start with a capital letter
+    name: 'FindDiagonal',
+    // the inputs that we are going to use to to test the code. An array of strings.
+    // Each string should be parentheses, and inside you can have one or more arrays,
+    // strings, ints, TRUE/FALSE, whatever. check warmup.js for more examples.
+    inputs: [
+      `([[1, 2, 3],[4, 5, 6],[7, 8, 9]])`,
+      '([[2, 3], [6, 4]])',
+      '([["a", "b", "c"],["A", "B", "C"], ["α","β", "ç"]])',
+      '([[13, 6], [1, 2], [4, 6]])',
+      '([[3, 2, 1, 4],[1, 1, 1, 1], [3, 1, -3, 1], [4, 4, 2, 4]])',
+    ],
+    // The question itself. Try to make it Pseudocode-y
+    question: `Give a two - dimensional array ARR, output a one - dimensional array that contains the elements 
+    of its <i>primary diagonal</i > - that is, the elements whose row index and 
+    column index are the same. 
+    You can assume ARR has the same number of rows and columns.
+    You can make a new array of length L with the command <code>NEW = new Array(L)</code> `,
+    solution: `method FindDiagonal(ARR)
+  // ARR.Length() will give the number of rows
+  // ARR[0].Length() would give the # of columns
+  NEW = new Array(ARR.Length())
+  loop I from 0 to ARR.Length() - 1
+    NEW[I] = ARR[I][I]
+  end loop
+  output NEW
+end method`,
+  }, {
+    //title is the category it appears in on the homepage
+    title: '2D Array',
+    // Pseudocode problems should start with a capital letter
+    name: 'FindValue',
+    // the inputs that we are going to use to to test the code. An array of strings.
+    // Each string should be parentheses, and inside you can have one or more arrays,
+    // strings, ints, TRUE/FALSE, whatever. check warmup.js for more examples.
+    inputs: [
+      `([[1, 2, 3],[4, 5, 6]], 0)`,
+      '([[2, 3], [6, 4], [2, 3]], 4)',
+      '([["a", "b", "c"],["A", "B", "C"], ["α","β", "ç"]], "A")',
+      '([[13, 6], [1, 2], [4, 6]], 6)',
+      '([[3, 2, 1, 4],[1, 1, 1, 1], [3, 1, -3, 1], [4, 4, 2, 4]], 4)',
+    ],
+    // The question itself. Try to make it Pseudocode-y
+    question: `Given a two - dimensional array ARR and a search value VAL,
+    search the array in reading order - rows then columns - to find the first
+    occurence of VAL. Once you find it, output "VAL found at index [R][C]"
+    replacing VAL, R, and C with the appropriate values. If it isn't found, output
+    "VAL not found". `,
+    solution: `method FindValue(ARR, VAL)
+  // ARR.Length() will give the number of rows
+  // ARR[0].Length() would give the # of columns
+  FOUND = FALSE
+  loop ROW from 0 to ARR.Length() - 1
+    loop COL from 0 to ARR[0].Length() - 1
+      if ARR[ROW][COL] = VAL then
+        output "" + VAL + " found at index [" + ROW + "][" + COL + "]"
+        return
+      end if
+    end loop
+  end loop
+  output "" + VAL + " not found"
+end method`,
+  }, {
+    //title is the category it appears in on the homepage
+    title: '2D Array',
+    // Pseudocode problems should start with a capital letter
+    name: 'SwapRows',
+    // the inputs that we are going to use to to test the code. An array of strings.
+    // Each string should be parentheses, and inside you can have one or more arrays,
+    // strings, ints, TRUE/FALSE, whatever. check warmup.js for more examples.
+    inputs: [
+      `([[1, 2, 3],[4, 5, 6]], 0, 1)`,
+      '([[2, 3], [6, 4], [2, 3]], 0, 2)',
+      '([["a", "b", "c"],["A", "B", "C"], ["α","β", "ç"]], 1, 2)',
+      '([[13, 6], [1, 2], [4, 6]], 0, 2)',
+      '([[3, 2, 1, 4],[1, 1, 1, 1], [3, 1, -3, 1], [4, 4, 2, 4]], 2, 3)',
+    ],
+    // The question itself. Try to make it Pseudocode-y
+    question: `Given a 2d array MAT and two indices K and L, construct code to swap
+    the elements in row K with the elements in row L (you can assume all rows are the
+      same length). Output the new MAT on completion. (IB November 2018, 12b)`,
+    solution: `method FindValue(MAT, K, L)
+      loop I from 0 to MAT[K].Length()-1
+        TEMP = MAT[K][I]
+        MAT[K][I]=MAT[L][I]
+        MAT[L][I]=TEMP
+      end loop
+      return MAT
+    end method`,
+  }
+]
+},{}],241:[function(require,module,exports){
 module.exports = [{
   question: 'Given an array SCORES, output "TRUE" if each score is equal or greater than the one before. The array will be length 2 or more. You can use the property ARR.length to find the length of the array.',
   title: 'AP-1',
@@ -35889,7 +36011,7 @@ module.exports = [{
 ];
 
 
-},{}],241:[function(require,module,exports){
+},{}],242:[function(require,module,exports){
 /**--- Solutions --- **/
 
 let solutions = {};
@@ -36186,7 +36308,7 @@ solutions.commonTwo = function commonTwo(a, b) {
 }
 
 module.exports = solutions;
-},{}],242:[function(require,module,exports){
+},{}],243:[function(require,module,exports){
 module.exports = [
   {
     //title is the category it appears in on the homepage
@@ -37639,101 +37761,6 @@ than the number of 4's`
 ];
 
 
-},{}],243:[function(require,module,exports){
-module.exports = [
-  {
-    //title is the category it appears in on the homepage
-    title: '2D Array',
-    // Pseudocode problems should start with a capital letter
-    name: 'PrintAll',
-
-    inputs: [
-      `([[1, 2, 3],[4, 5, 6],[7, 8, 9]])`,
-      '([[2, 3], [6, 4]])',
-      '([["a", "b", "c"],["A", "B", "C"], ["α","β", "ç"]])',
-      '([[13, 6], [1, 2], [4, 6]])',
-      '([[3, 2, 1, 4],[1, 1, 1, 1], [3, 1, -3, 1], [4, 4, 2, 4]])',
-    ],
-    // The question itself. Try to make it Pseudocode-y
-    question: `Given a two - dimensional array ARR, output each element of the array on its own line. 
-    At the end of each row, output the phrase END ROW. `,
-
-    solution: `method PrintAll(ARR)
-  loop R from 0 to ARR.Length() - 1
-    loop C from 0 to ARR[R].Length() - 1
-      output ARR[R][C]
-    end loop
-    output "END ROW"
-  end loop
-end method`,
-  },
-  {
-    //title is the category it appears in on the homepage
-    title: '2D Array',
-    // Pseudocode problems should start with a capital letter
-    name: 'FindDiagonal',
-    // the inputs that we are going to use to to test the code. An array of strings.
-    // Each string should be parentheses, and inside you can have one or more arrays,
-    // strings, ints, TRUE/FALSE, whatever. check warmup.js for more examples.
-    inputs: [
-      `([[1, 2, 3],[4, 5, 6],[7, 8, 9]])`,
-      '([[2, 3], [6, 4]])',
-      '([["a", "b", "c"],["A", "B", "C"], ["α","β", "ç"]])',
-      '([[13, 6], [1, 2], [4, 6]])',
-      '([[3, 2, 1, 4],[1, 1, 1, 1], [3, 1, -3, 1], [4, 4, 2, 4]])',
-    ],
-    // The question itself. Try to make it Pseudocode-y
-    question: `Give a two - dimensional array ARR, output a one - dimensional array that contains the elements 
-    of its <i>primary diagonal</i > - that is, the elements whose row index and 
-    column index are the same. 
-    You can assume ARR has the same number of rows and columns.
-    You can make a new array of length L with the command <code>NEW = new Array(L)</code> `,
-    solution: `method FindDiagonal(ARR)
-  // ARR.Length() will give the number of rows
-  // ARR[0].Length() would give the # of columns
-  NEW = new Array(ARR.Length())
-  loop I from 0 to ARR.Length() - 1
-    NEW[I] = ARR[I][I]
-  end loop
-  output NEW
-end method`,
-  }, {
-    //title is the category it appears in on the homepage
-    title: '2D Array',
-    // Pseudocode problems should start with a capital letter
-    name: 'FindValue',
-    // the inputs that we are going to use to to test the code. An array of strings.
-    // Each string should be parentheses, and inside you can have one or more arrays,
-    // strings, ints, TRUE/FALSE, whatever. check warmup.js for more examples.
-    inputs: [
-      `([[1, 2, 3],[4, 5, 6]], 0)`,
-      '([[2, 3], [6, 4], [2, 3]], 4)',
-      '([["a", "b", "c"],["A", "B", "C"], ["α","β", "ç"]], "A")',
-      '([[13, 6], [1, 2], [4, 6]], 6)',
-      '([[3, 2, 1, 4],[1, 1, 1, 1], [3, 1, -3, 1], [4, 4, 2, 4]], 4)',
-    ],
-    // The question itself. Try to make it Pseudocode-y
-    question: `Given a two - dimensional array ARR and a search value VAL,
-    search the array in reading order - rows then columns - to find the first
-    occurence of VAL. Once you find it, output "VAL found at index [R][C]"
-    replacing VAL, R, and C with the appropriate values. If it isn't found, output
-    "VAL not found". `,
-    solution: `method FindValue(ARR, VAL)
-  // ARR.Length() will give the number of rows
-  // ARR[0].Length() would give the # of columns
-  FOUND = FALSE
-  loop ROW from 0 to ARR.Length() - 1
-    loop COL from 0 to ARR[0].Length() - 1
-      if ARR[ROW][COL] = VAL then
-        output "" + VAL + " found at index [" + ROW + "][" + COL + "]"
-        return
-      end if
-    end loop
-  end loop
-  output "" + VAL + " not found"
-end method`,
-  },
-]
 },{}],244:[function(require,module,exports){
 let solutions = {};
 
@@ -42854,6 +42881,8 @@ const displayExampleRuns = require("./utility/displayExampleRuns.js");
 const prettyPrintMap = require("./utility/prettyPrintMap.js");
 const exerciseListeners = require("./listeners/exerciseListeners");
 const keyboardShortcuts = require("./listeners/keyboardShortcuts");
+require("./listeners/darkModeCheckbox.js");
+
 
 require("../node_modules/codemirror-minified/addon/edit/matchbrackets.js");
 const CodeMirrorPSHighlighting = require("./utility/cmps.js");
@@ -42885,7 +42914,8 @@ const solutionArea = CodeMirror.fromTextArea(document.getElementById("solution")
   cursorBlinkRate: -1,
 });
 solutionArea.getWrapperElement().style.display = "none";
-solutionArea.getWrapperElement().style.background = "#dadada";
+solutionArea.getWrapperElement().classList.add("disabled");
+solutionArea.getWrapperElement().style.cursor = "not-allowed";
 
 
 // Work out which excercise to show
@@ -43006,7 +43036,7 @@ function isTrue(someValue) {
   return someValue === true;
 }
 
-},{"../node_modules/codemirror-minified/addon/edit/matchbrackets.js":37,"./allExercisesIncludingHidden.js":239,"./listeners/exerciseListeners":262,"./listeners/keyboardShortcuts":264,"./solutions.js":266,"./utility/cmps.js":267,"./utility/convertPStoJS":269,"./utility/deParam.js":270,"./utility/defaultInput.js":271,"./utility/displayExampleRuns.js":272,"./utility/formatResults.js":273,"./utility/inputParser.js":274,"./utility/prettyPrintMap.js":275,"./utility/setInitialEditorContents.js":276,"./utility/tableHeader.js":277,"codemirror-minified":38}],256:[function(require,module,exports){
+},{"../node_modules/codemirror-minified/addon/edit/matchbrackets.js":37,"./allExercisesIncludingHidden.js":239,"./listeners/darkModeCheckbox.js":262,"./listeners/exerciseListeners":263,"./listeners/keyboardShortcuts":265,"./solutions.js":267,"./utility/cmps.js":268,"./utility/convertPStoJS":270,"./utility/deParam.js":271,"./utility/defaultInput.js":272,"./utility/displayExampleRuns.js":273,"./utility/formatResults.js":274,"./utility/inputParser.js":275,"./utility/prettyPrintMap.js":276,"./utility/setInitialEditorContents.js":277,"./utility/tableHeader.js":278,"codemirror-minified":38}],256:[function(require,module,exports){
 
 let warmupExercises = require("./data/warmup.js");
 //let stringExercises = require("./data/string.js");
@@ -43016,18 +43046,18 @@ let arrayExercises = require("./data/array.js");
 let apExercises = require("./data/ap.js");
 let collectionsExercises = require("./data/collections.js");
 //let mapExercises = require("./data/map.js");
-let array2DExercises = require("./data/array2d.js")
+let advExercises = require("./data/advancedDataStructures.js")
 
 let mainPageExercises = [...warmupExercises, ...arrayExercises,
-...collectionsExercises, ...array2DExercises, ...logicExercises,
+...collectionsExercises, ...advExercises, ...logicExercises,
 ...recursionExercises, ...apExercises];
 
 module.exports = mainPageExercises;
-},{"./data/ap.js":240,"./data/array.js":242,"./data/array2d.js":243,"./data/collections.js":245,"./data/logic.js":246,"./data/recursion.js":251,"./data/warmup.js":254}],257:[function(require,module,exports){
+},{"./data/advancedDataStructures.js":240,"./data/ap.js":241,"./data/array.js":243,"./data/collections.js":245,"./data/logic.js":246,"./data/recursion.js":251,"./data/warmup.js":254}],257:[function(require,module,exports){
 let deParam = require("./utility/deParam.js");
 let exercises = require("./exercisesToShowOnIndex.js");
 require("./listeners/indexSaveLoadAll.js");
-
+require("./listeners/darkModeCheckbox.js");
 
 function uniq(a) {
   var temp = {};
@@ -43039,8 +43069,6 @@ function uniq(a) {
 let title = deParam(window.location.search).title;
 let allTitles = uniq(exercises.map(e => e.title));
 let titles = title ? [title] : allTitles;
-
-let solutions = require("./solutions.js");
 
 // display all problems
 for (title of titles) {
@@ -43070,7 +43098,7 @@ for (title of titles) {
 }
 
 
-},{"./exercisesToShowOnIndex.js":256,"./listeners/indexSaveLoadAll.js":263,"./solutions.js":266,"./utility/deParam.js":270}],258:[function(require,module,exports){
+},{"./exercisesToShowOnIndex.js":256,"./listeners/darkModeCheckbox.js":262,"./listeners/indexSaveLoadAll.js":264,"./utility/deParam.js":271}],258:[function(require,module,exports){
 
 function loadAllSolutionsFromFile() {
   let fileInput = document.getElementById('fileInput');
@@ -43137,6 +43165,26 @@ module.exports = function saveCodeFile(editor, exerciseName) {
 }
 
 },{}],262:[function(require,module,exports){
+var checkbox = document.querySelector("#darkmodecheckbox");
+if (localStorage.getItem("darkMode") && localStorage.getItem("darkMode") == "true") {
+  checkbox.checked = true;
+  document.querySelector("html").classList.remove("light");
+  document.querySelector("html").classList.add("dark");
+}
+
+checkbox.addEventListener("input", (e) => {
+  console.log("run");
+  if (checkbox.checked === true) {
+    localStorage.setItem("darkMode", "true");
+    document.querySelector("html").classList.remove("light");
+    document.querySelector("html").classList.add("dark");
+  } else {
+    localStorage.setItem("darkMode", "false");
+    document.querySelector("html").classList.add("light");
+    document.querySelector("html").classList.remove("dark");
+  }
+});
+},{}],263:[function(require,module,exports){
 let exercises = require("../exercisesToShowOnIndex");
 let saveCodeFile = require("../io/saveCodeFile.js");
 let loadCodeFile = require("../io/loadCodeFile.js");
@@ -43175,7 +43223,7 @@ module.exports = function (editor, exerciseName) {
     })
 
 };
-},{"../exercisesToShowOnIndex":256,"../io/loadCodeFile.js":259,"../io/saveCodeFile.js":261}],263:[function(require,module,exports){
+},{"../exercisesToShowOnIndex":256,"../io/loadCodeFile.js":259,"../io/saveCodeFile.js":261}],264:[function(require,module,exports){
 
 let saveAllSolutionsToFile = require("../io/saveAllSolutionsToFile.js");
 let loadAllSolutionsFromFile = require("../io/loadAllSolutionsFromFile.js");
@@ -43188,7 +43236,7 @@ document.querySelector('#saveAll').addEventListener('click', () => {
 document.querySelector('#loadAll').addEventListener('click', () => {
     loadAllSolutionsFromFile();
 })
-},{"../io/loadAllSolutionsFromFile.js":258,"../io/saveAllSolutionsToFile.js":260}],264:[function(require,module,exports){
+},{"../io/loadAllSolutionsFromFile.js":258,"../io/saveAllSolutionsToFile.js":260}],265:[function(require,module,exports){
 let saveCodeFile = require("../io/saveCodeFile.js");
 let loadCodeFile = require("../io/loadCodeFile.js");
 
@@ -43217,7 +43265,7 @@ module.exports = function (editor, exerciseName) {
     // }
   });
 };
-},{"../io/loadCodeFile.js":259,"../io/saveCodeFile.js":261}],265:[function(require,module,exports){
+},{"../io/loadCodeFile.js":259,"../io/saveCodeFile.js":261}],266:[function(require,module,exports){
 var pathSuffix = location.pathname.split('/').splice(-1)[0]
 if (pathSuffix === "") {
   // main page
@@ -43234,7 +43282,7 @@ else if (pathSuffix === "exercise.html") {
 // useful, since otherwise you see the transition from textarea to codemirror, etc...
 document.addEventListener("DOMContentLoaded", () =>
   document.getElementsByTagName("html")[0].style.visibility = "visible");
-},{"./exercisePage.js":255,"./indexPage.js":257}],266:[function(require,module,exports){
+},{"./exercisePage.js":255,"./indexPage.js":257}],267:[function(require,module,exports){
 let stringSolutions = require("./data/stringSolutions.js");
 let recursionSolutions = require("./data/recursionSolutions.js");
 let logicSolutions = require("./data/logicSolutions.js");
@@ -43260,7 +43308,7 @@ let solutions = Object.assign({},
 );
 
 module.exports = solutions;
-},{"./data/apSolutions.js":241,"./data/arraySolutions.js":244,"./data/logicSolutions.js":247,"./data/mapSolutions.js":248,"./data/quizSolutions.js":250,"./data/recursionSolutions.js":252,"./data/stringSolutions.js":253}],267:[function(require,module,exports){
+},{"./data/apSolutions.js":242,"./data/arraySolutions.js":244,"./data/logicSolutions.js":247,"./data/mapSolutions.js":248,"./data/quizSolutions.js":250,"./data/recursionSolutions.js":252,"./data/stringSolutions.js":253}],268:[function(require,module,exports){
 module.exports = function CodeMirrorPSHighlighting(CodeMirror) {
   CodeMirror.defineMode("pseudocode", function () {
     var define = ["method", "class"];
@@ -43393,7 +43441,7 @@ module.exports = function CodeMirrorPSHighlighting(CodeMirror) {
 
   CodeMirror.defineMIME("text/x-pseudocode", "pseudocode");
 }
-},{}],268:[function(require,module,exports){
+},{}],269:[function(require,module,exports){
 module.exports = class Collection {
 
   elements = [];
@@ -43439,7 +43487,7 @@ module.exports = class Collection {
     return "{" + str + "}";
   }
 }
-},{}],269:[function(require,module,exports){
+},{}],270:[function(require,module,exports){
 const Collection = require("./collections")
 // these three variables help the translation work
 var out;
@@ -43724,7 +43772,7 @@ function replacePairs(s, a, b, ar, br) {
   }
   return s
 }
-},{"./collections":268}],270:[function(require,module,exports){
+},{"./collections":269}],271:[function(require,module,exports){
 /** takes url parameter and transforms into object **/
 function deParam(urlStr) {
   const subbie = urlStr.substring(1);
@@ -43733,7 +43781,7 @@ function deParam(urlStr) {
 }
 
 module.exports = deParam;
-},{}],271:[function(require,module,exports){
+},{}],272:[function(require,module,exports){
 /** creates default input to start function **/
 solutions = require("../solutions.js");
 
@@ -43748,7 +43796,7 @@ module.exports = function defaultInput(exercise) {
   let openingBracket = solutionFullText.indexOf("{")
   return solutionFullText.substring(0, openingBracket) + "{\n \n \n}";
 }
-},{"../solutions.js":266}],272:[function(require,module,exports){
+},{"../solutions.js":267}],273:[function(require,module,exports){
 
 let inputParser = require("./inputParser.js");
 let solutions = require("../solutions.js");
@@ -43800,7 +43848,7 @@ module.exports = function (exercise) {
         }
     }
 }
-},{"../solutions.js":266,"./convertPStoJS.js":269,"./inputParser.js":274,"./prettyPrintMap.js":275}],273:[function(require,module,exports){
+},{"../solutions.js":267,"./convertPStoJS.js":270,"./inputParser.js":275,"./prettyPrintMap.js":276}],274:[function(require,module,exports){
 
 /** Return row for html table **/
 function formatResults(funcName, inputStr, idealResult, result, idealOutput, output) {
@@ -43818,14 +43866,14 @@ function formatResults(funcName, inputStr, idealResult, result, idealOutput, out
     var row = document.createElement("tr");
     row.innerHTML = `<td>${inputStr}</td>
             <td>${idealResult}</td>
-            <td>${result}</td>
+            <td>${JSON.stringify(result)}</td>
             <td>${ok ? '✔' : '✖'}</td>
             <td class="status-box" style="background-color:${ok ? '#318d07' : '#ce0303'}"></td>`;
     return row;
 }
 
 module.exports = formatResults;
-},{}],274:[function(require,module,exports){
+},{}],275:[function(require,module,exports){
 
 const { args } = require("watchify");
 const Collection = require("./collections.js");
@@ -43868,7 +43916,7 @@ module.exports = function inputParser(exercise, inputStr) {
   }
   return functionInput;
 }
-},{"./collections.js":268,"watchify":236}],275:[function(require,module,exports){
+},{"./collections.js":269,"watchify":236}],276:[function(require,module,exports){
 // function to show the Map data type in a user-friendly way
 //  - without doing something like this, it just shows up as Object()
 
@@ -43901,7 +43949,7 @@ function prettyPrintMap(theMap, style = "no_parentheses") {
 
 module.exports = prettyPrintMap;
 
-},{}],276:[function(require,module,exports){
+},{}],277:[function(require,module,exports){
 let defaultInput = require("./defaultInput.js");
 
 module.exports = function (editor, exerciseName, exercise) {
@@ -43919,7 +43967,7 @@ module.exports = function (editor, exerciseName, exercise) {
         });
     }
 };
-},{"./defaultInput.js":271}],277:[function(require,module,exports){
+},{"./defaultInput.js":272}],278:[function(require,module,exports){
 function tableHeader() {
     var row = document.createElement("tr");
     row.innerHTML = `<th>Inputs</th>
@@ -43930,4 +43978,4 @@ function tableHeader() {
 }
 
 module.exports = tableHeader;
-},{}]},{},[265]);
+},{}]},{},[266]);

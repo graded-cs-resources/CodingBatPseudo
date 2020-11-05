@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="visibility:hidden">
+<html style="visibility:hidden" class="dark">
 
 <head>
   <meta charset="utf-8">
@@ -20,6 +20,12 @@
       <em>This site will only store your progress within your current web browser.<br>
         To keep your solutions permanently, be sure to save your solution as a file.</em>
     </p>
+
+    <div id="topButtonContainer">
+      <input id="darkmodecheckbox" type="checkbox" value="false">
+      <label for="darkmodecheckbox">Dark Mode?</label>
+    </div>
+
     <a class="links" id="previous" href="#">previous</a>&nbsp;~&nbsp;<a class="links" id="next"
       href="#">next</a>&nbsp;~&nbsp;<a href="jsref.html" target="_blank" class="links ajax-popup-link"
       id="jsref-link">Pseudocode Syntax
@@ -54,7 +60,6 @@
       <div id="displayResults">
         <p class="congrats"></p>
         <p class="errorMessage"></p>
-        <p id="mySolution"></p>
         <table id="testArea" class="test-table">
           <tbody id="tests">
 
@@ -62,10 +67,6 @@
         </table>
       </div>
 
-      <!-- <div class = "solveArea">
-          <button class="btn" id="show">Show Solution</button><br>
-          <textarea id="mySolution" readonly="readonly";></textarea>
-        </div> -->
     </div>
 
 

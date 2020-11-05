@@ -1,27 +1,57 @@
-html { 
+:root {
+  --magenta: #d33682;
+  --red: #dc322f;
+  --green: #859900;
+  --cyan: #2aa198;
+  --blue: #268bd2;
+  --violet: #6c71c4;
+  --orange: #cb4b16;
+  --yellow: #b58900;
+}
+
+.dark {
+  --bgColor: #002b36;
+  --fgColor: #839496;
+  --secondary: #586e75;
+  --emphasized: #93a1a1;
+  --bgHighlights: #073642;
+  --oppBackground: #fdf6e3;
+}
+
+.light {
+  --bgColor: #fdf6e3;
+  --fgColor: #657b83;
+  --emphasized: #586e75;
+  --secondary: #93a1a1;
+  --bgHighlights: #eee8d5;
+  --opBackground: #002b36;
+}
+
+html {
   /* allows whole page to load before displaying content... 
   programatically switch this to visible via JS when page is ready */
-  visibility:hidden; 
+  visibility: hidden;
   height: 100%;
-  font-size:14pt;
+  font-size: 14pt;
   box-sizing: border-box;
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   box-sizing: inherit;
 }
 
 body {
   position: relative;
   margin: 0;
-  width:80%;
-  margin-left:auto;
-  margin-right:auto;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
   padding-bottom: 2rem;
   min-height: 100%;
-  background-color: #f9f9f9;
+  background-color: #fdf6e3;
+  background-color: var(--bgColor);
+  color: #657b83;
+  color: var(--fgColor);
 }
 
 .main {
@@ -29,14 +59,15 @@ body {
   margin: 0 auto;
 }
 
-header h1, header a{
+header h1, header a {
   font-family: 'Trirong', serif;
   font-size: 40px;
   margin-top: 0px;
   margin-bottom: 0px;
   color: #6E5961;
+  color: var(--orange);
   text-decoration: none;
-  display:inline-block;
+  display: inline-block;
 }
 
 .subheading {
@@ -44,19 +75,28 @@ header h1, header a{
   margin-bottom: 0px;
   padding-bottom: 20px;
   border-bottom: 1px solid black;
+  border-color: var(--fgColor);
 }
 
-a.heading {
+a {
   text-decoration: none;
+  color: #268bd2;
+  color: var(--blue);
 }
 
-a.links{
-  text-decoration: none;
+a:visited {
+  color: #93a1a1;
+  color: var(--secondary);
+}
+
+a.links {
   color: #9d858f;
+  color: var(--magenta);
 }
 
-a.links:hover  {
+a:hover {
   color: black;
+  color: var(--fgColor);
 }
 
 div.probField {
@@ -65,43 +105,60 @@ div.probField {
 
 #title {
   margin-bottom: 0px;
-  display:inline-block;
+  display: inline-block;
 }
 
 #name {
   margin-bottom: 0px;
   font-size: 20px;
-  display:inline-block
+  display: inline-block
 }
 
 .congrats {
   font-size: 30px;
   color: #6E5961;
-  padding-left:20px;
+  color: var(--orange);
+  padding-left: 20px;
 }
 
 .errorMessage {
   font-size: 20px;
   color: #ff0000;
-  padding-left:20px;
+  color: var(--red);
+  padding-left: 20px;
 }
 
 .tick {
   color: #769c49;
+  color: var(--green);
 }
 
 .wrong {
-  color:#a80000;
+  color: #a80000;
+  color: var(--red);
 }
 
 .btn {
   font-size: 20px;
   width: 100px;
   height: 50px;
-  flex-grow:0;
+  flex-grow: 0;
+  background-color: var(--bgHighlights);
+  color: var(--emphasized);
+  margin-bottom: .5rem;
+  border-radius: .5rem;
+  border: 1px var(--fgColor) solid;
 }
 
-#topButtonContainer{
+.btn:hover {
+  background-color: var(--bgColor);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+#topButtonContainer {
   position: absolute;
   float: right;
   top: 10px;
@@ -119,76 +176,63 @@ div.probField {
 
 #show {
   width: auto;
-  float:right;
+  float: right;
 }
 
 .floatBox {
-  display:flex;
-  width:100%;
+  display: flex;
+  width: 100%;
 }
 
 .examples {
   list-style-type: none;
   font-family: "Consolas", "Lucida Console", "Courier New", Courier, monospace;
   max-width: 650px;
-  font-size:.9rem;
+  font-size: .9rem;
 }
 
 .solveArea {
   padding-bottom: 20px;
-  flex-basis:75%;
+  flex-basis: 75%;
 }
 
 .solveAreaTop {
-  display:flex;
-  align-content:center;
-  justify-content:space-between;
-}
-
-
-
-#answer {
-  width: 600px;
-	height: 500px;
-  border: 3px solid #CDC1C5;
-  font-size: 18px;
-  color: white;
-  background-color: black;
-}
-
-#mySolution {
-	height: auto;
-  font-size: 12px;
-  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
 }
 
 div#displayResults {
   padding-bottom: 6rem;
-  flex-basis:25%;
+  flex-basis: 25%;
 }
 
 .test-table {
   padding-left: 15px;
-  font-family: "Consolas", "Lucida Console", "Courier New", Courier, monospace; 
+  font-family: "Inconsolata", "Consolas", "Lucida Console", "Courier New", Courier, monospace;
   font-size: 0.8rem;
+  border-collapse: collapse;
+  margin-left: 2rem;
 }
 
 .CodeMirror pre {
-  font-family: "Inconsolata","Consolas", "Lucida Console", "Courier New", Courier, monospace;
+  font-family: "Inconsolata", "Consolas", "Lucida Console", "Courier New", Courier, monospace;
 }
 
 code {
-  font-family: "Inconsolata","Consolas", "Lucida Console", "Courier New", Courier, monospace;
+  font-family: "Inconsolata", "Consolas", "Lucida Console", "Courier New", Courier, monospace;
 }
 
 .test-table td {
   border: solid 1px black;
+  border-color: var(--fgColor);
   padding-left: 5px;
   padding-right: 5px;
 }
 
 th {
   border: solid 1px black;
+  border-color: var(--fgColor);
 }
 
 .status-box {
@@ -196,9 +240,9 @@ th {
 }
 
 .problems {
-  display:flex;
+  display: flex;
   overflow-wrap: break-word;
-  font-size:1rem;
+  font-size: 1rem;
   flex-direction: row;
   flex-wrap: wrap;
 }
@@ -209,8 +253,7 @@ th {
 
 .exercise-link {
   padding: 5px;
-  flex-basis:8rem;
-  
+  flex-basis: 8rem;
 }
 
 footer {
@@ -226,15 +269,16 @@ footer {
 }
 
 #outputBox {
-  margin-left:2rem;
+  margin-left: 2rem;
 }
+
 #outputResults {
-  border:1px solid black;
+  border: 1px solid black;
+  border-color: var(--fgColor);
   min-height: 5rem;
   width: 100%;
 }
 
 #testArea td {
-  white-space:pre;
+  white-space: pre;
 }
-

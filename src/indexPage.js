@@ -1,7 +1,7 @@
 let deParam = require("./utility/deParam.js");
 let exercises = require("./exercisesToShowOnIndex.js");
 require("./listeners/indexSaveLoadAll.js");
-
+require("./listeners/darkModeCheckbox.js");
 
 function uniq(a) {
   var temp = {};
@@ -13,8 +13,6 @@ function uniq(a) {
 let title = deParam(window.location.search).title;
 let allTitles = uniq(exercises.map(e => e.title));
 let titles = title ? [title] : allTitles;
-
-let solutions = require("./solutions.js");
 
 // display all problems
 for (title of titles) {

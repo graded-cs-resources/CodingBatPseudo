@@ -1,9 +1,9 @@
 module.exports = [
   {
     //title is the category it appears in on the homepage
-    title: '2D Array',
+    title: 'Advanced Data Structures',
     // Pseudocode problems should start with a capital letter
-    name: 'PrintAll',
+    name: 'PrintAll (2d array)',
 
     inputs: [
       `([[1, 2, 3],[4, 5, 6],[7, 8, 9]])`,
@@ -90,5 +90,32 @@ end method`,
   end loop
   output "" + VAL + " not found"
 end method`,
-  },
+  }, {
+    //title is the category it appears in on the homepage
+    title: '2D Array',
+    // Pseudocode problems should start with a capital letter
+    name: 'SwapRows',
+    // the inputs that we are going to use to to test the code. An array of strings.
+    // Each string should be parentheses, and inside you can have one or more arrays,
+    // strings, ints, TRUE/FALSE, whatever. check warmup.js for more examples.
+    inputs: [
+      `([[1, 2, 3],[4, 5, 6]], 0, 1)`,
+      '([[2, 3], [6, 4], [2, 3]], 0, 2)',
+      '([["a", "b", "c"],["A", "B", "C"], ["α","β", "ç"]], 1, 2)',
+      '([[13, 6], [1, 2], [4, 6]], 0, 2)',
+      '([[3, 2, 1, 4],[1, 1, 1, 1], [3, 1, -3, 1], [4, 4, 2, 4]], 2, 3)',
+    ],
+    // The question itself. Try to make it Pseudocode-y
+    question: `Given a 2d array MAT and two indices K and L, construct code to swap
+    the elements in row K with the elements in row L (you can assume all rows are the
+      same length). Output the new MAT on completion. (IB November 2018, 12b)`,
+    solution: `method FindValue(MAT, K, L)
+      loop I from 0 to MAT[K].Length()-1
+        TEMP = MAT[K][I]
+        MAT[K][I]=MAT[L][I]
+        MAT[L][I]=TEMP
+      end loop
+      return MAT
+    end method`,
+  }
 ]
