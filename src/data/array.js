@@ -367,6 +367,98 @@ end method`
   },
   {
     title: 'Array',
+    name: 'SelectionSort',
+    inputs: [
+      '([1, 3, 6, 2, 5])',
+      '([7, 1, 2, 3, 4, 9])',
+      '([1, 3, 2])',
+      '([5, 2, 4, 7])',
+      '([9, 0, 4, 3, 9, 1, 2])',
+    ],
+    question: `Sort the given array using selection sort, then output the sorted array.
+    (the tool won't know what sort you use, so check the solution to make sure it is right!)`,
+    solution: `method SelectionSort(ARR)
+    loop FRNT from 0 to ARR.Length() - 2
+      min = ARR[FRNT]
+      loop CHK from FRNT + 1 to ARR.Length() - 1
+        if ARR[CHK] < ARR[FRNT] then
+          TEMP = ARR[CHK]
+          ARR[CHK] = ARR[FRNT]
+          ARR[FRNT] = TEMP
+        end if
+      end loop
+    end loop
+    output ARR
+  end method`,
+
+  },
+  {
+    title: 'Array',
+    name: 'BubbleSort',
+    inputs: [
+      '([1, 3, 6, 2, 5])',
+      '([7, 1, 2, 3, 4, 9])',
+      '([1, 3, 2])',
+      '([5, 2, 4, 7])',
+      '([9, 0, 4, 3, 9, 1, 2])',
+    ],
+    question: `Sort the given array using bubble sort, then output the sorted array.
+    (the tool won't know what sort you use, so check the solution to make sure it is right!)`,
+    solution: `method BubbleSort(ARR)
+    loop NUMBUBBLED from 0 to ARR.Length() - 2
+      END = ARR.Length() - NUMBUBBLED - 1
+      loop BUB from 0 to END
+        if ARR[BUB] > ARR[BUB + 1] then
+          TEMP = ARR[BUB]
+          ARR[BUB] = ARR[BUB + 1]
+          ARR[BUB + 1] = TEMP
+        end if
+      end loop
+    end loop
+    output ARR
+  end method`,
+
+  }, {
+    title: 'Array',
+    name: 'BinarySearch',
+    inputs: [
+      '([1, 2, 3, 5, 7, 11], 7)',
+      '([1, 2, 2, 2, 2, 3, 4, 9], 5)',
+      '([1, 7, 12, 17, 20, 23, 23], 20)',
+      '([2, 4, 5, 7, 7, 11, 11, 17], 17)',
+      '([0, 1, 2, 8, 9, 9], 0)',
+    ],
+    question: `Search the sorted array ARR for the value VAL, outputting the INDEX of its location. If VAL is not in the array, output "NOT FOUND".`,
+    solution: `method BinarySearch(ARR, VAL)
+    BEGIN = 0
+    FOUND = FALSE
+    END = ARR.Length() - 1
+
+    loop while BEGIN <= END AND NOT FOUND 
+      MID = (BEGIN + END) div 2
+      if ARR[MID] = VAL then
+        output MID
+        FOUND = TRUE
+      else if ARR[MID] < VAL then
+        BEGIN = MID + 1
+      else
+        END = MID - 1
+      end if
+    end loop
+
+    if NOT FOUND then
+      output "NOT FOUND"
+    end if
+    
+  end method`,
+
+  },
+
+];
+
+var notUsed = [
+  {
+    title: 'Array',
     name: 'plusTwo',
     inputs: [
       '([1, 2], [3, 4])',
@@ -1446,6 +1538,4 @@ than the number of 4's`
       "([])"
     ]
   },
-
-];
-
+]
