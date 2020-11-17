@@ -37,7 +37,6 @@ editor.setSize("100%", "auto");
 
 const solutionArea = CodeMirror.fromTextArea(document.getElementById("solution"), {
   readOnly: true,
-  noCursor: true,
   mode: "pseudocode",
   viewportMargin: Infinity,
   lineWrapping: true,
@@ -45,8 +44,6 @@ const solutionArea = CodeMirror.fromTextArea(document.getElementById("solution")
   cursorBlinkRate: -1,
 });
 solutionArea.getWrapperElement().style.display = "none";
-solutionArea.getWrapperElement().classList.add("disabled");
-solutionArea.getWrapperElement().style.cursor = "not-allowed";
 
 
 // Work out which excercise to show

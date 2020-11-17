@@ -179,20 +179,19 @@ end method`,
     // Each string should be parentheses, and inside you can have one or more arrays,
     // strings, ints, TRUE/FALSE, whatever. check warmup.js for more examples.
     inputs: [
-      `([[1, 2, 3],[4, 5, 6]], 0, 1)`,
-      '([[2, 3], [6, 4], [2, 3]], 0, 2)',
-      '([["a", "b", "c"],["A", "B", "C"], ["α","β", "ç"]], 1, 2)',
-      '([[13, 6], [1, 2], [4, 6]], 0, 2)',
-      '([[3, 2, 1, 4],[1, 1, 1, 1], [3, 1, -3, 1], [4, 4, 2, 4]], 2, 3)',
+      `([[1, 2, 3],[4, 5, 6],[7, 8, 9]])`,
+      '([[2, 3], [6, 4]])',
+      '([[13, 6], [1, 2]])',
+      '([[3, 2, 1, 4],[1, 1, 1, 1], [3, 1, -3, 1], [4, 4, 2, 4]])',
     ],
     // The question itself. Try to make it Pseudocode-y
     question: `Given a 2d array square MAT, build a collection COL that contains the diagonal elements of MAT. Output the new collection. You can make a new collection with the command COl = new Collection()`,
     solution: `method Diagonal(MAT)
     COL = new Collection() 
-    loop I from 0 to MAT.Length()
+    loop I from 0 to MAT.Length() - 1
       COL.addItem(MAT[I][I])
     end loop
     output COL
-    end method`,
+end method`,
   },
 ]
