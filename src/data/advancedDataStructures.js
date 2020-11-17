@@ -174,7 +174,7 @@ end method`,
     //title is the category it appears in on the homepage
     title: '2D Arrays',
     // Pseudocode problems should start with a capital letter
-    name: 'Diagonal',
+    name: 'DiagonalCollection',
     // the inputs that we are going to use to to test the code. An array of strings.
     // Each string should be parentheses, and inside you can have one or more arrays,
     // strings, ints, TRUE/FALSE, whatever. check warmup.js for more examples.
@@ -194,5 +194,5 @@ end method`,
     end loop
     output COL
     end method`,
-  }
+  },
 ]
