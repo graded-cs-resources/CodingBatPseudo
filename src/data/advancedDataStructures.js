@@ -27,9 +27,9 @@ end method`,
   },
   {
     //title is the category it appears in on the homepage
-    title: '2D Array',
+    title: '2D Arrays',
     // Pseudocode problems should start with a capital letter
-    name: 'FindDiagonal',
+    name: 'DiagArray',
     // the inputs that we are going to use to to test the code. An array of strings.
     // Each string should be parentheses, and inside you can have one or more arrays,
     // strings, ints, TRUE/FALSE, whatever. check warmup.js for more examples.
@@ -41,7 +41,7 @@ end method`,
       '([[3, 2, 1, 4],[1, 1, 1, 1], [3, 1, -3, 1], [4, 4, 2, 4]])',
     ],
     // The question itself. Try to make it Pseudocode-y
-    question: `Give a two - dimensional array ARR, RETURN (don't output!) a one - dimensional array that contains the elements 
+    question: `Give a two - dimensional square array ARR, output a one - dimensional array that contains the elements 
     of its <i>primary diagonal</i > - that is, the elements whose row index and 
     column index are the same. 
     You can assume ARR has the same number of rows and columns.
