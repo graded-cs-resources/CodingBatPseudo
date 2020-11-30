@@ -119,7 +119,7 @@ document.getElementById("solve").addEventListener('click', () => {
         }
         [result, output] = runPS(answer, inputCopy, exercise.preamble);
 
-        document.getElementById("tests").append(formatResults(exerciseName, inputStr, idealResult, result, idealOut, output));
+        document.getElementById("tests").append(formatResults(input, idealResult, result, idealOut, output));
       }
 
       if (idealOut === "") {

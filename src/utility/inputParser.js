@@ -29,7 +29,7 @@ module.exports = function inputParser(exercise, inputStr) {
     let arrayInputString = argsWithoutParentheses.replaceAll("{", "[").replaceAll("}", "]");
     let arrayInput = JSON.parse(arrayInputString);
     functionInput = [new Collection(arrayInput)];
-  }
+  } 
   else {
     try {
       let arrayOfArgs = '[' + argsWithoutParentheses + ']';

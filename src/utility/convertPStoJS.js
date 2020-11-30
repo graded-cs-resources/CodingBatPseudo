@@ -1,4 +1,7 @@
 const Collection = require("./collections")
+const Queue = require("./queues")
+const Stack = require("./stacks")
+const JSON5 = require("json5");
 // these three variables help the translation work
 var out;
 var TRUE = true;
@@ -42,78 +45,36 @@ function input(str) {
 }
 
 function output() {
-  var a = 0
-  var output = ""
+  var a = 0;
+  var output = "";
+  if (out != "") { out += "\n" }
   for (a = 0; a < arguments.length; a++) {
-    output = "" + arguments[a];
-    output = output.replaceAll("true", "TRUE").replaceAll("false", "FALSE");
-    if (typeof arguments[a] === "string") {
-      output = `"${output}"`;
-    } else if (Array.isArray(arguments[a])) {
-      if (arguments[a].length > 0 && typeof arguments[a][0] === "string") {
-        output = output.replaceAll(/([^, \]\[]+)/g, '"$1"')
-      }
-      output = "[" + output.replaceAll(",", ", ") + "]";
+    if (arguments[a] instanceof Collection ||
+      arguments[a] instanceof Stack ||
+      arguments[a] instanceof Queue) {
+      output = arguments[a].toString()
+    } else {
+      output = JSON5.stringify(arguments[a])
     }
+    output = output.replaceAll("true", "TRUE").replaceAll("false", "FALSE");
+    // Spaces in arrays...
+    if (output.substring(0, 1) == "[" || output.substring(0, 1) == "{") {
+      output = output.replaceAll(",", ", ")
+    }
+    if (output.substring(0, 2) == "[[") {
+      output = output.replaceAll("], [", "],\n [");
+    }
+    out += output;
   }
-  out += output + "\n";
+
 }
 
 function div(A, B) {
   return Math.floor(A / B)
 }
 
-function Stack() {
-  var values = new Array();
-  var next = 0;
 
-  this.isEmpty = function () {
-    if (values.length) {
-      return (values.length < 1)
-    }
-    else { return true }
-  }
 
-  this.push = function (val) {
-    values.splice(0, 0, val)
-  }
-
-  this.pop = function () {
-    var result = null
-    if (values.length > 0) {
-      result = values[0]
-      values.splice(0, 1)
-    }
-    return result
-  }
-
-}
-
-function Queue() {
-  var values = new Array();
-  var next = 0;
-
-  this.isEmpty = function () {
-    if (values.length) {
-      return (values.length < 1)
-    }
-    else { return true }
-  }
-
-  this.enqueue = function (value) {
-    var size = values.length
-    values[size] = value;
-  }
-
-  this.dequeue = function () {
-    var result = null
-    if (values.length > 0) {
-      result = values[0]
-      values.splice(0, 1)
-    }
-    return result
-  }
-}
 
 function Array2D(rows, cols) {
   a2d = new Array(rows)

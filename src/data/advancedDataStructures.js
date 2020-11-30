@@ -3,7 +3,7 @@ module.exports = [
     //title is the category it appears in on the homepage
     title: '2D Arrays',
     // Pseudocode problems should start with a capital letter
-    name: 'PrintAll (2D array)',
+    name: '2dArrayPrintAll',
 
     inputs: [
       `([[1, 2, 3],[4, 5, 6],[7, 8, 9]])`,
@@ -53,7 +53,7 @@ end method`,
   loop I from 0 to ARR.Length() - 1
     NEW[I] = ARR[I][I]
   end loop
-  return NEW
+  output NEW
 end method`,
   }, {
     //title is the category it appears in on the homepage
@@ -108,14 +108,14 @@ end method`,
     // The question itself. Try to make it Pseudocode-y
     question: `Given a 2d array MAT and two indices K and L, construct code to swap
     the elements in row K with the elements in row L (you can assume all rows are the
-      same length). return (don't output!) the new MAT on completion. (IB November 2018, 12b)`,
+      same length). OUTPUT the new MAT on completion. (IB November 2018, 12b)`,
     solution: `method SwapRows(MAT, K, L)
       loop I from 0 to MAT[K].Length()-1
         TEMP = MAT[K][I]
         MAT[K][I]=MAT[L][I]
         MAT[L][I]=TEMP
       end loop
-      return MAT
+      output MAT
     end method`,
   }, {
     //title is the category it appears in on the homepage
@@ -126,26 +126,29 @@ end method`,
     // Each string should be parentheses, and inside you can have one or more arrays,
     // strings, ints, TRUE/FALSE, whatever. check warmup.js for more examples.
     inputs: [
-      `([[1, 21, 3],[4, 15, 6]])`,
-      '([[2, 3], [1, 4], [2, 3]])',
+      `([[1, 21, 5],[4, 15, 6]])`,
+      '([[2, 3], [1, 6], [2, 2]])',
       '([[13, 6, 11], [1, 2, 3], [4, 6, 5], [7, 0, -3]])',
       '([[3, 2, 1, 4],[1, 1, 1, 1], [3, 1, -3, 1], [4, 4, 2, 4]])',
     ],
     // The question itself. Try to make it Pseudocode-y
     question: `Given a 2D array MAT of numbers, construct a method that will sort the matrix 
-    so that the sum of each row is in ascending order, and return the sorted array.`,
+    so that the sum of each row is in ascending order, and return the sorted array.
+    
+    Hint: It may be helpful to make submethods such as SumRow(MAT, ROW) and SwapRows(MAT, R1, R2).
+    If you make methods inside the main method, you can use them just fine.`,
     solution: `method Sort2D(MAT)
     // Using selection sort
-    FRNT = 0
-
-    loop CHK from (FRNT + 1) to (MAT.Length() - 1)
-      MIN = FRNT
-      if SumRow(MAT, CHK) < SumRow(MAT, MIN) then
-        MIN = CHK
-      end if
-      if MIN != FRNT then
-        SwapRows(MAT, FRNT, MIN)
-      end if
+    loop FRNT from 0 to MAT.Length() - 2
+      loop CHK from (FRNT + 1) to (MAT.Length() - 1)
+        MIN = FRNT
+        if SumRow(MAT, CHK) < SumRow(MAT, MIN) then
+          MIN = CHK
+        end if
+        if MIN != FRNT then
+          SwapRows(MAT, FRNT, MIN)
+        end if
+      end loop
     end loop
     
     output MAT
@@ -185,7 +188,7 @@ end method`,
       '([[3, 2, 1, 4],[1, 1, 1, 1], [3, 1, -3, 1], [4, 4, 2, 4]])',
     ],
     // The question itself. Try to make it Pseudocode-y
-    question: `Given a 2d array square MAT, build a collection COL that contains the diagonal elements of MAT. Output the new collection. You can make a new collection with the command COl = new Collection()`,
+    question: `Given a 2d array square MAT, build a collection COL that contains the diagonal elements of MAT. Output the new collection. You can make a new collection with the command COL = new Collection()`,
     solution: `method Diagonal(MAT)
     COL = new Collection() 
     loop I from 0 to MAT.Length() - 1
@@ -193,5 +196,49 @@ end method`,
     end loop
     output COL
 end method`,
-  },
+  }, {
+    //title is the category it appears in on the homepage
+    title: 'Stacks and Queues',
+    name: 'CollectionToStack',
+    inputType: "collection",
+    inputs: [
+      '({1, 2, 3})',
+      '({7, -3, 14})',
+      '({"first", "second", "third"})',
+      '({"Bob", "Mary", "Margaret", "Josiah", "Alistair"})'
+    ],
+    question: `Given a collection, COL, create a stack STK that contains 
+    the elements so that the first element in the collection is the bottom 
+    element in the stack. Output the stack. You can create a new stack with the command
+    STK = new Stack()`,
+    solution: `method CollectionToStack(COL)
+        STK = new Stack()
+        loop while COL.hasNext() 
+          STK.push(COL.getNext())
+        end loop
+        output STK
+    end method`,
+  }, {
+    //title is the category it appears in on the homepage
+    title: 'Stacks and Queues',
+    name: 'CollectionToQueue',
+    inputType: "collection",
+    inputs: [
+      '({1, 2, 3})',
+      '({7, -3, 14})',
+      '({"first", "second", "third"})',
+      '({"Bob", "Mary", "Margaret", "Josiah", "Alistair"})'
+    ],
+    question: `Given a collection, COL, create a queue that contains 
+    the elements so that the first element in the collection is the front of the queue. 
+    Output the queue. You can create a new queue with the command
+    QUE = new Queue()`,
+    solution: `method CollectinToQueue(COL)
+        QUE = new Queue()
+        loop while COL.hasNext() 
+          QUE.enqueue(COL.getNext())
+        end loop
+        output QUE
+    end method`,
+  }
 ]
