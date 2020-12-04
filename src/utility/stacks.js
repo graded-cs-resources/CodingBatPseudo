@@ -3,11 +3,16 @@ module.exports = class Stack {
   values = new Array();
   next = 0;
 
+  constructor(arr) {
+    if (arr && Array.isArray(arr))
+      this.values = arr;
+  }
+
   push = function (el) {
     this.values.push(el);
   }
-  pop = function (el) {
-    this.values.pop(el);
+  pop = function () {
+    return this.values.pop();
   }
   isEmpty = function () {
     if (this.values.length) {

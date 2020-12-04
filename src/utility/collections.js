@@ -1,3 +1,5 @@
+const JSON5 = require('json5');
+const { strCount } = require('../data/recursionSolutions');
 module.exports = class Collection {
 
   elements = [];
@@ -35,11 +37,8 @@ module.exports = class Collection {
   }
 
   toString() {
-    var str = this.elements.toString();
-    if (typeof this.elements[0] === "string") {
-      str = str.replaceAll(/[a-zA-Z0-9 ]+/g, "\"$1\"");
-    }
-    str = str.replaceAll(",", ", ")
-    return "{" + str + "}";
+    var str = JSON5.stringify(this.elements);
+    str = str.replaceAll(",", ", ").replaceAll("[", "{").replaceAll("]", "}");
+    return str;
   }
 }

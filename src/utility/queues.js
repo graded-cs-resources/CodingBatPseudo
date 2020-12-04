@@ -4,6 +4,11 @@ module.exports = class Queue {
   values = new Array();
   next = 0;
 
+  constructor(arr) {
+    if (arr && Array.isArray(arr))
+      this.values = arr;
+  }
+
   isEmpty = function () {
     if (this.values.length) {
       return (this.values.length < 1)
@@ -12,17 +17,11 @@ module.exports = class Queue {
   }
 
   enqueue = function (value) {
-    var size = this.values.length
-    this.values[size] = value;
+    this.values.push(value);
   }
 
   dequeue = function () {
-    var result = null
-    if (this.values.length > 0) {
-      result = values[0]
-      this.values.splice(0, 1)
-    }
-    return result
+    return this.values.shift();
   }
 
   toString = function () {

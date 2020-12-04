@@ -240,5 +240,65 @@ end method`,
         end loop
         output QUE
     end method`,
+  }, {
+    //title is the category it appears in on the homepage
+    title: 'Stacks and Queues',
+    name: 'ReverseCollection',
+    inputType: "collection",
+    inputs: [
+      '({1, 2, 3})',
+      '({7, -3, 14})',
+      '({"first", "second", "third"})',
+      '({"Bob", "Mary", "Margaret", "Josiah", "Alistair"})'
+    ],
+    question: `Given a collection, COL, create a new collection that contains the reverse  create a queue
+      that contains the same elements in reverse order. (Hint: use a stack in the middle!).
+      Output the new collection.`,
+    solution: `method ReverseCollection(COL)
+        STK = new Stack()
+        BCK = new Collection()
+        COL.resetNext()
+
+        loop while COL.hasNext() 
+          STK.push(COL.getNext())
+        end loop
+
+        loop while NOT STK.isEmpty()
+          BCK.addItem(STK.pop())
+        end loop
+        
+        output BCK
+    end method`,
+  }, { //title is the category it appears in on the homepage
+    title: 'Stacks and Queues',
+    name: 'SplitStack',
+    inputType: "stack",
+    inputs: [
+      '(B[1, 2, 3]T)',
+      '(B[7, -3, 3, 14]T)',
+      '(B[9, -2, 5, 11, 2]T)',
+      '(B[2, 3, 4, 5, 6]T)',
+      '(B[3, -3, 3, -3, 3]T)'
+    ],
+    question: `Given a stack if integers, STK, take items from the top of the stack
+    and move them into a second stack, until you find a 3. The 3 should not be put in
+    EITHER stack. 
+    
+    Output FIRST the new stack THEN the old stack (outputting empty stacks is fine)`,
+    solution: `method SplitStack(STK)
+    STK2 = new Stack()
+    FOUND = false
+    loop while NOT STK.isEmpty() AND NOT FOUND
+      E = STK.pop()
+      if E = 3 then
+        FOUND = true
+      else
+        STK2.push(E)
+      end if
+    end loop
+
+    output STK2
+    output STK
+end method`,
   }
 ]
