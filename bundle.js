@@ -38461,6 +38461,70 @@ end method`,
   },
   {
     title: 'Array',
+    name: 'Sum',
+    inputs: [
+      '([1, 2, 3, 4])',
+      '([2, 3, 5, 7, 2, 3])',
+      '([1, 2, 1])',
+      '([3, 2, 1])',
+      '([2, 2, 3])',
+      '([2, 3, 3])',
+    ],
+    question: `Given an array of integers, output the sum of all numbers in the array.`,
+    solution: `method Sum(ARR)
+    SUM = 0
+    loop I from 0 to ARR.Length()-1
+      SUM = SUM + ARR[I]
+    end loop
+    output SUM
+end method`
+  },
+  {
+    title: 'Array',
+    name: 'Average',
+    inputs: [
+      '([1, 2, 3, 4])',
+      '([2, 3, 5, 7, 2, 3])',
+      '([1, 2, 1])',
+      '([3, 2, 1])',
+      '([2, 2, 3])',
+      '([2, 3, 3])',
+    ],
+    question: `Given an array of integers, output the average (mean) of all numbers in the array.`,
+    solution: `method Average(ARR)
+    SUM = 0
+    loop I from 0 to ARR.Length()-1
+      SUM = SUM + ARR[I]
+    end loop
+    output SUM / ARR.Length()
+end method`
+  },
+  {
+    title: 'Array',
+    name: 'PositiveAverage',
+    inputs: [
+      '([1, 2, 3, 4])',
+      '([2, 3, 5, 7, 2, 3])',
+      '([1, 2, 1])',
+      '([3, 2, 1])',
+      '([2, 2, 3])',
+      '([2, 3, 3])',
+    ],
+    question: `Given an array of integers, output the average of all postive numbers in the array.`,
+    solution: `method PositiveAverage(ARR)
+    SUM = 0
+    COUNT = 0
+    loop I from 0 to ARR.Length()-1
+      if ARR[I] > 0
+        SUM = SUM + ARR[I]
+        COUNT = COUNT + 1
+      end if
+    end loop
+    output SUM / COUNT
+end method`
+  },
+  {
+    title: 'Array',
     name: 'Fix23',
     inputs: [
       '([1, 2, 3, 4])',
@@ -38624,7 +38688,8 @@ end method`
     output ARR
   end method`,
 
-  }, {
+  },
+  {
     title: 'Array',
     name: 'BinarySearch',
     inputs: [
@@ -38655,6 +38720,56 @@ end method`
     if NOT FOUND then
       output "NOT FOUND"
     end if
+    
+  end method`,
+
+  },
+  {
+    title: 'Array',
+    name: 'FindTallest',
+    inputs: [
+      '(["LeBron", "Michael", "Magic", "Shaquille"], [206, 196, 202, 216])',
+      '(["Pelé", "Maradona", "Messi", "Ronaldo"], [173, 165, 170, 185])',
+      '(["Dave","Mary","Bob"], [180, 172, 191])',
+
+    ],
+    preamble: `function Compare(str1, str2) { return str1.localeCompare(str2) }`,
+    question: `In this problem, you are given two arrays called NAMES and HEIGHTS. NAMES is an array of strings, representing names. HEIGHTS is an array of heights, in cm. The name in a certain position corresponds to the height in the same position. Your method should find, and output, the tallest person in the list.`,
+    solution: `method FindTallest(NAMES, HEIGHTS)
+    TallestIndex = 0
+    
+    loop I from 1 to HEIGHTS.Length() - 1 
+      if HEIGHTS[I] > HEIGHTS[TallestIndex] then
+         TallestIndex = I
+      end if
+    end loop
+    output NAMES[TallestIndex]
+    
+  end method`,
+
+  },
+  {
+    title: 'Array',
+    name: 'FindBiggestBMI',
+    inputs: [
+      '(["LeBron", "Michael", "Magic", "Shaquille"], [206, 196, 202, 216], [113, 98, 100, 147])',
+      '(["Pelé", "Maradona", "Messi", "Ronaldo"], [173, 165, 170, 185], [65, 73, 68, 80])',
+      '(["Dave","Mary","Bob"], [180, 172, 191], [81, 74, 83])',
+
+    ],
+    preamble: `function CalcBMI(h, w) { return w / ((h/100) * (h/100)) }`,
+    question: `In this problem, you are given three arrays called NAMES (strings), HEIGHTS (numbers, cm), and WEIGHTS (numbers, kg). You also have access to a method called CalcBMI(H, W) that accepts the height (cm) and weight (kg) and returns the Body Mass Index of the person. Your job is to identify the person with the highest BMI in each group and output something like "Biggest BMI of ____ from ____"`,
+    solution: `method FindBiggestBMI(NAMES, HEIGHTS, WEIGHTS)
+    BiggestBMIIndex = 0
+    BiggestBMI = CalcBMI(HEIGHTS[0], WEIGHTS[0])
+    
+    loop I from 1 to HEIGHTS.Length() - 1 
+      BMI = CalcBMI(HEIGHTS[I], WEIGHTS[I])
+      if BMI > BiggestBMI then
+         BiggestBMIIndex = I
+      end if
+    end loop
+    output "Biggest BMI of " + BiggestBMI + " from " + NAMES[BiggestBMIIndex]
     
   end method`,
 
