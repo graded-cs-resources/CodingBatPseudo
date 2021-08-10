@@ -2,6 +2,8 @@
 
 A static website to do CodingBat problems in IB-Style pseudocode (javascript will also be accepted, but for that you should really to to the original CodingJS or CodingTS sites linked below)
 
+The site is deployed at https://graded-cs-resources.github.io/CodingBatPseudo/
+
 ## Alternative, similar sites for different languages
 
 - [CodingBat](https://codingbat.com) - the original, where you can do many of these problems plus more in java or python
