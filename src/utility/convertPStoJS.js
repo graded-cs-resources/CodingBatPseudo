@@ -131,8 +131,7 @@ function translate(line) {
     if (sp >= 0) { first = lin.substring(0, sp); }
   }
   if ((first == "if" || first == "else if" || first == "return" || first == "output")) {
-    line = line.replace(/ NOT /g, " ! ");
-    line = line.replace(/\(NOT /g,"(! ");
+    line = line.replace(/([ \(])NOT /g, "$1! ");
     line = line.replace("if ", "if ( ");
     if (first == "else if") { line = line.replace("else if", "} else if") }
     if (first == "if" || first == "else if") { 
@@ -153,7 +152,7 @@ function translate(line) {
     line = line.replace(/ AND /g, " && ");
     line = line.replace(/ OR /g, " || ");
 
-    line = line.replace(/NOT/g, "!");
+    line = line.replace(/([ \(])NOT /g, "$1! ");
     line = line.replace(/<>/g, "!=");
     line = line.replace(/ = /g, " == ")
   }
@@ -176,7 +175,7 @@ function translate(line) {
     line = line.replace(/ AND /g, " && ");
     line = line.replace(/ OR /g, " || ");
 
-    line = line.replace(/NOT/g, "!");
+    line = line.replace(/([ \(])NOT /g, "$1! ");
     line = line.replace(/<>/g, "!=");
     line = line.replace(/ = /g, " == ")
   }
