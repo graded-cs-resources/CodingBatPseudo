@@ -131,6 +131,7 @@ function translate(line) {
   }
   if ((first == "if" || first == "else if" || first == "return" || first == "output")) {
     line = line.replace(/ NOT /g, " ! ");
+    line = line.replace(/\(NOT /g,"(! ");
     line = line.replace("if ", "if ( ");
     if (first == "else if") { line = line.replace("else if", "} else if") }
     line = line.replace(" then", "){");

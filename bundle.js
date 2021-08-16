@@ -45662,6 +45662,7 @@ function translate(line) {
   }
   if ((first == "if" || first == "else if" || first == "return" || first == "output")) {
     line = line.replace(/ NOT /g, " ! ");
+    line = line.replace(/\(NOT /g,"(! ");
     line = line.replace("if ", "if ( ");
     if (first == "else if") { line = line.replace("else if", "} else if") }
     line = line.replace(" then", "){");
@@ -45876,28 +45877,20 @@ module.exports = function inputParser(exercise, inputStr) {
   argsWithoutParentheses = argsWithoutParentheses.replaceAll("FALSE", "false");
   let functionInput;
 
-  if (exercise.inputType === "map") {
-    if (argsWithoutParentheses === "[[]]") {
-      return new Map();
-    }
-    else {
-      let tempArrayOfArgs = JSON.parse(argsWithoutParentheses);
-      functionInput = new Map();
-      for (let item of tempArrayOfArgs) {
-        functionInput.set(item[0], item[1]);
-      }
-    }
-  } else if (exercise.inputType === "collection") {
+ if (exercise.inputType === "collection") {
+    //collections are in the form {1, 2, 3}
     let arrayInputString = argsWithoutParentheses.replaceAll("{", "[").replaceAll("}", "]");
     let arrayInput = JSON.parse(arrayInputString);
     functionInput = [new Collection(arrayInput)];
   } else if (exercise.inputType === "stack") {
+    //stacks take the form "B[1,2,3]T" with Bottom and Top
     let arrayInputString = argsWithoutParentheses
       .substring(argsWithoutParentheses.indexOf("["),
         argsWithoutParentheses.indexOf("]") + 1);
     let arrayInput = JSON.parse(arrayInputString);
     functionInput = [new Stack(arrayInput)]
   } else if (exercise.inputType === "queue") {
+    //queues take the form "F[1,2,3]B" for front and back
     let arrayInputString = argsWithoutParentheses
       .substring(argsWithoutParentheses.indexOf("["),
         argsWithoutParentheses.indexOf("]") + 1);
@@ -45907,7 +45900,7 @@ module.exports = function inputParser(exercise, inputStr) {
   else {
     try {
       let arrayOfArgs = '[' + argsWithoutParentheses + ']';
-      eval("functionInput = " + arrayOfArgs);
+      functionInput = JSON.parse(arrayOfArgs);
     } catch (e) {
       functionInput = e.toString();
     }
