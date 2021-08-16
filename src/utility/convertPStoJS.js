@@ -126,6 +126,7 @@ function translate(line) {
   else if (startswith(lin, "method ")) { first = "method" }
   else if (startswith(lin, "Class ")) { first = "class" }
   else if (startswith(lin, "input")) { first = "input" }
+  else if (startswith(lin, "end")) {first = "end" }
   else {
     if (sp >= 0) { first = lin.substring(0, sp); }
   }
@@ -134,7 +135,11 @@ function translate(line) {
     line = line.replace(/\(NOT /g,"(! ");
     line = line.replace("if ", "if ( ");
     if (first == "else if") { line = line.replace("else if", "} else if") }
-    line = line.replace(" then", "){");
+    if (first == "if" || first == "else if") { 
+      // remove then at end if it exists, add the curly brace - this allows the 'then' to be skipped...
+      line = line.replace("then","");
+      line = line + "){";
+    }
     line = line.replace(/ AND /g, " && ");
     line = line.replace(/ OR /g, " || ");
 
