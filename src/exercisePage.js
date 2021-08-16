@@ -92,35 +92,17 @@ document.getElementById("solve").addEventListener('click', () => {
       let result;
       let idealResult;
 
-      // if the input is an array/object, make a copy to avoid user changing the passed version...
-      const inputCopy = inputParser(exercise, inputStr);
-
-      if (exercise.inputType === "map") {
-        const formattedInput = prettyPrintMap(input, "parentheses");
-        if (typeof (solution) === "string") {
-          //we have a pseudocode solution!
-          [idealResult, idealOut] = runPS(solution, input, exercise.preamble);
-        } else {
-          idealOut = "";
-          idealResult = solution(...input);
-        }
-        [result, output] = runPS(answer, input);
-        const formattedMapIdealResult = prettyPrintMap(idealResult);
-        const formattedMapUserResult = prettyPrintMap(result);
-
-        document.getElementById("tests").append(formatResults(exerciseName, formattedInput, formattedMapIdealResult, formattedMapUserResult, idealOut, output));
+      if (typeof (solution) === "string") {
+        //we have a pseudocode solution!
+        [idealResult, idealOut] = runPS(solution, input, exercise.preamble);
       } else {
-        if (typeof (solution) === "string") {
-          //we have a pseudocode solution!
-          [idealResult, idealOut] = runPS(solution, inputCopy, exercise.preamble);
-        } else {
-          idealOut = "";
-          idealResult = solution(...inputCopy);
-        }
-        [result, output] = runPS(answer, inputCopy, exercise.preamble);
-
-        document.getElementById("tests").append(formatResults(input, idealResult, result, idealOut, output));
+        idealOut = "";
+        idealResult = solution(...input);
       }
+      [result, output] = runPS(answer, input, exercise.preamble);
+
+      document.getElementById("tests").append(formatResults(input, inputStr, idealResult, result, idealOut, output));
+
 
       if (idealOut === "") {
         results.push(result === idealResult);

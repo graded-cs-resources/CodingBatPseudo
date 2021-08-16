@@ -37247,7 +37247,7 @@ let quizExercises = require("./data/quiz.js");
 let exercises = [...displayedExercises, ...quizExercises];
 
 module.exports = exercises;
-},{"./data/quiz.js":250,"./exercisesToShowOnIndex.js":257}],241:[function(require,module,exports){
+},{"./data/quiz.js":249,"./exercisesToShowOnIndex.js":256}],241:[function(require,module,exports){
 module.exports = [
   {
     //title is the category it appears in on the homepage
@@ -42286,103 +42286,6 @@ solutions.cigarParty = function cigarParty(cigars, isWeekend) {
 
 module.exports = solutions;
 },{}],249:[function(require,module,exports){
-/** --- solutions --- **/
-
-let solutions = {};
-
-solutions.mapBully = function mapBully(someMap) {
-  if (someMap.has("a")) {
-    someMap.set("b", someMap.get("a"));
-    someMap.set("a", "");
-  }
-  return someMap;
-}
-
-solutions.mapShare = function mapShare(someMap) {
-  if (someMap.has("a")) {
-    someMap.set("b", someMap.get("a"));
-  }
-  someMap.delete("c");
-  return someMap;
-}
-
-solutions.mapAB = function mapAB(someMap) {
-  if (someMap.has("a") && someMap.has("b")) {
-    let combinedString = someMap.get("a") + someMap.get("b");
-    someMap.set("ab", combinedString);
-  }
-  return someMap;
-}
-
-solutions.topping1 = function topping1(someMap) {
-  if (someMap.has("ice cream")) {
-    someMap.set("ice cream", "cherry");
-  }
-  someMap.set("bread", "butter");
-  return someMap;
-}
-
-solutions.topping2 = function topping2(someMap) {
-  if (someMap.has("ice cream")) {
-    someMap.set("yogurt", someMap.get("ice cream"));
-  }
-  if (someMap.has("spinach")) {
-    someMap.set("spinach", "nuts");
-  }
-  return someMap;
-}
-
-solutions.topping3 = function topping3(someMap) {
-  if (someMap.has("potato")) {
-    someMap.set("fries", someMap.get("potato"));
-  }
-  if (someMap.has("salad")) {
-    someMap.set("spinach", someMap.get("salad"));
-  }
-  return someMap;
-}
-
-solutions.mapAB2 = function mapAB2(someMap) {
-  if (someMap.has("a") && someMap.has("b")) {
-    if (someMap.get("a") === someMap.get("b")) {
-      someMap.delete("a");
-      someMap.delete("b");
-    }
-  }
-  return someMap;
-}
-
-solutions.mapAB3 = function mapAB3(someMap) {
-  if (someMap.has("a") && !someMap.has("b")) {
-    someMap.set("b", someMap.get("a"));
-  }
-  else if (!someMap.has("a") && someMap.has("b")) {
-    someMap.set("a", someMap.get("b"));
-  }
-  return someMap;
-}
-
-solutions.mapAB4 = function mapAB4(someMap) {
-  if (someMap.has("a") && someMap.has("b")) {
-    aLength = someMap.get("a").length;
-    bLength = someMap.get("b").length;
-
-    if (aLength > bLength) {
-      someMap.set("c", someMap.get("a"));
-    }
-    else if (bLength > aLength) {
-      someMap.set("c", someMap.get("b"));
-    }
-    else {
-      someMap.set("a", "");
-      someMap.set("b", "");
-    }
-  }
-  return someMap;
-}
-
- module.exports = solutions;
-},{}],250:[function(require,module,exports){
 module.exports = [
   { question: 'Given an integer, n, return the sum of the positive integers n + (n-2) + (n-4) + ...    Note: Your solution must be recursive. In other words, there can be no for or while loops in your solution.',
     title: 'QuizQuestions',
@@ -42448,7 +42351,7 @@ module.exports = [
    ] },
 ];
 
-},{}],251:[function(require,module,exports){
+},{}],250:[function(require,module,exports){
 /** --- solutions --- **/
 
 let solutions = {};
@@ -42489,7 +42392,7 @@ solutions.countOdds = function countOdds(nums) {
  }
 
  module.exports = solutions;
-},{}],252:[function(require,module,exports){
+},{}],251:[function(require,module,exports){
 module.exports = [
   { question: 'Given n of 1 or more, return the factorial of n, which is n * (n-1) * (n-2) ... 1. Compute the result recursively (without loops).',
     title: 'Recursion-1',
@@ -42969,7 +42872,7 @@ module.exports = [
 ] }
 ];
 
-},{}],253:[function(require,module,exports){
+},{}],252:[function(require,module,exports){
 /** --- solutions --- **/
 
 let solutions = {};
@@ -43325,7 +43228,7 @@ solutions.factorial = function factorial(n) {
  }
 
  module.exports = solutions;
-},{}],254:[function(require,module,exports){
+},{}],253:[function(require,module,exports){
 /** --- Solutions --- **/
 // String-1
 
@@ -44166,7 +44069,7 @@ solutions.notReplace = function notReplace(str) {
 }
 
 module.exports = solutions;
-},{}],255:[function(require,module,exports){
+},{}],254:[function(require,module,exports){
 module.exports = [
   {
     title: "Warmup",
@@ -45023,7 +44926,7 @@ end method`,
     ],
   },
 ];
-},{}],256:[function(require,module,exports){
+},{}],255:[function(require,module,exports){
 const CodeMirror = require("codemirror-minified");
 const runPS = require("./utility/convertPStoJS");
 const exercises = require("./allExercisesIncludingHidden.js");
@@ -45118,35 +45021,17 @@ document.getElementById("solve").addEventListener('click', () => {
       let result;
       let idealResult;
 
-      // if the input is an array/object, make a copy to avoid user changing the passed version...
-      const inputCopy = inputParser(exercise, inputStr);
-
-      if (exercise.inputType === "map") {
-        const formattedInput = prettyPrintMap(input, "parentheses");
-        if (typeof (solution) === "string") {
-          //we have a pseudocode solution!
-          [idealResult, idealOut] = runPS(solution, input, exercise.preamble);
-        } else {
-          idealOut = "";
-          idealResult = solution(...input);
-        }
-        [result, output] = runPS(answer, input);
-        const formattedMapIdealResult = prettyPrintMap(idealResult);
-        const formattedMapUserResult = prettyPrintMap(result);
-
-        document.getElementById("tests").append(formatResults(exerciseName, formattedInput, formattedMapIdealResult, formattedMapUserResult, idealOut, output));
+      if (typeof (solution) === "string") {
+        //we have a pseudocode solution!
+        [idealResult, idealOut] = runPS(solution, input, exercise.preamble);
       } else {
-        if (typeof (solution) === "string") {
-          //we have a pseudocode solution!
-          [idealResult, idealOut] = runPS(solution, inputCopy, exercise.preamble);
-        } else {
-          idealOut = "";
-          idealResult = solution(...inputCopy);
-        }
-        [result, output] = runPS(answer, inputCopy, exercise.preamble);
-
-        document.getElementById("tests").append(formatResults(input, idealResult, result, idealOut, output));
+        idealOut = "";
+        idealResult = solution(...input);
       }
+      [result, output] = runPS(answer, input, exercise.preamble);
+
+      document.getElementById("tests").append(formatResults(input, inputStr, idealResult, result, idealOut, output));
+
 
       if (idealOut === "") {
         results.push(result === idealResult);
@@ -45190,7 +45075,7 @@ function isTrue(someValue) {
   return someValue === true;
 }
 
-},{"../node_modules/codemirror-minified/addon/edit/matchbrackets.js":37,"./allExercisesIncludingHidden.js":240,"./listeners/darkModeCheckbox.js":263,"./listeners/exerciseListeners":264,"./listeners/keyboardShortcuts":266,"./solutions.js":268,"./utility/cmps.js":269,"./utility/convertPStoJS":271,"./utility/deParam.js":272,"./utility/defaultInput.js":273,"./utility/displayExampleRuns.js":274,"./utility/formatResults.js":275,"./utility/inputParser.js":276,"./utility/prettyPrintMap.js":277,"./utility/setInitialEditorContents.js":279,"./utility/tableHeader.js":281,"codemirror-minified":38}],257:[function(require,module,exports){
+},{"../node_modules/codemirror-minified/addon/edit/matchbrackets.js":37,"./allExercisesIncludingHidden.js":240,"./listeners/darkModeCheckbox.js":262,"./listeners/exerciseListeners":263,"./listeners/keyboardShortcuts":265,"./solutions.js":267,"./utility/cmps.js":268,"./utility/convertPStoJS":270,"./utility/deParam.js":271,"./utility/defaultInput.js":272,"./utility/displayExampleRuns.js":273,"./utility/formatResults.js":274,"./utility/inputParser.js":275,"./utility/prettyPrintMap.js":276,"./utility/setInitialEditorContents.js":278,"./utility/tableHeader.js":280,"codemirror-minified":38}],256:[function(require,module,exports){
 
 let warmupExercises = require("./data/warmup.js");
 //let stringExercises = require("./data/string.js");
@@ -45207,7 +45092,7 @@ let mainPageExercises = [...warmupExercises, ...arrayExercises,
 ...recursionExercises, ...apExercises];
 
 module.exports = mainPageExercises;
-},{"./data/advancedDataStructures.js":241,"./data/ap.js":242,"./data/array.js":244,"./data/collections.js":246,"./data/logic.js":247,"./data/recursion.js":252,"./data/warmup.js":255}],258:[function(require,module,exports){
+},{"./data/advancedDataStructures.js":241,"./data/ap.js":242,"./data/array.js":244,"./data/collections.js":246,"./data/logic.js":247,"./data/recursion.js":251,"./data/warmup.js":254}],257:[function(require,module,exports){
 let deParam = require("./utility/deParam.js");
 let exercises = require("./exercisesToShowOnIndex.js");
 require("./listeners/indexSaveLoadAll.js");
@@ -45252,7 +45137,7 @@ for (title of titles) {
 }
 
 
-},{"./exercisesToShowOnIndex.js":257,"./listeners/darkModeCheckbox.js":263,"./listeners/indexSaveLoadAll.js":265,"./utility/deParam.js":272}],259:[function(require,module,exports){
+},{"./exercisesToShowOnIndex.js":256,"./listeners/darkModeCheckbox.js":262,"./listeners/indexSaveLoadAll.js":264,"./utility/deParam.js":271}],258:[function(require,module,exports){
 
 function loadAllSolutionsFromFile() {
   let fileInput = document.getElementById('fileInput');
@@ -45276,7 +45161,7 @@ function writeLocalStorage(data) {
 }
 
 module.exports = loadAllSolutionsFromFile;
-},{}],260:[function(require,module,exports){
+},{}],259:[function(require,module,exports){
 module.exports = function loadCodeFile(editor) {
   // remove_fileInput_listener();
   let fileInput = document.getElementById('fileInput');
@@ -45291,7 +45176,7 @@ module.exports = function loadCodeFile(editor) {
   });
   document.querySelector("#fileInput").click(); // activate the hidden file input
 }
-},{}],261:[function(require,module,exports){
+},{}],260:[function(require,module,exports){
 //let FileSaver = require('file-saver');
 
 function saveAllSolutionsToFile() {
@@ -45307,7 +45192,7 @@ function getLocalStorage() {
 }
 
 module.exports = saveAllSolutionsToFile;
-},{}],262:[function(require,module,exports){
+},{}],261:[function(require,module,exports){
 //let FileSaver = require('file-saver');
 
 module.exports = function saveCodeFile(editor, exerciseName) {
@@ -45318,7 +45203,7 @@ module.exports = function saveCodeFile(editor, exerciseName) {
   //FileSaver.saveAs(blob, exerciseName + ".js", true);
 }
 
-},{}],263:[function(require,module,exports){
+},{}],262:[function(require,module,exports){
 var checkbox = document.querySelector("#darkmodecheckbox");
 if (localStorage.getItem("darkMode") === "true") {
   checkbox.checked = true;
@@ -45342,7 +45227,7 @@ checkbox.addEventListener("input", (e) => {
   }
 });
 
-},{}],264:[function(require,module,exports){
+},{}],263:[function(require,module,exports){
 let exercises = require("../exercisesToShowOnIndex");
 let saveCodeFile = require("../io/saveCodeFile.js");
 let loadCodeFile = require("../io/loadCodeFile.js");
@@ -45381,7 +45266,7 @@ module.exports = function (editor, exerciseName) {
     })
 
 };
-},{"../exercisesToShowOnIndex":257,"../io/loadCodeFile.js":260,"../io/saveCodeFile.js":262}],265:[function(require,module,exports){
+},{"../exercisesToShowOnIndex":256,"../io/loadCodeFile.js":259,"../io/saveCodeFile.js":261}],264:[function(require,module,exports){
 
 let saveAllSolutionsToFile = require("../io/saveAllSolutionsToFile.js");
 let loadAllSolutionsFromFile = require("../io/loadAllSolutionsFromFile.js");
@@ -45394,7 +45279,7 @@ document.querySelector('#saveAll').addEventListener('click', () => {
 document.querySelector('#loadAll').addEventListener('click', () => {
     loadAllSolutionsFromFile();
 })
-},{"../io/loadAllSolutionsFromFile.js":259,"../io/saveAllSolutionsToFile.js":261}],266:[function(require,module,exports){
+},{"../io/loadAllSolutionsFromFile.js":258,"../io/saveAllSolutionsToFile.js":260}],265:[function(require,module,exports){
 let saveCodeFile = require("../io/saveCodeFile.js");
 let loadCodeFile = require("../io/loadCodeFile.js");
 
@@ -45423,7 +45308,7 @@ module.exports = function (editor, exerciseName) {
     // }
   });
 };
-},{"../io/loadCodeFile.js":260,"../io/saveCodeFile.js":262}],267:[function(require,module,exports){
+},{"../io/loadCodeFile.js":259,"../io/saveCodeFile.js":261}],266:[function(require,module,exports){
 var pathSuffix = location.pathname.split('/').splice(-1)[0]
 if (pathSuffix === "") {
   // main page
@@ -45440,13 +45325,13 @@ else if (pathSuffix === "exercise.html") {
 // useful, since otherwise you see the transition from textarea to codemirror, etc...
 document.addEventListener("DOMContentLoaded", () =>
   document.getElementsByTagName("html")[0].style.visibility = "visible");
-},{"./exercisePage.js":256,"./indexPage.js":258}],268:[function(require,module,exports){
+},{"./exercisePage.js":255,"./indexPage.js":257}],267:[function(require,module,exports){
 let stringSolutions = require("./data/stringSolutions.js");
 let recursionSolutions = require("./data/recursionSolutions.js");
 let logicSolutions = require("./data/logicSolutions.js");
 let arraySolutions = require("./data/arraySolutions.js");
 let apSolutions = require("./data/apSolutions.js");
-let mapSolutions = require("./data/mapSolutions.js");
+
 let quizSolutions = require("./data/quizSolutions.js");
 // this ES2018 spread syntax was causing browserify problems, so I replaced it below...
 // let solutions = {...warmupSolutions, ...stringSolutions };
@@ -45461,12 +45346,11 @@ let solutions = Object.assign({},
   logicSolutions,
   arraySolutions,
   apSolutions,
-  mapSolutions,
   quizSolutions
 );
 
 module.exports = solutions;
-},{"./data/apSolutions.js":243,"./data/arraySolutions.js":245,"./data/logicSolutions.js":248,"./data/mapSolutions.js":249,"./data/quizSolutions.js":251,"./data/recursionSolutions.js":253,"./data/stringSolutions.js":254}],269:[function(require,module,exports){
+},{"./data/apSolutions.js":243,"./data/arraySolutions.js":245,"./data/logicSolutions.js":248,"./data/quizSolutions.js":250,"./data/recursionSolutions.js":252,"./data/stringSolutions.js":253}],268:[function(require,module,exports){
 module.exports = function CodeMirrorPSHighlighting(CodeMirror) {
   CodeMirror.defineMode("pseudocode", function () {
     var define = ["method", "class"];
@@ -45599,7 +45483,7 @@ module.exports = function CodeMirrorPSHighlighting(CodeMirror) {
 
   CodeMirror.defineMIME("text/x-pseudocode", "pseudocode");
 }
-},{}],270:[function(require,module,exports){
+},{}],269:[function(require,module,exports){
 const JSON5 = require('json5');
 const { strCount } = require('../data/recursionSolutions');
 module.exports = class Collection {
@@ -45644,7 +45528,7 @@ module.exports = class Collection {
     return str;
   }
 }
-},{"../data/recursionSolutions":253,"json5":114}],271:[function(require,module,exports){
+},{"../data/recursionSolutions":252,"json5":114}],270:[function(require,module,exports){
 const Collection = require("./collections")
 const Queue = require("./queues")
 const Stack = require("./stacks")
@@ -45890,7 +45774,7 @@ function replacePairs(s, a, b, ar, br) {
   }
   return s
 }
-},{"./collections":270,"./queues":278,"./stacks":280,"json5":114}],272:[function(require,module,exports){
+},{"./collections":269,"./queues":277,"./stacks":279,"json5":114}],271:[function(require,module,exports){
 /** takes url parameter and transforms into object **/
 function deParam(urlStr) {
   const subbie = urlStr.substring(1);
@@ -45899,7 +45783,7 @@ function deParam(urlStr) {
 }
 
 module.exports = deParam;
-},{}],273:[function(require,module,exports){
+},{}],272:[function(require,module,exports){
 /** creates default input to start function **/
 solutions = require("../solutions.js");
 
@@ -45914,7 +45798,7 @@ module.exports = function defaultInput(exercise) {
   let openingBracket = solutionFullText.indexOf("{")
   return solutionFullText.substring(0, openingBracket) + "{\n \n \n}";
 }
-},{"../solutions.js":268}],274:[function(require,module,exports){
+},{"../solutions.js":267}],273:[function(require,module,exports){
 
 let inputParser = require("./inputParser.js");
 let solutions = require("../solutions.js");
@@ -45928,68 +45812,38 @@ module.exports = function (exercise) {
         try {
             let input = inputParser(exercise, exercise.inputs[i]);
             let result;
-            if (exercise.inputType === "map") {
-                // display syntax message
-                if (i === 0) {
-                    document.querySelector(".examples")
-                    insertAdjacentHTML('beforeend',
-                        `<p><em>Note that the Map syntax for the example runs and output has been simplified for user readability, but would not actually create a Map() properly.</em></p>`);
-                }
 
-                let inputCopy = inputParser(exercise, exercise.inputs[i]);
-                let formattedInput = prettyPrintMap(inputCopy, "parentheses");
-                if (typeof (solution) === "string") {
-                    [result, out] = runPS(solution, inputCopy, exercise.preamble);
-                    if (!result) result = out;
-                } else {
-                    result = solution(inputCopy);
-                }
-                let formattedResult = prettyPrintMap(result);
-                document.querySelector('.examples')
-                    .insertAdjacentHTML('beforeend',
-                        `<li>${exerciseName}${formattedInput} → ${formattedResult}</li>`);
+            if (typeof (solution) === "string") {
+                [result, out] = runPS(solution, input, exercise.preamble);
+                if (!result) result = out;
+            } else {
+                result = solution(...input);
             }
-            else {
-                if (typeof (solution) === "string") {
-                    [result, out] = runPS(solution, input, exercise.preamble);
-                    if (!result) result = out;
-                } else {
-                    result = solution(...input);
-                }
-                document.querySelector('.examples')
-                    .insertAdjacentHTML('beforeend',
-                        `<li>${exercise.name}${exercise.inputs[i]} → ${result}</li>`);
-            }
+            document.querySelector('.examples')
+                .insertAdjacentHTML('beforeend',
+                    `<li>${exercise.name}${exercise.inputs[i]} → ${result}</li>`);
+
         } catch (e) {
             console.log(e);
             break;
         }
     }
 }
-},{"../solutions.js":268,"./convertPStoJS.js":271,"./inputParser.js":276,"./prettyPrintMap.js":277}],275:[function(require,module,exports){
+},{"../solutions.js":267,"./convertPStoJS.js":270,"./inputParser.js":275,"./prettyPrintMap.js":276}],274:[function(require,module,exports){
 const Collection = require("./collections")
 const Queue = require("./queues")
 const Stack = require("./stacks")
 /** Return row for html table **/
-function formatResults(input, idealResult, result, idealOutput, output) {
-    var inputStr = "";
+function formatResults(input, inputStr, idealResult, result, idealOutput, output) {
     if (idealOutput !== "") {
         result = output;
         idealResult = idealOutput;
     }
     const ok = (idealResult === result);
-    if (input instanceof Collection ||
-        input instanceof Stack ||
-        input instanceof Queue) {
-        inputStr = input.toString();
-    } else {
-
-        inputStr = inputStr.replaceAll(",", ", ");
-        inputStr = inputStr.replaceAll("], [", "], \n [");
-        inputStr = inputStr.substring(1, inputStr.length - 1);
+    // remove parens from inputStr if it is a single thing
+    if (input.length == 1) {
+        inputStr= inputStr.slice(1, inputStr.length-1);
     }
-    inputStr = inputStr.replaceAll("true", "TRUE");
-    inputStr = inputStr.replaceAll("false", "FALSE");
     var row = document.createElement("tr");
     row.innerHTML = `<td>${inputStr}</td>
             <td>${idealResult}</td>
@@ -46000,7 +45854,7 @@ function formatResults(input, idealResult, result, idealOutput, output) {
 }
 
 module.exports = formatResults;
-},{"./collections":270,"./queues":278,"./stacks":280}],276:[function(require,module,exports){
+},{"./collections":269,"./queues":277,"./stacks":279}],275:[function(require,module,exports){
 
 const { args } = require("watchify");
 const Collection = require("./collections.js");
@@ -46060,7 +45914,7 @@ module.exports = function inputParser(exercise, inputStr) {
   }
   return functionInput;
 }
-},{"./collections.js":270,"./queues.js":278,"./stacks.js":280,"watchify":237}],277:[function(require,module,exports){
+},{"./collections.js":269,"./queues.js":277,"./stacks.js":279,"watchify":237}],276:[function(require,module,exports){
 // function to show the Map data type in a user-friendly way
 //  - without doing something like this, it just shows up as Object()
 
@@ -46093,7 +45947,7 @@ function prettyPrintMap(theMap, style = "no_parentheses") {
 
 module.exports = prettyPrintMap;
 
-},{}],278:[function(require,module,exports){
+},{}],277:[function(require,module,exports){
 const JSON5 = require("json5");
 
 module.exports = class Queue {
@@ -46124,7 +45978,7 @@ module.exports = class Queue {
     return "Fr" + JSON5.stringify(this.values).replaceAll(",", ", ") + "Bk";
   }
 }
-},{"json5":114}],279:[function(require,module,exports){
+},{"json5":114}],278:[function(require,module,exports){
 let defaultInput = require("./defaultInput.js");
 
 module.exports = function (editor, exerciseName, exercise) {
@@ -46142,7 +45996,7 @@ module.exports = function (editor, exerciseName, exercise) {
         });
     }
 };
-},{"./defaultInput.js":273}],280:[function(require,module,exports){
+},{"./defaultInput.js":272}],279:[function(require,module,exports){
 const JSON5 = require("json5")
 module.exports = class Stack {
   values = new Array();
@@ -46173,7 +46027,7 @@ module.exports = class Stack {
 
 }
 
-},{"json5":114}],281:[function(require,module,exports){
+},{"json5":114}],280:[function(require,module,exports){
 function tableHeader() {
     var row = document.createElement("tr");
     row.innerHTML = `<th>Inputs</th>
@@ -46184,4 +46038,4 @@ function tableHeader() {
 }
 
 module.exports = tableHeader;
-},{}]},{},[267]);
+},{}]},{},[266]);
