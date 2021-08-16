@@ -3,6 +3,64 @@ module.exports = [
     //title is the category it appears in on the homepage
     title: 'Array',
     // Pseudocode problems should start with a capital letter
+    name: 'FirstSecond6',
+    // the inputs that we are going to use to to test the code. An array of strings.
+    // Each string should be parentheses, and inside you can have one or more arrays,
+    // strings, ints, TRUE/FALSE, whatever. check warmup.js for more examples.
+    inputs: [
+      '([1, 2, 6])',
+      '([6, 1, 2, 3])',
+      '([13, 6, 1, 2, 3])',
+      '([13, 6, 1, 2, 6])',
+      '([3, 2, 1])',
+      '([3, 6, 1])',
+      '([3, 6])',
+      '([5, 6])',
+      '([5, 5])',
+      '([1, 2, 3, 4, 6])',
+      '([1, 2, 3, 4])',
+    ],
+    // The question itself. Try to make it Pseudocode-y
+    question: `Given an array of numbers, output TRUE if 6 appears as either the first or second element in the array. You can assume the array has at least two elements.`,
+    solution: `method FirstSecond6(NUMS)
+    if NUMS[0] = 6 OR NUMS[1] = 6 then
+      output TRUE
+    else
+      output FALSE
+    end if
+  end method`,
+  },
+  {
+    //title is the category it appears in on the homepage
+    title: 'Array',
+    // Pseudocode problems should start with a capital letter
+    name: 'SumFirstThree',
+    // the inputs that we are going to use to to test the code. An array of strings.
+    // Each string should be parentheses, and inside you can have one or more arrays,
+    // strings, ints, TRUE/FALSE, whatever. check warmup.js for more examples.
+    inputs: [
+      '([1, 2, 6])',
+      '([6, 1, 2, 3])',
+      '([13, 6, 1, 2, 3])',
+      '([13, 6, 1, 2, 6])',
+      '([3, 2, 1])',
+      '([3, 6, 1])',
+      '([3, 6, -1])',
+      '([5, 6, 12])',
+      '([5, 5, 5])',
+      '([1, 2, 3, 4, 6])',
+      '([1, 2, 3, 4])',
+    ],
+    // The question itself. Try to make it Pseudocode-y
+    question: `Given an array of numbers, output the sum of the first three values. You can assume there are at least three elements in the array.`,
+    solution: `method SumFirstThree(NUMS)
+    output NUMS[0]+NUMS[1]+NUMS[2]
+  end method`,
+  },
+  {
+    //title is the category it appears in on the homepage
+    title: 'Array',
+    // Pseudocode problems should start with a capital letter
     name: 'FirstLast6',
     // the inputs that we are going to use to to test the code. An array of strings.
     // Each string should be parentheses, and inside you can have one or more arrays,
