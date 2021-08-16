@@ -69,6 +69,10 @@ pre {
   background-color: var(--bgHighlights);
 }
 
+code {
+  background-color: var(--bgHighlights);
+  padding: .1em;
+}
 #reference table.minimalistBlack {
   width: 100%;
   text-align: left;
