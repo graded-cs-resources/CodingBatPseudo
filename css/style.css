@@ -34,6 +34,7 @@ html {
   height: 100%;
   font-size: 14pt;
   box-sizing: border-box;
+  
 }
 
 *, *:before, *:after {
@@ -52,6 +53,7 @@ body {
   background-color: var(--bgColor);
   color: #657b83;
   color: var(--fgColor);
+  caret-color: var(--fgColor);
 }
 
 .main {

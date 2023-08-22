@@ -236,7 +236,7 @@
 }
 
 .cm-s-default .CodeMirror-cursor {
-  border-left-color: #002b36 !important;
+  border-left-color: var(--fgColor) !important;
   border-left-color: var(--opBackground);
 }
 
@@ -271,8 +271,7 @@
 }
 
 .cm-s-default span.cm-number {
-  color: #586e75;
-  color: var(--emphasized);
+  color: var(--blue);
 }
 
 .cm-s-default span.cm-def {
@@ -291,7 +290,7 @@
   color: #cb4b16;
 }
 
-.cm-s-default span.cm-comment {
+.cm-s-default span.cm-comment, .cm-s-default span.cm-doc {
   color: #93a1a1;
   color: var(--secondary);
 }
@@ -315,7 +314,7 @@
 }
 
 .cm-s-default span.cm-bracket {
-  color: #cb4b16;
+  color: var(--yellow)
 }
 
 .cm-s-default span.cm-tag {
@@ -554,6 +553,7 @@ div.CodeMirror-cursors {
   visibility: hidden;
   position: relative;
   z-index: 3;
+  color: var(--fgColor)
 }
 
 div.CodeMirror-dragcursors {

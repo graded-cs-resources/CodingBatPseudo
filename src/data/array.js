@@ -500,15 +500,19 @@ end method`
     question: `Sort the given array using selection sort, then output the sorted array.
     (the tool won't know what sort you use, so check the solution to make sure it is right!)`,
     solution: `method SelectionSort(ARR)
+    // FRNT is the first unsorted element
     loop FRNT from 0 to ARR.Length() - 2
-      min = ARR[FRNT]
+      MININDEX = FRNT
+      // CHK looks for a new minimum
       loop CHK from FRNT + 1 to ARR.Length() - 1
-        if ARR[CHK] < ARR[FRNT] then
-          TEMP = ARR[CHK]
-          ARR[CHK] = ARR[FRNT]
-          ARR[FRNT] = TEMP
+        if ARR[CHK] < ARR[MININDEX] then
+          MININDEX = CHK
         end if
       end loop
+      // Swap the min value to the front position
+      TEMP = ARR[FRNT]
+      ARR[FRNT] = ARR[MININDEX]
+      ARR[MININDEX] = TEMP
     end loop
     output ARR
   end method`,

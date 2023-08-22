@@ -1,5 +1,5 @@
 var pathSuffix = location.pathname.split('/').splice(-1)[0]
-if (pathSuffix === "") {
+if (pathSuffix === "" || pathSuffix === "index.html") {
   // main page
   require("./indexPage.js");
 }

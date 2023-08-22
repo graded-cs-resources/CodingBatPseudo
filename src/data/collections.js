@@ -172,6 +172,58 @@ end method`,
     end if
     output C  
   end method`
-  }
+  },
+  {
+    title: 'Collections',
+    name: 'CollectionToArray',
+    inputType: "collection",
+    inputs: [
+      '({"Coelho", "Ivana", "Huang", "Victor", "Anderson", "Ingerlis"})',
+      '({2,3,4,1,2,3,6,4,7,5,7,-1})',
+      '({-1, -2, 1.2, 66.3, -22, 1, 5, 77.6, 2})',
+      '({true, false, false, false, true, true, true, false, false, false})',
+      '({"A","B","C","D","E","F","G","H","I","J","K","L"})',
+    ],
+    question: `You have a collection called COL that contains an unknown number of elements. Create and output array with all of the elements. The array should not be bigger than necessary.`,
+    solution: `method CollectionToArray(COL)
+    COL.resetNext()
+    N = 0
+    loop while COL.hasNext()
+      N = N + 1
+      COL.getNext()
+    end loop
+    ARR = new Array(N)
+    COL.resetNext()
+    loop I from 0 to N-1
+      ARR[I] = COL.getNext()
+    end loop
+    output ARR
+  end method`
+  },
+  {
+    title: 'Collections',
+    name: 'CollectionToTwoArrays',
+    inputType: "collection",
+    inputs: [
+      '({"Coelho", "Ivana", "Huang", "Victor", "Anderson", "Ingerlis"})',
+      '({"Lee", "Stefan", "Protasio", "Ricardo", "Stark", "Rome"})',
+      '({"Merchor", "Maia", "Solamao", "Lucas", "Duran", "Rafael"})',
+      '({"Scroffa", "Mateo", "Lima", "Joao", "Vidigal", "Eduardo"})',
+    ],
+    question: `You have a collection called NAMES that contains the names of three students in your class organized in the format Last -> First -> Last -> First (see examples below). Create two arrays, one with the first names and one with the last names. Output the first names, then the last names.`,
+    solution: `method CollectionToArrays(NAMES)
+    FIRSTS = new Array(3)
+    LASTS = new Array(3)
+    I = 0
+    NAMES.resetNext()
+    loop while NAMES.hasNext()
+      LASTS[I] = NAMES.getNext()
+      FIRSTS[I] = NAMES.getNext()
+      I = I + 1
+    end if
+    output LASTS
+    output FIRSTS  
+  end method`
+  },
 ]
 

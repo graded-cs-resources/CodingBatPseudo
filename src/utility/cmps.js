@@ -1,11 +1,11 @@
 module.exports = function CodeMirrorPSHighlighting(CodeMirror) {
   CodeMirror.defineMode("pseudocode", function () {
     var define = ["method", "class"];
-    var keywords = ["override", "overload", "new", "loop", "from",
-      "while", "if", "then", "else", "AND", "OR", "NOT", "end", "method", "mod", "div"];
+    var keywords = ["to","override", "overload", "new", "from","input","output",
+      "while", "else", "AND", "OR", "NOT", "mod", "div"];
     var operator = /^[+\-*&%=<>!?|~^]/;
     var bracket = /^[:;\(\)\[\]\{\}]/;
-    var atom = ["TRUE", "FALSE", "output", "input"];
+    var atom = ["TRUE", "FALSE","loop","end loop","if", "end if", "then", "method", "end method"];
     var number = /^(\d[+\-\*\/])?\d+(\.\d+)?/;
     var word = /^\w+(?:'\w+)?/;
     var uword = /^[A-Z_][A-Z_0-9]+/;
@@ -71,7 +71,7 @@ module.exports = function CodeMirrorPSHighlighting(CodeMirror) {
             if (state.sol && stream.match(define)) {
               state.define = true;
               state.def_mode = 1;
-              return "keyword";
+              return "token";
             }
             if (stream.match(keywords)) {
               state.define = false;
