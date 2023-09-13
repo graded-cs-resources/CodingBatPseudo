@@ -631,6 +631,36 @@ end method`
 
   },
 
+  {
+    question: 'Given an array of integers, output all of the three-digit numbers in the array whose digits are in ascending order - that is, numbers like 237 or 368. If no such numbers are in the collection, then the message "No such numbers" should be outputted.',
+    title: 'Array',
+    name: 'ascendingNumbers',
+    inputs: [
+      "([9,3456,12,237,45679,368,296])",
+      "([1234,56,90,324,876])",
+      "([123, 145, 41, 1678, 12])",
+      "([198, 234, 378])"
+    ],
+
+    solution: `method ascendingNumbers(NUMS)
+    FOUNDANY = FALSE
+    loop I from 0 to NUMS.Length() - 1
+      N = NUMS[I]
+      THOUSANDS = N div 1000
+      HUNDREDS = (N mod 1000) div 100
+      TENS = (N mod 100) div 10
+      ONES = N mod 10
+      if (THOUSANDS = 0 AND HUNDREDS > 0 AND TENS > HUNDREDS AND ONES > TENS) then
+        FOUNDANY=TRUE
+        output N
+      end if
+    end loop
+    if NOT FOUNDANY then
+      output "No such numbers"
+    end if
+  end method`
+  },
+
 ];
 
 var notUsed = [
@@ -1715,4 +1745,5 @@ than the number of 4's`
       "([])"
     ]
   },
+  
 ]

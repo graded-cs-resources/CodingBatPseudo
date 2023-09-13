@@ -275,7 +275,7 @@
 }
 
 .cm-s-default span.cm-def {
-  color: #268bd2;
+  color: var(--blue);
 }
 
 .cm-s-default span.cm-variable {
