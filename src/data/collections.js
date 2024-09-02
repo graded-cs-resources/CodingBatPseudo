@@ -124,6 +124,38 @@ end method`,
   },
   {
     title: 'Collections',
+    name: 'AverageCollectionInRange',
+    inputType: "collection",
+    inputs: [
+      '({1, 2, 3, 4, 5})',
+      '({5, 11, 12, -8, 0})',
+      '({-3, 11, 15})',
+      '({7, 0, 0, -1, -1})',
+      '({1, 12, 1, 22, 1})',
+      '({1, 10, 100, 1, 1})',
+      '({-2, 7, 2})',
+    ],
+    question: 'Given a Collection of numbers, output the average of all values between 0 and 10 inclusive. Ignore all other values. If no such values exist, output 0.',
+    solution: `method AverageCollectionInRange(NUMS)
+    SUM = 0
+    COUNT = 0
+    NUMS.resetNext()
+    loop while NUMS.hasNext()
+      N = NUMS.getNext()
+      if N >= 0 AND N <= 10 then
+        COUNT = COUNT + 1
+        SUM = SUM + N
+      end if
+    end loop
+    if COUNT = 0 then
+      output 0
+    else
+      output (SUM / COUNT)
+    end if
+  end method`
+  },
+  {
+    title: 'Collections',
     name: 'CountAM',
     inputType: "collection",
     inputs: [
@@ -172,6 +204,32 @@ end method`,
     end if
     output C  
   end method`
+  },
+  {
+    title: 'Collections',
+    name: 'WeightedAverage',
+    inputType: "collection",
+    inputs: [
+      '({17,23,11},{0.2,0.6,0.2})',
+      '({11,15,18,18},{1,2,3,4})',
+      '({18,12,5,5},{0.2,0.4,0.6,0.1})',
+      '({11,12,13,14,15,16,16},{0.25,0.25,0.35,0.15,0.1,0.05,0.05})'
+    ],
+    // The question itself. Try to make it Pseudocode-y
+    question: `Given two collections, VALUES and WEIGHTS, output a weighted average. A weighted average is calculated by multiplying each number in the VALUES colllection by its related value in the WEIGHTS collection and summing up the result, then dividing that by the sum of the WEIGHTS values only. You can assume VALUES and WEIGHTS are the same lengths.`,
+    solution: `method WeightedAverage(VALUES,WEIGHTS)
+  WEIGHTSUM = 0
+  TOTALSUM = 0
+  VALUES.resetNext()
+  WEIGHTS.resetNext()
+  loop while VALUES.hasNext()
+    V = VALUES.getNext()
+    W = WEIGHTS.getNext()
+    TOTALSUM = TOTALSUM + W * V
+    WEIGHTSUM = WEIGHTSUM + W
+  end loop
+  output TOTALSUM / WEIGHTSUM
+end method`,
   },
   {
     title: 'Collections',

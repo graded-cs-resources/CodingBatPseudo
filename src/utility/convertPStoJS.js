@@ -105,9 +105,10 @@ function translate(line) {
   //do a sanity check - if this is javascript, leave it alone
   if (line.indexOf("{") !== -1) return line;
   line = line.replace(/ mod /g, " % ")
+  line = line.replace(/ MOD /g, " % ")
   //oof this is ugly. However, it should successfully match all div statements (??)
   line = line.replaceAll(/([0-9A-Za-z]+| \(.+\)|[0-9A-Za-z]+\.[0-9A-Za-z]+\(\)) div ([0-9A-Za-z]+|\(.+\)|[0-9A-Za-z]+\.[0-9A-Za-z]+\(\))/g, "div($1, $2)");
-
+  line = line.replaceAll(/([0-9A-Za-z]+| \(.+\)|[0-9A-Za-z]+\.[0-9A-Za-z]+\(\)) DIV ([0-9A-Za-z]+|\(.+\)|[0-9A-Za-z]+\.[0-9A-Za-z]+\(\))/g, "div($1, $2)");
   line = line.replaceAll(/([^"])TRUE/g, "$1true");
   line = line.replaceAll(/([^"])FALSE/g, "$1false");
   var lin = line.trim();
@@ -132,6 +133,7 @@ function translate(line) {
   }
   if ((first == "if" || first == "else if" || first == "return" || first == "output")) {
     line = line.replace(/([ \(])NOT /g, "$1! ");
+    line = line.replace(/([ \(])not /g,"$1!");
     line = line.replace("if ", "if ( ");
     if (first == "else if") { line = line.replace("else if", "} else if") }
     if (first == "if" || first == "else if") { 
@@ -141,6 +143,8 @@ function translate(line) {
     }
     line = line.replace(/ AND /g, " && ");
     line = line.replace(/ OR /g, " || ");
+    line = line.replace(/ and /g, " && ");
+    line = line.replace(/ or /g, " || ");
 
 
     line = line.replace(/<>/g, "!=");
@@ -151,8 +155,10 @@ function translate(line) {
     line = line.replace("loop while", "while(") + "){";
     line = line.replace(/ AND /g, " && ");
     line = line.replace(/ OR /g, " || ");
-
+    line = line.replace(/ and /g, " && ");
+    line = line.replace(/ or /g, " || ");
     line = line.replace(/([ \(])NOT /g, "$1! ");
+    line = line.replace(/([ \(])not /g, "$1!");
     line = line.replace(/<>/g, "!=");
     line = line.replace(/ = /g, " == ")
   }
@@ -174,8 +180,10 @@ function translate(line) {
     line = line.replace("loop until", "while(!(") + ")){";
     line = line.replace(/ AND /g, " && ");
     line = line.replace(/ OR /g, " || ");
-
+    line = line.replace(/ and /g, " && ");
+    line = line.replace(/ or /g, " || ");
     line = line.replace(/([ \(])NOT /g, "$1! ");
+    line = line.replace(/([ \(])not /g, "$1! ");
     line = line.replace(/<>/g, "!=");
     line = line.replace(/ = /g, " == ")
   }

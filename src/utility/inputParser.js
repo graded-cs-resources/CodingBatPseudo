@@ -20,10 +20,13 @@ module.exports = function inputParser(exercise, inputStr) {
   let functionInput;
 
  if (exercise.inputType === "collection") {
-    //collections are in the form {1, 2, 3}
-    let arrayInputString = argsWithoutParentheses.replaceAll("{", "[").replaceAll("}", "]");
-    let arrayInput = JSON.parse(arrayInputString);
-    functionInput = [new Collection(arrayInput)];
+     //collections are in the form {1, 2, 3}
+     let arrayInputString = "[" + argsWithoutParentheses.replaceAll("{", "[").replaceAll("}", "]") + "]";
+     let arrayInput = JSON.parse(arrayInputString);
+     functionInput = [];
+     for (let col of arrayInput) {
+       functionInput.push(new Collection(col));
+     }
   } else if (exercise.inputType === "stack") {
     //stacks take the form "B[1,2,3]T" with Bottom and Top
     let arrayInputString = argsWithoutParentheses
