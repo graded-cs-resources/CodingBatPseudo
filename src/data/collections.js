@@ -86,7 +86,7 @@ end method`,
       '({1, 1, 1, 1})',
       '({2, 7, 2, 103})',
     ],
-    question: 'Given a Collection of numbers, return the sum of all the elements.',
+    question: 'Given a Collection of numbers, output the sum of all the elements.',
     solution: `method SumCollection(NUMS)
     SUM = 0
     NUMS.resetNext()
@@ -292,7 +292,7 @@ end method`,
       '({1.2, 3.4, -2, 4}, {6.2, 8.9, 11, 2})',
       '({0, 0, 0, 0, 0, 0}, {1, 1, 1, 1, 1, 1})'
     ],
-    question: "Given two collections, NUMS1 and NUMS2 that are the same length, create and output a new collection that contains the element-by-element product of NUMS1 and NUMS2. For example, if the first element of NUMS1 is 2 and the first element of NUMS2 is 3, then the first element of your collection should be 6.",
+    question: "(Submitted by Emily Canar) Given two collections, NUMS1 and NUMS2 that are the same length, create and output a new collection that contains the element-by-element product of NUMS1 and NUMS2. For example, if the first element of NUMS1 is 2 and the first element of NUMS2 is 3, then the first element of your collection should be 6.",
     solution: `method PiecewiseProduct(NUMS1, NUMS2)
     COL = new Collection()
     NUMS1.resetNext()
@@ -304,6 +304,99 @@ end method`,
       COL.addItem(PROD)
     end loop
     output COL
+  end method`
+  },
+  {title: 'Collections',
+    name:'ProdIndex',
+    inputType:'collection',
+    inputs:[
+      '({3, 2, 1, 7, 8, 4})',
+      '({4.3, 5.9, -1.2, 3.4, 9})',
+      '({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1})',
+      '({2, 2, 2, 3})'
+    ],
+    question: '(Contributed Lucas Kenzo Odo Toledo de Barros) Given a collection of numbers, return a collection of the product of each number with its array-style "index"= for example, the first element\'s index will be 0, so the first element of your result will be 0.',
+    solution: `method ProdIndex(NUMS)
+    PRODS = new Collection()
+    NUMS.resetNext()
+    I = 0
+    loop while NUMS.hasNext()
+      N = NUMS.getNext() * I
+      I = I + 1
+      PRODS.addItem(N)
+    end loop
+    output PRODS
+  end method`
+  },
+  {title: 'Collections',
+    name:'FirstMiddleLast',
+    inputType:'collection',
+    inputs:[
+      '({"appl","obamas","oldo"})',
+      '({"barb","meet","fork"})',
+      '({"hi","aaaaaaaaaaaa", "monster"})',
+    ],
+    question: '(Contributed Caster Choi) Given a collection of Strings, count how many of the strings have either the same first and last letter OR have the same two middle letters. You can assume the strings will have an even number of letters.',
+    solution: `method FirstMiddleLast(STRINGS)
+    COUNT = 0
+    STRINGS.resetNext()
+    loop while STRINGS.hasNext()
+      S = STRINGS.getNext()
+      if S.SubStr(0,1) == S.SubStr(S.length - 1,1) or S.SubStr((S.length - 2) / 2,1) == S.SubStr(S.length / 2, 1) then
+        COUNT = COUNT + 1
+      end if
+    end loop
+    output COUNT
+  end method`
+  },
+  {
+    title: 'Collections',
+    name:'EvensMinus1',
+    inputType:'collection',
+    inputs:[
+      '({2, 1, 3, 7})',
+      '({2, 2, 2})',
+      '({3, 2, 1, 7, 8, 4})',
+      '({4, 5, -2, 4, 9})',
+      '({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1})',
+      '({2, 2, 2, 3})'
+    ],
+    question: '(Contributed by Victoria Gubessi Franchi Pinto Ribas, class of \'25) Given a collectino of numbers, find the average of one less than all even numbers. Ignore odd numbers.',
+    solution: `method EvensMinus1(NUMS)
+    SUM = 0
+    COUNT = 0
+    loop while NUMS.hasNext()
+      N = NUMS.getNext()
+      if N mod 2 = 0 then
+        SUM = SUM + N - 1
+        COUNT = COUNT + 1
+      end if
+    end loop
+    output SUM / COUNT
+  end method`
+  },
+  {
+    title: 'Collections',
+    name:'CollectionStory',
+    inputType:'collection',
+    inputs: [
+      '({"Once upon a time","There was an ogre.", "There was a princess.","There was a donkey.","They lived happily after."},{TRUE,FALSE,TRUE,TRUE})',
+      '({"A","B","C","D","E","F"},{TRUE, TRUE, FALSE, FALSE, TRUE, TRUE})',
+      '({"Luca","Odo","Victoria","Caster","Chloe","Marino"},{TRUE, TRUE, TRUE, TRUE, FALSE, FALSE})'
+    ],
+    question: '(Contributed by Luca Seltzer, class of \'25) Given a collection of Strings called STORYBITS and a collection of booleans called HAPPENED (same length), create and output a string for the story preview. That is, if the boolean is TRUE, append the associated story bit, otherwise skip it.',
+    solution: `method CollectionStory(STORYBITS, HAPPENED)
+    REALSTORY = ""
+    HAPPENED.resetNext()
+    STORYBITS.resetNext()
+    loop while HAPPENED.hasNext()
+      STR = STORYBITS.getNext()
+      BOOL = HAPPENED.getNext()
+      if BOOL then
+        REALSTORY = REALSTORY + STR
+      end if
+    end loop
+    output REALSTORY
   end method`
   }
 ]
