@@ -279,9 +279,32 @@ end method`,
       FIRSTS[I] = NAMES.getNext()
       I = I + 1
     end if
-    output LASTS
-    output FIRSTS  
+    output FIRSTS
+    output LASTS  
   end method`
   },
+  {
+    title: 'Collections',
+    name: 'PiecewiseProduct',
+    inputType: "collection",
+    inputs: [
+      '({2, 3, 5, 6}, {3, 4, 1, 2})',
+      '({1.2, 3.4, -2, 4}, {6.2, 8.9, 11, 2})',
+      '({0, 0, 0, 0, 0, 0}, {1, 1, 1, 1, 1, 1})'
+    ],
+    question: "Given two collections, NUMS1 and NUMS2 that are the same length, create and output a new collection that contains the element-by-element product of NUMS1 and NUMS2. For example, if the first element of NUMS1 is 2 and the first element of NUMS2 is 3, then the first element of your collection should be 6.",
+    solution: `method PiecewiseProduct(NUMS1, NUMS2)
+    COL = new Collection()
+    NUMS1.resetNext()
+    NUMS2.resetNext()
+    loop while NUMS1.hasNext()
+      F = NUMS1.getNext()
+      D = NUMS2.getNext()
+      PROD = F * D
+      COL.addItem(PROD)
+    end loop
+    output COL
+  end method`
+  }
 ]
 
