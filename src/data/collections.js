@@ -292,7 +292,7 @@ end method`,
       '({1.2, 3.4, -2, 4}, {6.2, 8.9, 11, 2})',
       '({0, 0, 0, 0, 0, 0}, {1, 1, 1, 1, 1, 1})'
     ],
-    question: "(Submitted by Emily Canar) Given two collections, NUMS1 and NUMS2 that are the same length, create and output a new collection that contains the element-by-element product of NUMS1 and NUMS2. For example, if the first element of NUMS1 is 2 and the first element of NUMS2 is 3, then the first element of your collection should be 6.",
+    question: "(Submitted by Emily Canar, '25) Given two collections, NUMS1 and NUMS2 that are the same length, create and output a new collection that contains the element-by-element product of NUMS1 and NUMS2. For example, if the first element of NUMS1 is 2 and the first element of NUMS2 is 3, then the first element of your collection should be 6.",
     solution: `method PiecewiseProduct(NUMS1, NUMS2)
     COL = new Collection()
     NUMS1.resetNext()
@@ -397,6 +397,64 @@ end method`,
       end if
     end loop
     output REALSTORY
+  end method`
+  },
+  {
+    title: 'Collections',
+    name: 'MaxPerIndex',
+    inputType: 'collection',
+    inputs: [
+      '({1,2,7},{3,2,4})',
+      '({1,7,10,14,24,4,2,9},{9, 60, 3, 5, 5, 4, 8, 2})',
+      '({2.3, -1.7, 9.3, 5.2, -11}, {4.9, -3.2, 9.3, -5.1, 5})',
+      '({0, 0, 0},{2, -2, 2})'
+    ],
+    question: "(Contributed by Rafael Leme, '25) Given two parallel collections of numbers, create and output a new array where each index holds the greatest value at that same position between the two collections. For example, if the first element of the first collection is 2, and the first element of the second collection is 5, the first element of the array should be 5. If the two values are the same, the array should put 0 in the corresponding position.",
+    solution: `method MaxPerIndex(COL1, COL2)
+    COL1.resetNext()
+    COL2.resetNext()
+    AMOUNT = 0
+    loop while COL1.hasNext()
+      COL1.getNext()
+      AMOUNT = AMOUNT + 1
+    end loop
+    COL1.resetNext()
+    A = new Array(AMOUNT)
+    I = 0
+    loop while COL1.hasNext()
+      U = COL1.getNext()
+      V = COL2.getNext()
+      if U = V then
+        A[I] = 0
+      else if U > V then
+        A[I] = U
+      else
+        A[I] = V
+      end if
+      I = I +1
+    end loop
+    output A
+  end method`
+  },{
+    title: "Collections",
+    name: "MinimumAge",
+    inputType: "collection",
+    inputs: [
+      "({12, 14, 54, 3})",
+      "({72, 9, 2, 51, 67, 67, 67})",
+      "({23, 65, 32, 19, 11})"
+    ],
+    question: "(Contributed by Thayná Araújo Dantas Henrique `25 and Yoon Jieun `25) Given a collection of numbers called AGES that represents the various ages of members of a family, output the age of the youngest member of the family.",
+    solution: `method MinimumAge(AGES)
+    AGES.resetNext()
+    SMALLN = AGES.getNext()
+    loop while AGES.hasNext()
+      N = AGES.getNext()
+      if N < SMALLN then
+        SMALLN = N
+      end if
+    end loop
+    output SMALLN
   end method`
   }
 ]
