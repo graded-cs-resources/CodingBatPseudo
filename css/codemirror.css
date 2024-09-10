@@ -263,7 +263,6 @@
 .cm-s-default span.cm-keyword {
   color: #657b83;
   color: var(--fgColor);
-  font-weight: bold;
 }
 
 .cm-s-default span.cm-atom {

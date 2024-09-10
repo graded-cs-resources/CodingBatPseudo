@@ -2,10 +2,10 @@ module.exports = function CodeMirrorPSHighlighting(CodeMirror) {
   CodeMirror.defineMode("pseudocode", function () {
     var define = ["method", "class"];
     var keywords = ["to","override", "overload", "new", "from","input","output",
-      "while", "else", "AND", "OR", "NOT", "mod", "div"];
+      "while", "AND", "OR", "NOT", "and", "or", "not", "mod", "div"];
     var operator = /^[+\-*&%=<>!?|~^]/;
     var bracket = /^[:;\(\)\[\]\{\}]/;
-    var atom = ["TRUE", "FALSE","loop","end loop","if", "end if", "then", "method", "end method"];
+    var atom = ["TRUE", "FALSE","loop","end loop","if", "else", "end if", "then", "method", "end method"];
     var number = /^(\d[+\-\*\/])?\d+(\.\d+)?/;
     var word = /^\w+(?:'\w+)?/;
     var uword = /^[A-Z_][A-Z_0-9]+/;

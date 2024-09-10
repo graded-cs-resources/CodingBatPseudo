@@ -50,6 +50,33 @@ module.exports = [
     output COUNT
   end method`,
   },
+  {title: "Collections",
+    name: "Double100s",
+    inputType: "collection",
+    inputs: [
+      "({100, 100, 40, 20})",
+      "({78, 102, 98, 104, 23})",
+      "({13, 203, 101, 29, 54, 11, 201})"
+    ],
+    question: "Given a collection of scores, output TRUE if there are two scores of at least 100 next to each other in the collection. Otherwise, output FALSE.",
+    solution:`method Double100s(SCORES)
+  COUNT = 0
+  SCORES.resetNext()
+  loop while SCORES.hasNext() and COUNT < 2
+    N = SCORES.getNext()
+    if N < 100 then
+      COUNT = 0
+    else
+      COUNT = COUNT + 1
+    end if
+  end loop
+  if COUNT >= 2 then
+    output TRUE
+  else
+    output FALSE
+  end if
+end method`
+  },
   {
     title: 'Collections',
     name: 'CountAs',
