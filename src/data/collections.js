@@ -102,6 +102,27 @@ end method`
 end method`,
   },
   {
+    title: "Collections",
+    name: "SearchCollection",
+    inputType: "collection",
+    inputs: [
+      '({1, 22, 34, 1}, 2)',
+      '({"Bob", "Joe", "Maria", "Ephraim"},"Maria")',
+      '({"A","B","C","C","C","D"},"E"})'
+    ],
+    question: "Given a collection COL and an variable S, search COL for an element whose value equals S. If the item exists in the collection, output TRUE, otherwise output FALSE.",
+    solution: `method SearchCollection(COL, S) 
+  COL.resetNext()
+  FOUND = FALSE
+  loop while COL.hasNext() and not FOUND
+    if COL.getNext() = S then
+      FOUND = TRUE
+    end if
+  end loop
+  output FOUND
+end method`
+  },
+  {
     title: 'Collections',
     name: 'SumCollection',
     inputType: "collection",
