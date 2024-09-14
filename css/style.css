@@ -73,12 +73,6 @@ header a {
   display: inline-block;
 }
 
-.heading {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
 .darkModeToggle {
   margin-left: auto;
   display: flex;
