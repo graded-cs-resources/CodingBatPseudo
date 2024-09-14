@@ -34,10 +34,11 @@ html {
   height: 100%;
   font-size: 14pt;
   box-sizing: border-box;
-  
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -57,27 +58,41 @@ body {
 }
 
 .main {
-  padding-left: 20px;
   margin: 0 auto;
 }
 
-header h1, header a {
-  font-family: 'Trirong', serif;
+header h1,
+header a {
+  font-family: "Trirong", serif;
   font-size: 40px;
   margin-top: 0px;
   margin-bottom: 0px;
-  color: #6E5961;
+  color: #6e5961;
   color: var(--orange);
   text-decoration: none;
   display: inline-block;
 }
 
-.subheading {
-  margin-top: 0px;
-  margin-bottom: 0px;
+.darkModeToggle {
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.subheadingContainer {
+  display: flex;
+  flex-direction: column;
   padding-bottom: 20px;
-  border-bottom: 1px solid black;
-  border-color: var(--fgColor);
+}
+
+.subheadingContainer p {
+  margin: 0;
+}
+
+.italic {
+  font-style: italic;
 }
 
 a {
@@ -113,12 +128,12 @@ div.probField {
 #name {
   margin-bottom: 0px;
   font-size: 20px;
-  display: inline-block
+  display: inline-block;
 }
 
 .congrats {
   font-size: 30px;
-  color: #6E5961;
+  color: #6e5961;
   color: var(--orange);
   padding-left: 20px;
 }
@@ -147,8 +162,8 @@ div.probField {
   flex-grow: 0;
   background-color: var(--bgHighlights);
   color: var(--emphasized);
-  margin-bottom: .5rem;
-  border-radius: .5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
   border: 1px var(--fgColor) solid;
 }
 
@@ -161,10 +176,21 @@ div.probField {
 }
 
 #topButtonContainer {
-  position: absolute;
-  float: right;
-  top: 10px;
-  right: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+#subheadingContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  border-color: var(--fgColor);
+}
+
+#loadAll {
+  margin-left: 0.5rem;
 }
 
 .btn-top {
@@ -173,7 +199,6 @@ div.probField {
   height: 30px;
   margin-top: 0;
   padding-top: 0;
-  padding-left: 20px;
 }
 
 #show {
@@ -190,7 +215,7 @@ div.probField {
   list-style-type: none;
   font-family: "Consolas", "Lucida Console", "Courier New", Courier, monospace;
   max-width: 650px;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .solveArea {
@@ -211,18 +236,21 @@ div#displayResults {
 
 .test-table {
   padding-left: 15px;
-  font-family: "Inconsolata", "Consolas", "Lucida Console", "Courier New", Courier, monospace;
+  font-family: "Inconsolata", "Consolas", "Lucida Console", "Courier New",
+    Courier, monospace;
   font-size: 0.8rem;
   border-collapse: collapse;
   margin-left: 2rem;
 }
 
 .CodeMirror pre {
-  font-family: "Inconsolata", "Consolas", "Lucida Console", "Courier New", Courier, monospace;
+  font-family: "Inconsolata", "Consolas", "Lucida Console", "Courier New",
+    Courier, monospace;
 }
 
 code {
-  font-family: "Inconsolata", "Consolas", "Lucida Console", "Courier New", Courier, monospace;
+  font-family: "Inconsolata", "Consolas", "Lucida Console", "Courier New",
+    Courier, monospace;
 }
 
 .test-table td {
@@ -260,12 +288,8 @@ th {
 
 footer {
   clear: both;
-  /* position: absolute; */
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
   padding-top: 2rem;
+  /* position: absolute; */
   /* background-color: #efefef; */
   text-align: left;
 }
