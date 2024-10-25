@@ -14,7 +14,6 @@ const exerciseListeners = require("./listeners/exerciseListeners");
 const keyboardShortcuts = require("./listeners/keyboardShortcuts");
 require("./listeners/darkModeCheckbox.js");
 
-
 require("../node_modules/codemirror-minified/addon/edit/matchbrackets.js");
 const CodeMirrorPSHighlighting = require("./utility/cmps.js");
 CodeMirrorPSHighlighting(CodeMirror);
@@ -28,49 +27,53 @@ const editor = CodeMirror.fromTextArea(document.getElementById("answer"), {
   extraKeys: {
     "Cmd-/": "toggleComment",
     "Ctrl-/": "toggleComment",
-    Tab: cm => cm.execCommand("indentMore"),
-    "Shift-Tab": cm => cm.execCommand("indentLess"),
+    Tab: (cm) => cm.execCommand("indentMore"),
+    "Shift-Tab": (cm) => cm.execCommand("indentLess"),
   },
 });
 editor.getWrapperElement().style.height = "auto";
 editor.setSize("100%", "auto");
 
-const solutionArea = CodeMirror.fromTextArea(document.getElementById("solution"), {
-  readOnly: true,
-  mode: "pseudocode",
-  viewportMargin: Infinity,
-  lineWrapping: true,
-  lineNumbers: true,
-  cursorBlinkRate: -1,
-});
+const solutionArea = CodeMirror.fromTextArea(
+  document.getElementById("solution"),
+  {
+    readOnly: true,
+    mode: "pseudocode",
+    viewportMargin: Infinity,
+    lineWrapping: true,
+    lineNumbers: true,
+    cursorBlinkRate: -1,
+  }
+);
 solutionArea.getWrapperElement().style.display = "none";
-
 
 // Work out which excercise to show
 const urlParams = deParam(window.location.search);
 const exerciseName = urlParams.name || exercises[0].name;
 /** here we match the exerciseName (from querystring) to the problem in exercise obj**/
-const exercise = exercises.filter(ex => ex.name === exerciseName)[0];
+const exercise = exercises.filter((ex) => ex.name === exerciseName)[0];
 let solution = exercise.solution || solutions[exerciseName];
 
 exerciseListeners(editor, exerciseName);
 keyboardShortcuts(editor, exerciseName);
 
 // display exercise page
-document.getElementById('title').innerText = exercise.title;
-document.getElementById('name').innerText = exercise.name;
-document.getElementById('problem').innerHTML = exercise.question;
+document.getElementById("title").innerText = exercise.title;
+document.getElementById("name").innerText = exercise.name;
+document.getElementById("problem").innerHTML = exercise.question.replace(
+  "\n\n",
+  "\n<br><br>\n"
+);
 
 setInitialEditorContents(editor, exerciseName, exercise);
 displayExampleRuns(exercise, exerciseName);
 
-
-document.getElementById("defaults").addEventListener('click', () => {
+document.getElementById("defaults").addEventListener("click", () => {
   editor.setValue(`${defaultInput(exercise)}`);
 });
 
-document.getElementById("solve").addEventListener('click', () => {
-  document.querySelectorAll('tr').forEach((e) => e.remove());
+document.getElementById("solve").addEventListener("click", () => {
+  document.querySelectorAll("tr").forEach((e) => e.remove());
   document.getElementById("tests").append(tableHeader());
   const answer = editor.getValue();
 
@@ -80,10 +83,11 @@ document.getElementById("solve").addEventListener('click', () => {
   localStorage.setItem(exerciseName, "attempted");
   localStorage.setItem(exerciseCode, answer);
 
-
   try {
-    document.querySelectorAll(".congrats").forEach((e) => e.innerText = "");
-    document.querySelectorAll(".errorMessage").forEach((e) => e.innerText = "");
+    document.querySelectorAll(".congrats").forEach((e) => (e.innerText = ""));
+    document
+      .querySelectorAll(".errorMessage")
+      .forEach((e) => (e.innerText = ""));
     const inputs = exercise.inputs;
 
     const results = [];
@@ -92,7 +96,7 @@ document.getElementById("solve").addEventListener('click', () => {
       let result;
       let idealResult;
 
-      if (typeof (solution) === "string") {
+      if (typeof solution === "string") {
         //we have a pseudocode solution!
         [idealResult, idealOut] = runPS(solution, input, exercise.preamble);
       } else {
@@ -101,8 +105,11 @@ document.getElementById("solve").addEventListener('click', () => {
       }
       [result, output] = runPS(answer, input, exercise.preamble);
 
-      document.getElementById("tests").append(formatResults(input, inputStr, idealResult, result, idealOut, output));
-
+      document
+        .getElementById("tests")
+        .append(
+          formatResults(input, inputStr, idealResult, result, idealOut, output)
+        );
 
       if (idealOut === "") {
         results.push(result === idealResult);
@@ -112,18 +119,22 @@ document.getElementById("solve").addEventListener('click', () => {
     });
 
     if (results.every(isTrue)) {
-      document.querySelectorAll(".congrats").forEach((e) => e.innerText = "100% Passing. Well Done!");
+      document
+        .querySelectorAll(".congrats")
+        .forEach((e) => (e.innerText = "100% Passing. Well Done!"));
       localStorage.setItem(exerciseName, "solved");
     }
   } catch (theError) {
-    document.querySelectorAll(".congrats").forEach((e) => e.innerText = "");
-    document.querySelectorAll('th').forEach((e) => e.remove());
-    document.querySelectorAll(".errorMessage").forEach((e) => e.innerText = theError);
+    document.querySelectorAll(".congrats").forEach((e) => (e.innerText = ""));
+    document.querySelectorAll("th").forEach((e) => e.remove());
+    document
+      .querySelectorAll(".errorMessage")
+      .forEach((e) => (e.innerText = theError));
     console.log(theError.stack);
   }
 });
 
-document.getElementById("showSolution").addEventListener('click', () => {
+document.getElementById("showSolution").addEventListener("click", () => {
   if (document.getElementById("showSolution").innerText === "Show Solution") {
     const s = solution.toString();
     const r = new RegExp(/function/);

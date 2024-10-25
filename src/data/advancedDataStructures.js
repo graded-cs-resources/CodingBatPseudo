@@ -233,7 +233,7 @@ end method`,
     the elements so that the first element in the collection is the front of the queue. 
     Output the queue. You can create a new queue with the command
     QUE = new Queue()`,
-    solution: `method CollectinToQueue(COL)
+    solution: `method CollectionToQueue(COL)
         QUE = new Queue()
         loop while COL.hasNext() 
           QUE.enqueue(COL.getNext())
@@ -251,8 +251,7 @@ end method`,
       '({"first", "second", "third"})',
       '({"Bob", "Mary", "Margaret", "Josiah", "Alistair"})'
     ],
-    question: `Given a collection, COL, create a new collection that contains the reverse  create a queue
-      that contains the same elements in reverse order. (Hint: use a stack in the middle!).
+    question: `Given a collection, COL, create a new collection that contains the same elements in reverse order. (Hint: use a stack in the middle!).
       Output the new collection.`,
     solution: `method ReverseCollection(COL)
         STK = new Stack()
@@ -300,5 +299,44 @@ end method`,
     output STK2
     output STK
 end method`,
+  }, {
+    title: 'Stacks and Queues',
+    name: 'MonsterStrength',
+    inputType: "queue",
+    inputs: [
+      '(F[3, 0, 3, 1, 2, 1]B)',
+      '(F[7, -3, 3, 14]B)',
+      '(F[9, -2, 5, 11, 2]B)',
+      '(F[2, 3, 4, 5, 6]B)',
+      '(F[3, -3, 3, -3, 3]B)'
+    ],
+    question: `The parameter is a queue of integers that represents the strength of a series of monsters. Monsters are added to a battlefield in the same order they exist in the array. Each time a monster is added, it kills all monsters currently on the battlefield that have the same strength or lower - so for example, a monster of strength 3 would kill all monsters already on the field that have strength 3 or less. Any monsters stronger than the monster are left alone, and the new monster joins the field.
+    <br><br>
+    Consider the example of an input queue [3, 0, 3, 1, 2, 1]. The first monster would join the field, then the second, but when the third monster joins it would kill both of the original two, leaving only the third monster still on the field. Then the fourth monster (strength 1) would join, but then the fifth monster would kill the fourth monster. Finally the last monster would join and kill nobody. So the final group of monsters would be the stack B[3, 2, 1]T.
+    <br><br>
+    For each input, output a stack that contains all the living monsters on the field.
+    <br><br>
+    Credit to this problem to HackerEarth.com`,
+    solution: `method MonsterField(MONSTERS)
+FIELD = new Stack()
+  loop while not MONSTERS.isEmpty()
+    M = MONSTERS.dequeue()
+    if FIELD.isEmpty() then
+      FIELD.push(M)
+    else 
+      TOP = FIELD.pop()
+      loop while TOP <= M and not FIELD.isEmpty()
+        TOP = FIELD.pop()
+      end loop
+      // at this point either TOP > M or TOP <= M and the field is empty
+      if (TOP > M) then
+        FIELD.push(TOP)
+      end if
+      // new monster goes in
+      FIELD.push(M)
+    end if
+  end loop
+  output FIELD
+end method`
   }
 ]
