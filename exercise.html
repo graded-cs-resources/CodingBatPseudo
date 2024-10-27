@@ -11,19 +11,24 @@
 
 <body>
   <div class="main">
-    <header class="heading">
+    <header>
       <a href=".">
         <img src="img/favicon-96x96.png" width="32px" />&nbsp;<h1>Coding Bat - IB Pseudocode version!</h1>
       </a>
     </header>
-    <p class="subheading">Solve programming problems in IB Pseudocode or javascript!<br><br>
-      <em>This site will only store your progress within your current web browser.<br>
-        To keep your solutions permanently, be sure to save your solution as a file.</em>
-    </p>
 
-    <div id="topButtonContainer">
-      <input id="darkmodecheckbox" type="checkbox" value="false">
-      <label for="darkmodecheckbox">Dark Mode?</label>
+    <div id="subheadingContainer">
+      <div class="subheadingContainer">
+        <p>Solve programming problems in IB Pseudocode or javascript!</p>
+        <p class="italic">This site will only store your progress within your current web browser.</p>
+        <p class="italic">To keep your solutions permanently, be sure to save your solution as a file.</p>
+      </div>
+      <div id="topButtonContainer">
+        <div class="darkModeToggle">
+          <input id="darkmodecheckbox" type="checkbox" value="false">
+          <label for="darkmodecheckbox">Dark Mode</label>
+        </div>
+      </div>
     </div>
 
     <a class="links" id="previous" href="#">previous</a>&nbsp;~&nbsp;<a class="links" id="next"
