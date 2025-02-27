@@ -622,7 +622,8 @@ end method`
     loop I from 1 to HEIGHTS.Length() - 1 
       BMI = CalcBMI(HEIGHTS[I], WEIGHTS[I])
       if BMI > BiggestBMI then
-         BiggestBMIIndex = I
+        BiggestBMI = BMI
+        BiggestBMIIndex = I
       end if
     end loop
     output "Biggest BMI of " + BiggestBMI + " from " + NAMES[BiggestBMIIndex]
